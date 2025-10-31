@@ -1053,7 +1053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDataList: {fileID: 11400000, guid: b664d4d48ef2973478649c0c85a242a6, type: 2}
-  eName: test
+  eName: circle
 --- !u!1001 &558831256
 PrefabInstance:
   m_ObjectHideFlags: 0

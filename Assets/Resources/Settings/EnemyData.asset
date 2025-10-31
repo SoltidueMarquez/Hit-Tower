@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyData
   m_EditorClassIdentifier: 
   enemyDataList:
-  - enemyName: test
+  - enemyName: circle
     maxHealth: 10
     speed: 300
     attack: 10
@@ -21,3 +21,11 @@ MonoBehaviour:
     value: 1
     initBuffs: []
     prefab: {fileID: 1181108531587047650, guid: 2eaa2cb5903799e44a93ef2dd383af10, type: 3}
+  - enemyName: square
+    maxHealth: 0
+    speed: 400
+    attack: 0
+    shield: 0
+    value: 1
+    initBuffs: []
+    prefab: {fileID: 1181108531587047650, guid: 73e54fac2966bd148b1c8d433e160a7f, type: 3}

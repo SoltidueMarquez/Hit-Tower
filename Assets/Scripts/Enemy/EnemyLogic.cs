@@ -14,9 +14,7 @@ namespace Enemy
 
         #region 回调
         public event Action OnDie;
-        public event Action OnBorn;
         public event Action OnBeAttacked;
-        public event Action OnSpeedChanged;
         #endregion
         
         public EnemyLogic(EnemyData enemyData)
@@ -49,6 +47,12 @@ namespace Enemy
             enemyInfo.curHealth += delta;
             // 控制血量不越界
             enemyInfo.curHealth = Mathf.Clamp(enemyInfo.curHealth, 0, enemyInfo.maxHealth.value);
+
+            if (delta < 0)
+            {
+                OnBeAttacked?.Invoke();
+            }
+            
             if (Mathf.Approximately(enemyInfo.curHealth, 0f))
             {
                 Die();
