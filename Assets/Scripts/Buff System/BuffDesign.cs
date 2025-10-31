@@ -30,7 +30,15 @@ namespace Buff_System
         [LabelText("目标")] public GameObject target;
         [LabelText("持续时间计时器")] public float durationTimer;
         [LabelText("间隔计时器")] public float tickTimer;
-        [LabelText("当前层数")] public int curStack = 1;
+        [LabelText("当前层数")] public int curStack;
+
+        public BuffInfo( BuffData buffData,GameObject creator,GameObject target)
+        {
+            this.buffData = buffData;
+            this.creator = creator;
+            this.target = target;
+            curStack = 1;
+        }
     }
 
     [Serializable]

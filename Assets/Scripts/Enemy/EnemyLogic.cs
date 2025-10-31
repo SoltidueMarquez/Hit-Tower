@@ -8,20 +8,26 @@ namespace Enemy
 {
     public class EnemyLogic
     {
-        private EnemyInfo m_EnemyInfo;
-        
+        public EnemyInfo enemyInfo { get; private set; }
+
         public BuffHandler buffHandler { get; private set; }
 
         #region 回调
         public event Action OnDie;
         public event Action OnBorn;
         public event Action OnBeAttacked;
+        public event Action OnSpeedChanged;
         #endregion
         
         public EnemyLogic(EnemyData enemyData)
         {
-            m_EnemyInfo = new EnemyInfo(enemyData);
+            enemyInfo = new EnemyInfo(enemyData);
             buffHandler = new BuffHandler();
+
+            foreach (var buffData in enemyData.initBuffs)
+            {
+                buffHandler.AddBuff(new BuffInfo(buffData, null, null));
+            }
         }
 
         /// <summary>
@@ -39,15 +45,15 @@ namespace Enemy
         /// <returns>返回new-old的delta</returns>
         public float ModifyCurrentHealth(float delta)
         {
-            var original = m_EnemyInfo.curHealth;
-            m_EnemyInfo.curHealth += delta;
+            var original = enemyInfo.curHealth;
+            enemyInfo.curHealth += delta;
             // 控制血量不越界
-            m_EnemyInfo.curHealth = Mathf.Clamp(m_EnemyInfo.curHealth, 0, m_EnemyInfo.maxHealth.value);
-            if (Mathf.Approximately(m_EnemyInfo.curHealth, 0f))
+            enemyInfo.curHealth = Mathf.Clamp(enemyInfo.curHealth, 0, enemyInfo.maxHealth.value);
+            if (Mathf.Approximately(enemyInfo.curHealth, 0f))
             {
                 Die();
             }
-            return original - m_EnemyInfo.curHealth;
+            return original - enemyInfo.curHealth;
         }
 
         private void Die()

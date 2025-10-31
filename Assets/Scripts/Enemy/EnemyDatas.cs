@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Buff_System;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -10,6 +11,9 @@ namespace Enemy
     public class EnemyDatas : ScriptableObject
     {
         public List<EnemyData> enemyDataList;
+
+        public EnemyData GetEnemyData(string enemyName) =>
+            enemyDataList.FirstOrDefault(data => data.enemyName == enemyName);
     }
 
     [Serializable]

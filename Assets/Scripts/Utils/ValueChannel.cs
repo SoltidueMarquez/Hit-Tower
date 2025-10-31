@@ -1,4 +1,6 @@
-﻿namespace Utils
+﻿using System;
+
+namespace Utils
 {
     [System.Serializable]
     public class ValueChannel
@@ -11,7 +13,7 @@
         private float m_MultiplicativeModifier;
 
         public float value => CalculateValue();
-        
+        public event Action<float> OnValueChanged;
         
         /// <summary>
         /// 构造函数
@@ -21,17 +23,19 @@
         {
             m_BaseValue = baseValue;
             m_AdditiveModifier = 0f;
-            m_MultiplicativeModifier = 0f;
+            m_MultiplicativeModifier = 1f;
         }
         
         public void ModifyAdditive(float delta)
         {
             m_AdditiveModifier += delta;
+            OnValueChanged?.Invoke(value);
         }
         
         public void ModifyMultiplier(float delta)
         {
             m_MultiplicativeModifier += delta;
+            OnValueChanged?.Invoke(value);
         }
         
         /// <summary>

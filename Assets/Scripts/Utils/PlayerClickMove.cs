@@ -26,7 +26,5 @@ public class PlayerClickMove : MonoBehaviour
         {
             m_Agent.isStopped = true;
         }
-        
-        
     }
 }
