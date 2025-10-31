@@ -16,6 +16,6 @@ namespace Enemy
         [LabelText("名称")] public string enemyName;
         [LabelText("血量")] public float maxHealth;
         [LabelText("速度")] public float speed;
-        [LabelText("击杀后奖励")] public int value;
+        [LabelText("击杀后奖励")] public float value;
     }
 }
