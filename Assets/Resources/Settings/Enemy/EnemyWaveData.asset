@@ -16,13 +16,15 @@ MonoBehaviour:
   - singleWaveList:
     - enemyName: circle
       num: 2
-      singleInterval: 0.1
+      singleInterval: 0.2
     - enemyName: square
       num: 3
-      singleInterval: 0.1
-    interval: 2
+      singleInterval: 0.2
+    interval: 5
+    waitTime: 10
   - singleWaveList:
     - enemyName: circle
       num: 10
-      singleInterval: 0.1
+      singleInterval: 0.2
     interval: 0
+    waitTime: 0

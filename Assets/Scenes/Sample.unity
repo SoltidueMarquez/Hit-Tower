@@ -2074,6 +2074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeEnemies: []
+  enemySpawner: {fileID: 547337035}
 --- !u!114 &547337035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2087,8 +2088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDataList: {fileID: 11400000, guid: b664d4d48ef2973478649c0c85a242a6, type: 2}
-  enemyWaveDataList: {fileID: 0}
-  eName: circle
+  enemyWaveDataList: {fileID: 11400000, guid: 64ed70e1145bb0348a156d4e820a3ec7, type: 2}
 --- !u!1001 &558831256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5680,8 +5680,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1626341087}
+  - component: {fileID: 1626341088}
   m_Layer: 0
-  m_Name: Managers
+  m_Name: Game Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5704,6 +5705,18 @@ Transform:
   - {fileID: 98085034}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1626341088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626341086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b318d0adc69c41e187d73246a2fbab96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1641047270
 PrefabInstance:
   m_ObjectHideFlags: 0
