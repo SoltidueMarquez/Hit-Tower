@@ -10,7 +10,7 @@ namespace Enemy
     [CreateAssetMenu(fileName = "EnemyData",menuName = "Enemy/EnemyData")]
     public class EnemyDatas : ScriptableObject
     {
-        public List<EnemyData> enemyDataList;
+        public List<EnemyData> enemyDataList = new List<EnemyData>();
 
         public EnemyData GetEnemyData(string enemyName) =>
             enemyDataList.FirstOrDefault(data => data.enemyName == enemyName);

@@ -64,7 +64,7 @@ namespace Plugins.EditorTools.OdinTools.SOPreviewer
             }
             catch (Exception e)
             {
-                Debug.LogWarning(e.ToString());
+                // Debug.LogWarning(e.ToString());
             }
 
         }

@@ -6,7 +6,7 @@ namespace Enemy
 {
     public class EnemyManager : Singleton<EnemyManager>
     {
-        public List<EnemyMono> activeEnemies;
+        public List<EnemyMono> activeEnemies = new List<EnemyMono>();
 
         public void Init()
         {
