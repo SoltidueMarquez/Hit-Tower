@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Enemy
 {
+    [CreateAssetMenu(fileName = "EnemyData",menuName = "Enemy")]
     public class EnemyDatas : ScriptableObject
     {
         public List<EnemyData> enemyDataList;
@@ -16,6 +17,8 @@ namespace Enemy
         [LabelText("名称")] public string enemyName;
         [LabelText("血量")] public float maxHealth;
         [LabelText("速度")] public float speed;
+        [LabelText("攻击力")] public float attack;
+        [LabelText("护甲")] public float shield;
         [LabelText("击杀后奖励")] public float value;
     }
 }
