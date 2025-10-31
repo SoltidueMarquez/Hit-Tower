@@ -1,0 +1,31 @@
+{
+    "waveDataList": [
+        {
+            "singleWaveList": [
+                {
+                    "enemyName": "circle",
+                    "num": 2,
+                    "singleInterval": 0.20000000298023225
+                },
+                {
+                    "enemyName": "square",
+                    "num": 3,
+                    "singleInterval": 0.20000000298023225
+                }
+            ],
+            "interval": 5.0,
+            "waitTime": 10.0
+        },
+        {
+            "singleWaveList": [
+                {
+                    "enemyName": "circle",
+                    "num": 10,
+                    "singleInterval": 0.20000000298023225
+                }
+            ],
+            "interval": 0.0,
+            "waitTime": 0.0
+        }
+    ]
+}
