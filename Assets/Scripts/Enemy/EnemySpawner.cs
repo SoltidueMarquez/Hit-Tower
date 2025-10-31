@@ -10,6 +10,13 @@ namespace Enemy
         public EnemyDatas enemyDataList;
         public EnemyWaveDatas enemyWaveDataList;
 
+        private EnemyManager m_EnemyManager;
+        public void Init(EnemyManager manager)
+        {
+            m_EnemyManager = manager;
+            StartSpawn();
+        }
+        
         #region 创建单个敌人
         private void CreateEnemy(string enemyName)
         {
@@ -30,7 +37,7 @@ namespace Enemy
             enemy.transform.position = transform.position;
 
             // 初始化操作
-            enemy.GetComponent<EnemyMono>().Init(data, EnemyManager.Instance);
+            enemy.GetComponent<EnemyMono>().Init(data, m_EnemyManager);
         }
         #endregion
 

@@ -64,6 +64,11 @@ namespace Enemy
         {
             OnDie?.Invoke();
         }
+
+        public void SetDie()
+        {
+            Die();
+        }
     }
 
     /// <summary>

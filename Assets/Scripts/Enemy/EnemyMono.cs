@@ -29,7 +29,10 @@ namespace Enemy
             SetSpeed(EnemyLogicMono.enemyInfo.speed.value);
 
             InitStateMachine();
-
+            
+            // 添加到活跃敌人列表
+            m_EnemyManager.AddEnemy(this);
+            
             // 事件订阅
             EnemyLogicMono.OnDie += Recycle;
             m_EnemyManager.OnTick += Tick;
@@ -68,6 +71,13 @@ namespace Enemy
         {
             m_Initialized = false;
             m_Agent.enabled = false;
+            
+            // 从管理器列表中移除
+            if (m_EnemyManager != null)
+            {
+                m_EnemyManager.RemoveEnemy(this);
+            }
+            
             // 取消事件订阅避免重复订阅与泄漏
             if (EnemyLogicMono != null)
             {
