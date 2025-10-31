@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4077607970089805909}
   - component: {fileID: 2150017654735520297}
   - component: {fileID: 7446734734336217847}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Path Cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 300, y: 0.06, z: 0}
-  m_LocalScale: {x: 9.5, y: 9.5, z: 9.5}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
