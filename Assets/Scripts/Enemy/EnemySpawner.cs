@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Plugins.EditorTools;
 using UnityEngine;
 
 namespace Enemy
@@ -7,7 +7,7 @@ namespace Enemy
     {
         public EnemyDatas enemyDataList;
 
-        public void CreateEnemy(string enemyName)
+        private void CreateEnemy(string enemyName)
         {
             var data = enemyDataList.GetEnemyData(enemyName);
             if (data != default)
@@ -24,7 +24,7 @@ namespace Enemy
 
         #region 测试部分
 
-        public string eName;
+        [StringToEnum("Enemy")] public string eName;
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))

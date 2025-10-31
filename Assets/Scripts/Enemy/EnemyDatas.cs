@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Enemy
 {
-    [CreateAssetMenu(fileName = "EnemyData",menuName = "Enemy")]
+    [CreateAssetMenu(fileName = "EnemyData",menuName = "Enemy/EnemyData")]
     public class EnemyDatas : ScriptableObject
     {
         public List<EnemyData> enemyDataList;
