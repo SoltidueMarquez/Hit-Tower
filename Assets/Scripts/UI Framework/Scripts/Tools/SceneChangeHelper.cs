@@ -30,10 +30,10 @@ namespace UI_Framework.Scripts.Tools
         private void InitializeSequences()
         {
             // 初始化淡入序列（遮罩不透明）
-            m_SceneFadeInSequence = DOTween.Sequence().Append(mask.DOFade(1, durationTime)).OnComplete(() => OnSceneFadeInComplete?.Invoke()).SetAutoKill(false).Pause();
+            m_SceneFadeInSequence = DOTween.Sequence().Append(mask.DOFade(1, durationTime)).OnComplete(() => OnSceneFadeInComplete?.Invoke()).SetAutoKill(false).SetUpdate(true).Pause();
 
             // 初始化淡出序列（遮罩透明）
-            m_SceneFadeOutSequence = DOTween.Sequence().Append(mask.DOFade(0, durationTime)).OnComplete(() => OnSceneFadeOutComplete?.Invoke()).SetAutoKill(false).Pause();
+            m_SceneFadeOutSequence = DOTween.Sequence().Append(mask.DOFade(0, durationTime)).OnComplete(() => OnSceneFadeOutComplete?.Invoke()).SetAutoKill(false).SetUpdate(true).Pause();
 
             // 初始状态设置为透明
             mask.color = new Color(0, 0, 0, 0);

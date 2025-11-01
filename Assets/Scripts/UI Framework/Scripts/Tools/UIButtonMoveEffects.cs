@@ -34,16 +34,16 @@ namespace Battle.UI
             _originalScale = transform.localScale;
 
             _pointerEnter = transform.DOScale(_originalScale * 1.2f, 0.3f)
-                .SetAutoKill(false)
+                .SetAutoKill(false).SetUpdate(true)
                 .Pause();
 
             _pointerExit = transform.DOScale(_originalScale, 0.3f)
-                .SetAutoKill(false)
+                .SetAutoKill(false).SetUpdate(true)
                 .Pause();
 
             _pointerClick = transform.DOScale(_originalScale * 0.8f, .15f)
-                .OnComplete(() => { transform.DOScale(_originalScale, .1f).OnComplete(OnClickComplete); })
-                .SetAutoKill(false) // 绑定完成回调
+                .OnComplete(() => { transform.DOScale(_originalScale, .1f).SetUpdate(true).OnComplete(OnClickComplete); })
+                .SetAutoKill(false).SetUpdate(true) // 绑定完成回调
                 .Pause();
 
             if (btnImage != null && exitSprite != null) btnImage.sprite = exitSprite;

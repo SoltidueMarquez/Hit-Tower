@@ -18,7 +18,7 @@ namespace UI_Framework.Scripts
             canvas.DOFade(1, duration).OnComplete(() =>
             {
                 onFinish?.Invoke();
-            });
+            }).SetUpdate(true);
         }
 
         public static void FadeOut(GameObject gameObject, float duration = 0.5f, Action onFinish = default)
@@ -27,7 +27,7 @@ namespace UI_Framework.Scripts
             {
                 gameObject.SetActive(false);
                 onFinish?.Invoke();
-            });
+            }).SetUpdate(true);
         }
 
         #endregion
@@ -42,7 +42,7 @@ namespace UI_Framework.Scripts
             gameObject.transform.DOScale(1, duration).OnComplete(() =>
             {
                 onFinish?.Invoke();
-            });
+            }).SetUpdate(true);
         }
         
         public static void ZoomOut(GameObject gameObject, float duration = 0.5f, Action onFinish = default)
@@ -51,7 +51,7 @@ namespace UI_Framework.Scripts
             {
                 gameObject.SetActive(false);
                 onFinish?.Invoke();
-            });
+            }).SetUpdate(true);
         }
 
         #endregion

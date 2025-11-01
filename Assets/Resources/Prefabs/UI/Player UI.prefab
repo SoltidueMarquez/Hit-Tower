@@ -384,6 +384,6 @@ MonoBehaviour:
   isOpen: 0
   formType: 1
   formAnimType: 0
-  ifUnique: 0
+  ifUnique: 1
   healthText: {fileID: 1437438014331313457}
   moneyText: {fileID: 2786635541252659626}
