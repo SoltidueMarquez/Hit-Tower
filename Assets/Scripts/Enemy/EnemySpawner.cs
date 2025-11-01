@@ -1,15 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using ObjectPool;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Enemy
 {
     public class EnemySpawner : MonoBehaviour
     {
-        public EnemyDatas enemyDataList;
-        public EnemyWaveDatas enemyWaveDataList;
-
+        [SerializeField, LabelText("敌人信息")] private EnemyDatas enemyDataList;
+        [SerializeField, LabelText("波次信息")] private  EnemyWaveDatas enemyWaveDataList;
+        [SerializeField, LabelText("出怪口")] private List<EnemySpawnerParent> spawners;
         private EnemyManager m_EnemyManager;
         public void Init(EnemyManager manager)
         {
@@ -18,7 +22,7 @@ namespace Enemy
         }
         
         #region 创建单个敌人
-        private void CreateEnemy(string enemyName)
+        private void CreateEnemy(string enemyName, string spawnerID = default)
         {
             var data = enemyDataList.GetEnemyData(enemyName);
             if (data != default)
@@ -30,11 +34,18 @@ namespace Enemy
                 Debug.LogWarning($"{enemyName}不存在");
             }
         }
-        private void CreateEnemy(EnemyData data)
+
+        private void CreateEnemy(EnemyData data, string spawnerID = default)
         {
-            var enemy = GameObjectPool.Instance.Get(data.prefab, transform);
+            var spawner = spawnerID != default ? GetSpawner(spawnerID) : GetRandomSpawner();
+            if (spawner == null)
+            {
+                Debug.LogWarning("找不到出怪口"); 
+                return;
+            }
+            var enemy = GameObjectPool.Instance.Get(data.prefab, spawner.spawnTransform);
             // 设置位置
-            enemy.transform.position = transform.position;
+            enemy.transform.position = spawner.spawnTransform.position;
 
             // 初始化操作
             enemy.GetComponent<EnemyMono>().Init(data, m_EnemyManager);
@@ -49,7 +60,7 @@ namespace Enemy
             {
                 for (int i = 0; i < singleWave.num; i++)
                 {
-                    CreateEnemy(data);
+                    CreateEnemy(data, singleWave.spawnerID);
                     if (i == singleWave.num - 1) yield break;
                     yield return new WaitForSeconds(singleWave.singleInterval);
                 }
@@ -85,22 +96,19 @@ namespace Enemy
         }
         #endregion
 
-        #region 测试部分
+        private EnemySpawnerParent GetSpawner(string id)
+            => spawners.FirstOrDefault(spawner => spawner.id == id);
 
-        // private void Start()
-        // {
-        //     StartSpawn();
-        // }
+        private EnemySpawnerParent GetRandomSpawner()
+        {
+            return spawners[Random.Range(0, spawners.Count)];
+        }
+    }
 
-        // [StringToEnum("Enemy")] public string eName;
-        // private void Update()
-        // {
-        //     if (Input.GetKeyDown(KeyCode.Space))
-        //     {
-        //         CreateEnemy(eName);
-        //     }
-        // }
-
-        #endregion
+    [Serializable]
+    public class EnemySpawnerParent
+    {
+        [LabelText("标识符")] public string id;
+        [LabelText("Transform")] public Transform spawnTransform;
     }
 }

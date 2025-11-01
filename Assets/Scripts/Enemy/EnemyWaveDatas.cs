@@ -6,7 +6,6 @@ using UnityEngine;
 
 namespace Enemy
 {
-    // TODO:需要实现JSON的导入导出配置
     [CreateAssetMenu(fileName = "EnemyWaveData",menuName = "Enemy/EnemyWaveData")]
     public class EnemyWaveDatas : ScriptableObject
     {
@@ -27,5 +26,6 @@ namespace Enemy
         [LabelText("敌人"), StringToEnum("Enemy")] public string enemyName;
         [LabelText("数量")] public int num;
         [LabelText("间隔时间")] public float singleInterval;
+        [LabelText("出怪口"), StringToEnum("Enemy Spawner")] public string spawnerID;
     }
 }

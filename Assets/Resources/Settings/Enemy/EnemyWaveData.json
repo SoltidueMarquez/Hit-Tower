@@ -5,12 +5,14 @@
                 {
                     "enemyName": "circle",
                     "num": 2,
-                    "singleInterval": 0.20000000298023225
+                    "singleInterval": 0.20000000298023225,
+                    "spawnerID": "1"
                 },
                 {
                     "enemyName": "square",
                     "num": 3,
-                    "singleInterval": 0.20000000298023225
+                    "singleInterval": 0.20000000298023225,
+                    "spawnerID": "2"
                 }
             ],
             "interval": 5.0,
@@ -21,7 +23,8 @@
                 {
                     "enemyName": "circle",
                     "num": 10,
-                    "singleInterval": 0.20000000298023225
+                    "singleInterval": 0.20000000298023225,
+                    "spawnerID": "1"
                 }
             ],
             "interval": 0.0,

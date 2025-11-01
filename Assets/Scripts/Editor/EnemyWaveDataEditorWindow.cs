@@ -211,10 +211,15 @@ namespace Editor
                     EditorGUI.indentLevel++;
                     foreach (var single in wave.singleWaveList)
                     {
+                        EditorGUILayout.BeginVertical("box");
                         EditorGUILayout.BeginHorizontal();
-                        EditorGUILayout.LabelField($"{single.enemyName} x{single.num}");
-                        EditorGUILayout.LabelField($"间隔: {single.singleInterval}秒", GUILayout.Width(80));
+                        EditorGUILayout.LabelField($"{single.enemyName} x{single.num}", GUILayout.Width(200));
+                        EditorGUILayout.LabelField($"间隔: {single.singleInterval}秒", GUILayout.Width(100));
                         EditorGUILayout.EndHorizontal();
+                        EditorGUILayout.BeginHorizontal();
+                        EditorGUILayout.LabelField($"出怪口: {single.spawnerID}", GUILayout.Width(300));
+                        EditorGUILayout.EndHorizontal();
+                        EditorGUILayout.EndVertical();
                     }
                     EditorGUI.indentLevel--;
                 }
