@@ -22,8 +22,8 @@ MonoBehaviour:
       num: 3
       singleInterval: 0.2
       spawnerID: 2
-    interval: 5
-    waitTime: 6
+    interval: 3
+    waitTime: 4
   - singleWaveList:
     - enemyName: circle
       num: 10

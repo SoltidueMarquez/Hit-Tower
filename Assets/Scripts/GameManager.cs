@@ -18,16 +18,28 @@ public class GameManager : Singleton<GameManager>
         // enemy的移动状态依赖于player的building位置信息
         EnemyManager = GetComponentInChildren<EnemyManager>();
         if (EnemyManager != null) EnemyManager.Init();
+        EnemyManager.OnEnemyClear += CheckGameWin;
 
         #region UI最后再创建
         UIMgr.Instance.CreateUI<PlayerInfoUI>();
         #endregion
     }
-    
+
+    #region 胜负判定
     private void GameOverLose()
     {
         Debug.Log("游戏结束，玩家死亡");
     }
+
+    private void CheckGameWin()
+    {
+        if (EnemyManager.enemySpawner.IsSpawnOver()) GameOverWine();
+    }
+    private void GameOverWine()
+    {
+        Debug.Log("游戏胜利");
+    }
+    #endregion
     
-    // TODO:所有的波次结束且场上没怪为胜利
+    
 }

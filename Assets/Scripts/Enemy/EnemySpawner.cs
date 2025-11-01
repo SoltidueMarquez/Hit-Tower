@@ -15,9 +15,11 @@ namespace Enemy
         [SerializeField, LabelText("波次信息")] private  EnemyWaveDatas enemyWaveDataList;
         [SerializeField, LabelText("出怪口")] private List<EnemySpawnerParent> spawners;
         private EnemyManager m_EnemyManager;
+        private int m_CurrentWave;
         public void Init(EnemyManager manager)
         {
             m_EnemyManager = manager;
+            
             StartSpawn();
         }
         
@@ -85,14 +87,67 @@ namespace Enemy
         #endregion
 
         #region 按照波次配置生成敌人
-        private IEnumerator CreateWavesCoroutine(EnemyWaveDatas waveDataList)
+
+        private IEnumerator CreateWavesCoroutine(EnemyWaveDatas waveDataList, int startIndex = 0)
         {
-            return waveDataList.waveDataList.Select(CreateWaveCoroutine).GetEnumerator();
+            // 从指定的波次索引开始遍历
+            for (int waveIndex = startIndex; waveIndex < waveDataList.waveDataList.Count; waveIndex++)
+            {
+                // 更新当前波次索引
+                m_CurrentWave = waveIndex;
+
+                // 执行当前波次的生成逻辑
+                yield return CreateWaveCoroutine(waveDataList.waveDataList[waveIndex]);
+
+                // 可选：在这里可以添加波次结束的回调或事件
+                Debug.Log($"第{waveIndex + 1}波敌人生成完成");
+            }
+
+            // 所有波次完成后的处理
+            Debug.Log("所有波次敌人生成完成");
         }
 
-        public void StartSpawn()
+        public void StartSpawn(int startIndex = -1)
         {
-            StartCoroutine(CreateWavesCoroutine(enemyWaveDataList));
+            m_CurrentWave = (startIndex == -1)
+                ? 0
+                : Mathf.Clamp(startIndex, 0, enemyWaveDataList.waveDataList.Count - 1);
+            
+            StartCoroutine(CreateWavesCoroutine(enemyWaveDataList, m_CurrentWave));
+        }
+
+        // 获取当前波次索引
+        public int GetCurrentWaveIndex()
+        {
+            return m_CurrentWave;
+        }
+
+        // 跳转到指定波次（重新开始生成）
+        public void JumpToWave(int waveIndex)
+        {
+            // 先停止当前的生成协程
+            StopAllCoroutines();
+
+            // 重新开始从指定波次生成
+            StartSpawn(waveIndex);
+        }
+
+        // 暂停生成
+        public void PauseSpawn()
+        {
+            StopAllCoroutines();
+        }
+
+        // 继续生成（从当前波次继续）
+        public void ResumeSpawn()
+        {
+            StartSpawn(m_CurrentWave);
+        }
+
+        // 判断是否生成完毕
+        public bool IsSpawnOver()
+        {
+            return m_CurrentWave >= enemyWaveDataList.waveDataList.Count - 1;
         }
         #endregion
 

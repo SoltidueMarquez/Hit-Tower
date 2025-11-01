@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   maxHealth: 100
-  startHealth: 10
+  startHealth: 100
   startMoney: 10

@@ -11,7 +11,7 @@ namespace Enemy
     {
         public List<EnemyMono> activeEnemies = new List<EnemyMono>();
         public EnemySpawner enemySpawner;
-        
+        public event Action OnEnemyClear;
         public void Init()
         {
             enemySpawner.Init(this);
@@ -43,6 +43,11 @@ namespace Enemy
             {
                 activeEnemies.Remove(enemy);
             }
+
+            if (activeEnemies.Count == 0)
+            {
+                OnEnemyClear?.Invoke();
+            }
         }
 
         // 清空所有敌人（游戏结束或重置时使用）
@@ -54,6 +59,7 @@ namespace Enemy
             }
 
             activeEnemies.Clear();
+            OnEnemyClear?.Invoke();
         }
         #endregion
     }
