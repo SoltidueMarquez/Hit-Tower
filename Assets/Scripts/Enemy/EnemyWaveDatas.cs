@@ -15,9 +15,9 @@ namespace Enemy
     [Serializable]
     public class EnemyWaveData
     {
+        [LabelText("生成前的等待时间")] public float waitTime;
         public List<EnemyWaveSingle> singleWaveList = new List<EnemyWaveSingle>();
         [LabelText("间隔时间")] public float interval;
-        [LabelText("结束的等待时间")] public float waitTime;
     }
     
     [Serializable]

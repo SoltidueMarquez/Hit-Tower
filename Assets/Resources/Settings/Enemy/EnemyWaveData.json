@@ -1,6 +1,7 @@
 {
     "waveDataList": [
         {
+            "waitTime": 4.0,
             "singleWaveList": [
                 {
                     "enemyName": "circle",
@@ -15,10 +16,10 @@
                     "spawnerID": "2"
                 }
             ],
-            "interval": 5.0,
-            "waitTime": 10.0
+            "interval": 3.0
         },
         {
+            "waitTime": 0.0,
             "singleWaveList": [
                 {
                     "enemyName": "circle",
@@ -27,8 +28,7 @@
                     "spawnerID": "1"
                 }
             ],
-            "interval": 0.0,
-            "waitTime": 0.0
+            "interval": 0.0
         }
     ]
 }

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: EnemyWaveData
   m_EditorClassIdentifier: 
   waveDataList:
-  - singleWaveList:
+  - waitTime: 3
+    singleWaveList:
     - enemyName: circle
       num: 2
       singleInterval: 0.2
@@ -23,11 +24,10 @@ MonoBehaviour:
       singleInterval: 0.2
       spawnerID: 2
     interval: 3
-    waitTime: 4
-  - singleWaveList:
+  - waitTime: 4
+    singleWaveList:
     - enemyName: circle
       num: 10
       singleInterval: 0.2
       spawnerID: 1
     interval: 0
-    waitTime: 0

@@ -202,9 +202,9 @@ namespace Editor
                 EditorGUILayout.BeginVertical("box");
                 
                 EditorGUILayout.LabelField($"波次 {i + 1}", EditorStyles.boldLabel);
-                EditorGUILayout.LabelField($"间隔时间: {wave.interval}秒");
-                EditorGUILayout.LabelField($"等待时间: {wave.waitTime}秒");
+                EditorGUILayout.LabelField($"生成前的等待时间: {wave.waitTime}秒");
                 EditorGUILayout.LabelField($"敌人数量: {wave.singleWaveList?.Count ?? 0}种");
+                EditorGUILayout.LabelField($"间隔时间: {wave.interval}秒");
 
                 if (wave.singleWaveList != null && wave.singleWaveList.Count > 0)
                 {

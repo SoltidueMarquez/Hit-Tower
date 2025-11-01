@@ -77,12 +77,12 @@ namespace Enemy
         #region 生成一波敌人
         private IEnumerator CreateWaveCoroutine(EnemyWaveData waveData)
         {
+            yield return new WaitForSeconds(waveData.waitTime);
             foreach (var singleWave in waveData.singleWaveList)
             {
                 yield return CreateSingleWaveCoroutine(singleWave);
                 yield return new WaitForSeconds(waveData.interval);
             }
-            yield return new WaitForSeconds(waveData.waitTime);
         }
         #endregion
 
