@@ -72,14 +72,16 @@ namespace Enemy
             }
         }
 
-        private void Die()
+        private void Die(bool isKilled = true)
         {
+            // 加钱
+            if(isKilled) GameManager.Instance.PlayerManager.playerLogic.ModifyMoney(EnemyInfo.value.value);
             OnDie?.Invoke();
         }
 
-        public void SetDie()
+        public void SetDie(bool isKilled = true)
         {
-            Die();
+            Die(isKilled);
         }
     }
 

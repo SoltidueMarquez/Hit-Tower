@@ -26,6 +26,6 @@ MonoBehaviour:
     speed: 400
     attack: 2
     shield: 0
-    value: 1
+    value: 2
     initBuffs: []
     prefab: {fileID: 1181108531587047650, guid: 73e54fac2966bd148b1c8d433e160a7f, type: 3}

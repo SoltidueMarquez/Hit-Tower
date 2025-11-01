@@ -8,8 +8,9 @@ namespace UI_Framework.UI
     {
         public TextMeshProUGUI healthText;
         public TextMeshProUGUI moneyText;
-        
+
         private PlayerManager m_PlayerManager;
+
         protected override void OnInit()
         {
             m_PlayerManager = GameManager.Instance.PlayerManager;
@@ -30,7 +31,7 @@ namespace UI_Framework.UI
 
         private void SetHealthText(float old, float currentHealth)
         {
-            healthText.text = $"Health: {currentHealth}";
+            healthText.text = $"Health: {currentHealth} / {m_PlayerManager.playerLogic.maxHealth.value}";
         }
 
         private void SetMoneyText(float old, float currentMoney)

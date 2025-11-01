@@ -12,14 +12,14 @@ namespace Enemy
     {
         [field: LabelText("逻辑类")] public EnemyLogic EnemyLogicMono { get; private set; }
 
-        [LabelText("管理器")] private EnemyManager m_EnemyManager;
-        [LabelText("Nav组件")] private NavMeshAgent m_Agent;
+        [LabelText("管理器")] protected EnemyManager m_EnemyManager;
+        [LabelText("Nav组件")] protected NavMeshAgent m_Agent;
 
-        [LabelText("状态机")] private StateMachine m_StateMachine;
+        [LabelText("状态机")] protected StateMachine m_StateMachine;
 
-        [LabelText("初始化标志")] private bool m_Initialized = false;
+        [LabelText("初始化标志")] protected bool m_Initialized = false;
 
-        public void Init(EnemyData enemyData, EnemyManager manager)
+        public virtual void Init(EnemyData enemyData, EnemyManager manager)
         {
             EnemyLogicMono = new EnemyLogic(enemyData);
             m_EnemyManager = manager;
@@ -41,7 +41,7 @@ namespace Enemy
             m_Initialized = true;
         }
 
-        private void InitStateMachine()
+        protected virtual void InitStateMachine()
         {
             // 添加状态机组
             m_StateMachine = GetComponent<StateMachine>();
@@ -55,19 +55,19 @@ namespace Enemy
             m_StateMachine.SwitchTo<IdleState>();
         }
 
-        private void SetSpeed(float speed)
+        protected void SetSpeed(float speed)
         {
             m_Agent.speed = speed;
         }
         
-        private void Tick()
+        protected void Tick()
         {
             if (!m_Initialized) return;
             EnemyLogicMono.Tick();
             m_StateMachine.Tick();
         }
 
-        private void Recycle()
+        protected void Recycle()
         {
             m_Initialized = false;
             m_Agent.enabled = false;
