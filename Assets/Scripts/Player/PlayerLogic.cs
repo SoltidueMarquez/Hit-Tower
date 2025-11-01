@@ -11,7 +11,8 @@ namespace Player
         public ValueChannel maxHealth;
         
         public event Action OnBeAttacked;
-        public event Action<float> OnMoneyChanged;
+        public event Action<float, float> OnHealthChanged;
+        public event Action<float, float> OnMoneyChanged;
         public event Action OnDie;
         
         public PlayerLogic(PlayerData data)
@@ -30,7 +31,8 @@ namespace Player
             curHealth += delta;
             // 控制血量不越界
             curHealth = Mathf.Clamp(curHealth, 0, maxHealth.value);
-
+            OnHealthChanged?.Invoke(original, curHealth);
+            
             if (delta < 0)
             {
                 OnBeAttacked?.Invoke();
@@ -60,9 +62,10 @@ namespace Player
         public bool ModifyMoney(float delta)
         {
             if (money + delta < 0) return false;
+            var original = money;
             
             money += delta;
-            OnMoneyChanged?.Invoke(delta);
+            OnMoneyChanged?.Invoke(original, money);
             return true;
         }
         #endregion

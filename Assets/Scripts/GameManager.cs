@@ -1,5 +1,7 @@
 ﻿using Enemy;
 using Player;
+using UI_Framework.Scripts;
+using UI_Framework.UI;
 using UnityEngine;
 using Utils;
 
@@ -16,6 +18,10 @@ public class GameManager : Singleton<GameManager>
         // enemy的移动状态依赖于player的building位置信息
         EnemyManager = GetComponentInChildren<EnemyManager>();
         if (EnemyManager != null) EnemyManager.Init();
+
+        #region UI最后再创建
+        UIMgr.Instance.CreateUI<PlayerInfoUI>();
+        #endregion
     }
     
     private void GameOverLose()
