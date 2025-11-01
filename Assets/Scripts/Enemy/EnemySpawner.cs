@@ -14,12 +14,25 @@ namespace Enemy
         [SerializeField, LabelText("敌人信息")] private EnemyDatas enemyDataList;
         [SerializeField, LabelText("波次信息")] private  EnemyWaveDatas enemyWaveDataList;
         [SerializeField, LabelText("出怪口")] private List<EnemySpawnerParent> spawners;
+        public EnemyWaveDatas EnemyWaveDataList => enemyWaveDataList;
+        
         private EnemyManager m_EnemyManager;
         private int m_CurrentWave;
+        
+        public event Action OnSpawnStart;
+        public event Action OnSpawnEnd;
+        
         public void Init(EnemyManager manager)
         {
             m_EnemyManager = manager;
-            
+
+            // 为了确保进度条能订阅到开始事件，这个方法必须放到后一帧执行
+            StartCoroutine(StartSpawnCoroutine());
+        }
+
+        private IEnumerator StartSpawnCoroutine()
+        {
+            yield return null;
             StartSpawn();
         }
         
@@ -78,10 +91,11 @@ namespace Enemy
         private IEnumerator CreateWaveCoroutine(EnemyWaveData waveData)
         {
             yield return new WaitForSeconds(waveData.waitTime);
-            foreach (var singleWave in waveData.singleWaveList)
+            for (int i = 0; i < waveData.singleWaveList.Count; i++)
             {
+                var singleWave = waveData.singleWaveList[i];
                 yield return CreateSingleWaveCoroutine(singleWave);
-                yield return new WaitForSeconds(waveData.interval);
+                if (i != waveData.singleWaveList.Count - 1) yield return new WaitForSeconds(waveData.interval);
             }
         }
         #endregion
@@ -104,6 +118,7 @@ namespace Enemy
             }
 
             // 所有波次完成后的处理
+            OnSpawnEnd?.Invoke();
             Debug.Log("所有波次敌人生成完成");
         }
 
@@ -113,6 +128,7 @@ namespace Enemy
                 ? 0
                 : Mathf.Clamp(startIndex, 0, enemyWaveDataList.waveDataList.Count - 1);
             
+            OnSpawnStart?.Invoke();
             StartCoroutine(CreateWavesCoroutine(enemyWaveDataList, m_CurrentWave));
         }
 
@@ -154,10 +170,8 @@ namespace Enemy
         private EnemySpawnerParent GetSpawner(string id)
             => spawners.FirstOrDefault(spawner => spawner.id == id);
 
-        private EnemySpawnerParent GetRandomSpawner()
-        {
-            return spawners[Random.Range(0, spawners.Count)];
-        }
+        private EnemySpawnerParent GetRandomSpawner() => spawners[Random.Range(0, spawners.Count)];
+
     }
 
     [Serializable]

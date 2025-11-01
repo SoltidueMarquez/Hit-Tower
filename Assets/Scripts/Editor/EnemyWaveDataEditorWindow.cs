@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
+using System.Linq;
 using Enemy;
 using UnityEditor;
 using UnityEngine;
@@ -79,6 +81,15 @@ namespace Editor
             if (!string.IsNullOrEmpty(importResult))
             {
                 EditorGUILayout.HelpBox(importResult, MessageType.Info);
+            }
+
+            GUILayout.Space(20);
+            EditorGUILayout.LabelField("调试工具", EditorStyles.boldLabel);
+            
+            // Debug时间轴按钮
+            if (GUILayout.Button("Debug时间轴", GUILayout.Height(30)))
+            {
+                DebugTimeline();
             }
 
             GUILayout.Space(20);
@@ -188,6 +199,45 @@ namespace Editor
             }
         }
 
+        // Debug时间轴方法（从原EnemyWaveDatas类移动过来）
+        private void DebugTimeline()
+        {
+            if (targetData == null) return;
+
+            var timeline = targetData.GenerateTimeline();
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("=== 敌人波次时间轴 ===");
+            sb.AppendLine($"总持续时间: {timeline.totalDuration:F2}秒");
+            sb.AppendLine($"总波次: {targetData.waveDataList.Count}");
+            sb.AppendLine();
+
+            foreach (var evt in timeline.events.OrderBy(e => e.absoluteTime))
+            {
+                string timeInfo = $"[{evt.absoluteTime:F2}s]";
+
+                switch (evt.enemyName)
+                {
+                    case "WAVE_START":
+                        sb.AppendLine();
+                        sb.AppendLine($"{timeInfo} {evt.description}");
+                        break;
+                    case "WAVE_END":
+                        sb.AppendLine($"{timeInfo} {evt.description}");
+                        sb.AppendLine();
+                        break;
+                    case "GROUP_INTERVAL":
+                        sb.AppendLine($"{timeInfo} {evt.description}");
+                        break;
+                    default:
+                        sb.AppendLine($"{timeInfo} {evt.description}");
+                        break;
+                }
+            }
+
+            Debug.Log(sb.ToString());
+        }
+
         private void DrawDataPreview()
         {
             if (targetData.waveDataList == null || targetData.waveDataList.Count == 0)
@@ -238,7 +288,7 @@ namespace Editor
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
-
+    
             GUILayout.Space(10);
             
             if (GUILayout.Button("打开波次编辑器", GUILayout.Height(30)))
@@ -247,7 +297,7 @@ namespace Editor
                 var window = EditorWindow.GetWindow<EnemyWaveDataEditorWindow>();
                 window.targetData = (EnemyWaveDatas)target;
             }
-
+    
             GUILayout.Space(5);
             
             EditorGUILayout.BeginHorizontal();
@@ -260,8 +310,16 @@ namespace Editor
                 QuickImport((EnemyWaveDatas)target);
             }
             EditorGUILayout.EndHorizontal();
-        }
 
+            GUILayout.Space(5);
+
+            // 添加Debug时间轴按钮到Inspector
+            if (GUILayout.Button("Debug时间轴", GUILayout.Height(30)))
+            {
+                DebugTimeline((EnemyWaveDatas)target);
+            }
+        }
+    
         private void QuickExport(EnemyWaveDatas data)
         {
             string path = EditorUtility.SaveFilePanel("导出JSON", "", "EnemyWaveData", "json");
@@ -273,7 +331,7 @@ namespace Editor
                 EditorUtility.DisplayDialog("导出成功", $"数据已导出到: {path}", "确定");
             }
         }
-
+    
         private void QuickImport(EnemyWaveDatas data)
         {
             string path = EditorUtility.OpenFilePanel("导入JSON", "", "json");
@@ -293,6 +351,45 @@ namespace Editor
                     EditorUtility.DisplayDialog("导入失败", e.Message, "确定");
                 }
             }
+        }
+
+        // Debug时间轴方法（从原EnemyWaveDatas类移动过来）
+        private void DebugTimeline(EnemyWaveDatas data)
+        {
+            if (data == null) return;
+
+            var timeline = data.GenerateTimeline();
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("=== 敌人波次时间轴 ===");
+            sb.AppendLine($"总持续时间: {timeline.totalDuration:F2}秒");
+            sb.AppendLine($"总波次: {data.waveDataList.Count}");
+            sb.AppendLine();
+
+            foreach (var evt in timeline.events.OrderBy(e => e.absoluteTime))
+            {
+                string timeInfo = $"[{evt.absoluteTime:F2}s]";
+
+                switch (evt.enemyName)
+                {
+                    case "WAVE_START":
+                        sb.AppendLine();
+                        sb.AppendLine($"{timeInfo} {evt.description}");
+                        break;
+                    case "WAVE_END":
+                        sb.AppendLine($"{timeInfo} {evt.description}");
+                        sb.AppendLine();
+                        break;
+                    case "GROUP_INTERVAL":
+                        sb.AppendLine($"{timeInfo} {evt.description}");
+                        break;
+                    default:
+                        sb.AppendLine($"{timeInfo} {evt.description}");
+                        break;
+                }
+            }
+
+            Debug.Log(sb.ToString());
         }
     }
     #endregion

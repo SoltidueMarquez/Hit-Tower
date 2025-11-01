@@ -3,6 +3,7 @@ using Player;
 using UI_Framework.Scripts;
 using UI_Framework.Scripts.Tools;
 using UI_Framework.UI;
+using UI_Framework.UI.GameInfoUI;
 using UI_Framework.UI.UIGameSettings;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -26,6 +27,8 @@ public class GameManager : Utils.Singleton<GameManager>
 
         #region UI最后再创建
         UIMgr.Instance.CreateUI<PlayerInfoUI>();
+        
+        UIMgr.Instance.CreateUI<GameInfoUI>();
         
         // 最上层的是设置UI
         UIMgr.Instance.CreateUI<GameSettingsUI>();

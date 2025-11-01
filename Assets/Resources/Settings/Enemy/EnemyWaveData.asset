@@ -17,11 +17,15 @@ MonoBehaviour:
     singleWaveList:
     - enemyName: circle
       num: 2
-      singleInterval: 0.2
+      singleInterval: 1
       spawnerID: 1
     - enemyName: square
       num: 3
-      singleInterval: 0.2
+      singleInterval: 1
+      spawnerID: 2
+    - enemyName: circle
+      num: 4
+      singleInterval: 1
       spawnerID: 2
     interval: 3
   - waitTime: 4
@@ -30,4 +34,11 @@ MonoBehaviour:
       num: 10
       singleInterval: 0.2
       spawnerID: 1
+    interval: 0
+  - waitTime: 4
+    singleWaveList:
+    - enemyName: circle
+      num: 100
+      singleInterval: 0.05
+      spawnerID: 2
     interval: 0

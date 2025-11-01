@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UI_Framework.UI;
+using UI_Framework.UI.GameInfoUI;
 using UI_Framework.UI.UIGameSettings;
 using UI_Framework.UI.UIStart;
 
@@ -13,6 +14,7 @@ namespace UI_Framework.Scripts
             { typeof(StartUI), "Prefabs/UI/Start Scene/StartUI" },
             { typeof(PlayerInfoUI), "Prefabs/UI/Player UI" },
             { typeof(GameSettingsUI), "Prefabs/UI/GameSettingsUI" },
+            { typeof(GameInfoUI), "Prefabs/UI/UIGameInfo/Game Info UI" },
         };
 
         public static string GetPath<T>() where T : UIFormBase
