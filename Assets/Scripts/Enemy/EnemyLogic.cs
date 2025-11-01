@@ -8,9 +8,9 @@ namespace Enemy
 {
     public class EnemyLogic
     {
-        public EnemyInfo enemyInfo { get; private set; }
+        public EnemyInfo EnemyInfo { get; private set; }
 
-        public BuffHandler buffHandler { get; private set; }
+        public BuffHandler BuffHandler { get; private set; }
 
         #region 回调
         public event Action OnDie;
@@ -19,13 +19,15 @@ namespace Enemy
         
         public EnemyLogic(EnemyData enemyData)
         {
-            enemyInfo = new EnemyInfo(enemyData);
-            buffHandler = new BuffHandler();
+            EnemyInfo = new EnemyInfo(enemyData);
+            BuffHandler = new BuffHandler();
 
             foreach (var buffData in enemyData.initBuffs)
             {
-                buffHandler.AddBuff(new BuffInfo(buffData, null, null));
+                BuffHandler.AddBuff(new BuffInfo(buffData, null, null));
             }
+
+            EnemyInfo.maxHealth.OnValueChanged += ReCalculateHealth;
         }
 
         /// <summary>
@@ -33,7 +35,7 @@ namespace Enemy
         /// </summary>
         public void Tick()
         {
-            buffHandler.Tick();
+            BuffHandler.Tick();
         }
 
         /// <summary>
@@ -43,21 +45,31 @@ namespace Enemy
         /// <returns>返回new-old的delta</returns>
         public float ModifyCurrentHealth(float delta)
         {
-            var original = enemyInfo.curHealth;
-            enemyInfo.curHealth += delta;
+            var original = EnemyInfo.curHealth;
+            EnemyInfo.curHealth += delta;
             // 控制血量不越界
-            enemyInfo.curHealth = Mathf.Clamp(enemyInfo.curHealth, 0, enemyInfo.maxHealth.value);
+            EnemyInfo.curHealth = Mathf.Clamp(EnemyInfo.curHealth, 0, EnemyInfo.maxHealth.value);
 
             if (delta < 0)
             {
                 OnBeAttacked?.Invoke();
             }
             
-            if (Mathf.Approximately(enemyInfo.curHealth, 0f))
+            if (Mathf.Approximately(EnemyInfo.curHealth, 0f))
             {
                 Die();
             }
-            return original - enemyInfo.curHealth;
+            return original - EnemyInfo.curHealth;
+        }
+
+        private void ReCalculateHealth(float maxHealthDelta)
+        {
+            EnemyInfo.curHealth = Mathf.Clamp(EnemyInfo.curHealth, 0, EnemyInfo.maxHealth.value);
+            
+            if (Mathf.Approximately(EnemyInfo.curHealth, 0f))
+            {
+                Die();
+            }
         }
 
         private void Die()

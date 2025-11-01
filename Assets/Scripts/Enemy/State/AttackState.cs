@@ -13,8 +13,14 @@ namespace Enemy.State
 
         public void OnEnter()
         {
-            // TODO:测试用的，直接扣满血
-            stateMachine.gameObject.GetComponent<EnemyMono>().EnemyLogicMono.ModifyCurrentHealth(-10000);
+            // TODO:测试用的，直接杀死自己
+            var mono = stateMachine.gameObject.GetComponent<EnemyMono>();
+            if (mono != null)
+            {
+                GameManager.Instance.
+                    PlayerManager.playerLogic.ModifyCurrentHealth(-mono.EnemyLogicMono.EnemyInfo.attack.value);
+                mono.EnemyLogicMono.SetDie();
+            }
         }
 
         public void OnTick()

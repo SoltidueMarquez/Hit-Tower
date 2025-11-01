@@ -1,4 +1,5 @@
 ﻿using Buildings;
+using Player;
 using UnityEngine;
 using UnityEngine.AI;
 using Utils.StateMachine;
@@ -18,7 +19,7 @@ namespace Enemy.State
         public void OnEnter()
         {
             m_Agent = stateMachine.gameObject.GetComponent<NavMeshAgent>();
-            MoveTo(Player.Instance.playerPos);
+            MoveTo(GameManager.Instance.PlayerManager.playerPos);
         }
 
         public void OnTick()

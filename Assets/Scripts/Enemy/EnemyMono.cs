@@ -26,7 +26,7 @@ namespace Enemy
             
             m_Agent = GetComponent<NavMeshAgent>();
             m_Agent.enabled = true;
-            SetSpeed(EnemyLogicMono.enemyInfo.speed.value);
+            SetSpeed(EnemyLogicMono.EnemyInfo.speed.value);
 
             InitStateMachine();
             
@@ -36,7 +36,7 @@ namespace Enemy
             // 事件订阅
             EnemyLogicMono.OnDie += Recycle;
             m_EnemyManager.OnTick += Tick;
-            EnemyLogicMono.enemyInfo.speed.OnValueChanged += SetSpeed;
+            EnemyLogicMono.EnemyInfo.speed.OnValueChanged += SetSpeed;
             
             m_Initialized = true;
         }
@@ -82,7 +82,7 @@ namespace Enemy
             if (EnemyLogicMono != null)
             {
                 EnemyLogicMono.OnDie -= Recycle;
-                EnemyLogicMono.enemyInfo.speed.OnValueChanged -= SetSpeed;
+                EnemyLogicMono.EnemyInfo.speed.OnValueChanged -= SetSpeed;
             }
             if (m_EnemyManager != null)
             {

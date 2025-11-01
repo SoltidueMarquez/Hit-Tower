@@ -16,7 +16,7 @@ MonoBehaviour:
   - enemyName: circle
     maxHealth: 10
     speed: 300
-    attack: 10
+    attack: 1
     shield: 0
     value: 1
     initBuffs: []
@@ -24,7 +24,7 @@ MonoBehaviour:
   - enemyName: square
     maxHealth: 0
     speed: 400
-    attack: 0
+    attack: 2
     shield: 0
     value: 1
     initBuffs: []
