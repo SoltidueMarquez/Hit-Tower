@@ -12,4 +12,14 @@ public static class ConstManager
     /// 倍速设置
     /// </summary>
     public static readonly int[] TimeSettings = new[] { 1, 2, 3 };
+    
+    /// <summary>
+    /// 开始界面场景名
+    /// </summary>
+    public const string StartSceneName = "Start";
+    
+    /// <summary>
+    /// 游戏界面场景名
+    /// </summary>
+    public const string GameSceneName = "Sample";
 }

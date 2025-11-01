@@ -86,6 +86,7 @@ public class GameManager : Utils.Singleton<GameManager>
         // 保持物理模拟的一致性
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
+    #endregion
 
     public void Restart()
     {
@@ -94,8 +95,6 @@ public class GameManager : Utils.Singleton<GameManager>
 
     public void Exit()
     {
-        // TODO:等待实现
-        Debug.Log("主界面还没搭");
+        SceneChangeHelper.Instance.LoadScene(ConstManager.StartSceneName);
     }
-    #endregion
 }

@@ -2771,22 +2771,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2098354696729897848, guid: 07d2b2414b41e5948bda45209c2f9e18, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2098354696729897848, guid: 07d2b2414b41e5948bda45209c2f9e18, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2098354696729897848, guid: 07d2b2414b41e5948bda45209c2f9e18, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2098354696729897848, guid: 07d2b2414b41e5948bda45209c2f9e18, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2535397055421829370, guid: 07d2b2414b41e5948bda45209c2f9e18, type: 3}
       propertyPath: m_Name
       value: Scene Loader
@@ -2830,10 +2814,6 @@ PrefabInstance:
     - target: {fileID: 2878162376870207198, guid: 07d2b2414b41e5948bda45209c2f9e18, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3919545597628438100, guid: 07d2b2414b41e5948bda45209c2f9e18, type: 3}
-      propertyPath: m_VertexColorAlwaysGammaSpace
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
