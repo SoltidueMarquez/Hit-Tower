@@ -38,7 +38,11 @@ MonoBehaviour:
   - waitTime: 4
     singleWaveList:
     - enemyName: circle
-      num: 100
-      singleInterval: 0.05
+      num: 50
+      singleInterval: 0.1
       spawnerID: 2
-    interval: 0
+    - enemyName: square
+      num: 50
+      singleInterval: 0.1
+      spawnerID: 1
+    interval: 0.1

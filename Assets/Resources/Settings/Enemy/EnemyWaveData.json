@@ -1,31 +1,49 @@
 {
     "waveDataList": [
         {
-            "waitTime": 4.0,
+            "waitTime": 3.0,
             "singleWaveList": [
                 {
                     "enemyName": "circle",
                     "num": 2,
-                    "singleInterval": 0.20000000298023225,
+                    "singleInterval": 1.0,
                     "spawnerID": "1"
                 },
                 {
                     "enemyName": "square",
                     "num": 3,
-                    "singleInterval": 0.20000000298023225,
+                    "singleInterval": 1.0,
+                    "spawnerID": "2"
+                },
+                {
+                    "enemyName": "circle",
+                    "num": 4,
+                    "singleInterval": 1.0,
                     "spawnerID": "2"
                 }
             ],
             "interval": 3.0
         },
         {
-            "waitTime": 0.0,
+            "waitTime": 4.0,
             "singleWaveList": [
                 {
                     "enemyName": "circle",
                     "num": 10,
                     "singleInterval": 0.20000000298023225,
                     "spawnerID": "1"
+                }
+            ],
+            "interval": 0.0
+        },
+        {
+            "waitTime": 4.0,
+            "singleWaveList": [
+                {
+                    "enemyName": "circle",
+                    "num": 100,
+                    "singleInterval": 0.05000000074505806,
+                    "spawnerID": "2"
                 }
             ],
             "interval": 0.0

@@ -29,7 +29,6 @@ namespace UI_Framework.UI.GameInfoUI
         {
             enemyWaveDatas = spawner.EnemyWaveDataList;
             currentTimeline = spawner.EnemyWaveDataList.GenerateTimeline();
-            ClearTimelineMarkers();
             CreateTimelineMarkers();
 
             spawner.OnSpawnStart += StartLevel;

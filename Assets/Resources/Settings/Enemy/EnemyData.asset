@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyDataList:
   - enemyName: circle
     maxHealth: 10
-    speed: 300
+    speed: 100
     attack: 1
     shield: 0
     value: 1
@@ -23,7 +23,7 @@ MonoBehaviour:
     prefab: {fileID: 1181108531587047650, guid: 2eaa2cb5903799e44a93ef2dd383af10, type: 3}
   - enemyName: square
     maxHealth: 0
-    speed: 400
+    speed: 150
     attack: 2
     shield: 0
     value: 2
