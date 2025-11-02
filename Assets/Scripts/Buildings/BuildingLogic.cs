@@ -133,7 +133,7 @@ namespace Buildings
             levelData = data.levelData;
             buildingName = data.buildingName;
             curLv = 0;
-            curLv = data.maxLv;
+            maxLv = data.maxLv;
 
             // 数值默认从0级开始
             attack = new ValueChannel(levelData[0].attack);

@@ -85,5 +85,33 @@ namespace Buildings
             // 回收到对象池
             GameObjectPool.Instance.Release(gameObject);
         }
+
+        #region 升级封装
+        public bool CheckUpgrade()
+        {
+            if (buildingLogic.buildingInfo.CheckIfMaxLv())
+            {
+                Debug.LogWarning("已经升满级了");
+                return false;
+            }
+            // 检查钱够不够
+            if (!GameManager.Instance.playerManager.CheckCanSpent(buildingLogic.buildingInfo.upgradeCost))
+            {
+                Debug.LogWarning("钱不够");
+                return false;
+            }
+
+            return true;
+        }
+        
+        public void UpGrade()
+        {
+            if (CheckUpgrade())
+            {
+                GameManager.Instance.playerManager.playerLogic.ModifyMoney(-buildingLogic.buildingInfo.upgradeCost);
+                buildingLogic.LevelUp();
+            }
+        }
+        #endregion
     }
 }

@@ -23,13 +23,35 @@ namespace Buildings
         {
             if (m_Initialized)
             {
-                m_BuildingMono.buildingLogic.SetDie();
+                // TODO:测试部分，默认升级，升到满就拆除建筑
+                if (m_BuildingMono.buildingLogic.buildingInfo.CheckIfMaxLv())
+                {
+                    RecycleBuilding();
+                }
+                else
+                {
+                    UpgradeBuilding();
+                }
             }
         }
 
+        private void UpgradeBuilding()
+        {
+            m_BuildingMono.UpGrade();
+        }
+        
+        private void RecycleBuilding()
+        {
+            m_BuildingMono.buildingLogic.SetDie();
+        }
+
+        /// <summary>
+        /// 这是脚本的回收逻辑
+        /// </summary>
         public void Recycle()
         {
             m_Initialized = false;
         }
+        
     }
 }

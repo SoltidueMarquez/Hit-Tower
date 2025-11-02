@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   startHealth: 100
-  startMoney: 10
+  startMoney: 100

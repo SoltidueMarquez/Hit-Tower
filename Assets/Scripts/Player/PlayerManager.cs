@@ -15,5 +15,10 @@ namespace Player
         {
             playerLogic = new PlayerLogic(playerData);
         }
+
+        public bool CheckCanSpent(float cost)
+        {
+            return playerLogic.money >= cost;
+        }
     }
 }
