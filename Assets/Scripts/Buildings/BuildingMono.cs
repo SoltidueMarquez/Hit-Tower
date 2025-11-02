@@ -1,4 +1,6 @@
-﻿using Buildings.Specific_Building.Default.State;
+﻿using System.Collections.Generic;
+using Buildings.Specific_Building.Default.State;
+using Enemy;
 using ObjectPool;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -16,6 +18,8 @@ namespace Buildings
         [LabelText("状态机")] protected StateMachine stateMachine;
         [LabelText("初始化标志")] protected bool initialized = false;
 
+        public List<EnemyMono> enemiesInRange;
+        
         public virtual void Init(BuildingData buildingData,BuildingManager manager)
         {
             buildingLogic = new BuildingLogic(buildingData, gameObject);
@@ -25,8 +29,9 @@ namespace Buildings
                 
             InitStateMachine();
             
-            // 添加到活跃敌人列表
+            // 添加到塔的列表
             buildingManager.AddBuilding(this);
+            enemiesInRange = new List<EnemyMono>();
             
             // 事件订阅
             buildingLogic.OnDie += Recycle;

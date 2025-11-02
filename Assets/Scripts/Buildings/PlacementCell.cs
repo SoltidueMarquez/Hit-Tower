@@ -11,7 +11,7 @@ namespace Buildings
         {
             if (m_Building == null)
             {
-                GameManager.Instance.buildingManager.TryBuild(transform, out var mono);
+                GameManager.Instance.buildingManager.TestBuild(transform, out var mono);
                 m_Building = mono;
                 if(mono!=null) mono.buildingLogic.OnDie += ClearBuilding;
                 Debug.Log($"ClickPos:{transform.position}");
