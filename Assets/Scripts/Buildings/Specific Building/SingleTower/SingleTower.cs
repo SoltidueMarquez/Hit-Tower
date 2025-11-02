@@ -1,4 +1,4 @@
-﻿namespace Buildings.Specific_Building.Default
+﻿namespace Buildings.Specific_Building.SingleTower
 {
     public class SingleTower : BuildingMono
     {

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Buildings.Specific_Building.Default.State;
 using Enemy;
 using ObjectPool;
@@ -65,6 +66,7 @@ namespace Buildings
         protected void Recycle()
         { 
             initialized = false;
+            enemiesInRange.Clear();
             
             // 从管理器列表中移除
             if (buildingManager != null)
@@ -117,6 +119,38 @@ namespace Buildings
                 buildingLogic.LevelUp();
             }
         }
+        #endregion
+
+        #region Debug
+
+        private void OnDrawGizmos()
+        {
+            // 如果未初始化，则不绘制
+            if (!initialized) return;
+    
+            // 获取攻击范围
+            float attackRange = buildingLogic.buildingInfo.attackRange.Value;
+    
+            // 设置Gizmos颜色
+            Gizmos.color = Color.blue;
+    
+            // 绘制攻击范围圆环（XZ平面）
+            Vector3 center = transform.position;
+    
+            // 绘制圆环
+            int segments = 36; // 分段数，越多越圆滑
+            float angle = 0f;
+            Vector3 prevPoint = center + new Vector3(Mathf.Cos(angle) * attackRange, 0, Mathf.Sin(angle) * attackRange);
+    
+            for (int i = 1; i <= segments; i++)
+            {
+                angle = (i / (float)segments) * 2 * Mathf.PI;
+                Vector3 nextPoint = center + new Vector3(Mathf.Cos(angle) * attackRange, 0, Mathf.Sin(angle) * attackRange);
+                Gizmos.DrawLine(prevPoint, nextPoint);
+                prevPoint = nextPoint;
+            }
+        }
+
         #endregion
     }
 }
