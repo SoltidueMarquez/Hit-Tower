@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9bd7204edd13744b3e237168d236d2, type: 3}
+  m_Name: Building
+  m_EditorClassIdentifier: 
+  buildingDataList:
+  - buildingName: 
+    levelData:
+    - attack: 5
+      attackRange: 30
+      attackInterval: 0
+      ifMulti: 0
+      attackNum: 0
+      maxHealth: 0
+    - attack: 10
+      attackRange: 30
+      attackInterval: 0
+      ifMulti: 0
+      attackNum: 0
+      maxHealth: 0

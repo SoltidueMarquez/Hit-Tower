@@ -26,6 +26,11 @@ MonoBehaviour:
     - name: "\u654C\u4EBA\u6CE2\u6B21\u914D\u7F6E"
       path: 
       so: {fileID: 11400000, guid: 64ed70e1145bb0348a156d4e820a3ec7, type: 2}
+  - key: "\u5EFA\u7B51\u7269\u914D\u7F6E"
+    value:
+    - name: "\u5EFA\u7B51\u7269\u6570\u636E"
+      path: 
+      so: {fileID: 11400000, guid: 42820f0399afc60459842becfd22519e, type: 2}
   - key: "\u73A9\u5BB6\u914D\u7F6E"
     value:
     - name: "\u73A9\u5BB6\u521D\u59CB\u8BBE\u7F6E"
