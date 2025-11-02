@@ -26,5 +26,10 @@ namespace Enemy.State
         public void OnExit()
         {
         }
+
+        public void Init()
+        {
+            
+        }
     }
 }

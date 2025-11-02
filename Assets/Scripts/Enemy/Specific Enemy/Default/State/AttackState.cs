@@ -5,6 +5,7 @@ namespace Enemy.State
     public class AttackState : IState
     {
         private StateMachine stateMachine { get; set; }
+        private EnemyMono m_Mono;
         
         public void SetStateMachine(StateMachine stateMachine)
         {
@@ -12,15 +13,11 @@ namespace Enemy.State
         }
 
         public void OnEnter()
-        {
-            // TODO:测试用的，直接杀死自己
-            var mono = stateMachine.gameObject.GetComponent<EnemyMono>();
-            if (mono != null)
-            {
-                GameManager.Instance.
-                    playerManager.playerLogic.ModifyCurrentHealth(-mono.EnemyLogicMono.EnemyInfo.attack.Value);
-                mono.EnemyLogicMono.SetDie();
-            }
+        { 
+            // 不用空检测，有requireComponent约束
+            GameManager.Instance.
+                    playerManager.playerLogic.ModifyCurrentHealth(-m_Mono.EnemyLogicMono.EnemyInfo.attack.Value);
+            m_Mono.EnemyLogicMono.SetDie();
         }
 
         public void OnTick()
@@ -29,6 +26,11 @@ namespace Enemy.State
 
         public void OnExit()
         {
+        }
+
+        public void Init()
+        {
+            m_Mono = stateMachine.gameObject.GetComponent<EnemyMono>();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Buildings
         [LabelText("逻辑类"), HideInInspector] public BuildingLogic buildingLogic;
         
         [LabelText("管理器")] protected BuildingManager buildingManager;
-        [LabelText("表现层")] protected BuildingView buildingView;
+        [LabelText("表现层")] public BuildingView buildingView { get; private set; }
         [LabelText("状态机")] protected StateMachine stateMachine;
         [LabelText("初始化标志")] protected bool initialized = false;
 
@@ -28,11 +28,12 @@ namespace Buildings
             buildingView = GetComponent<BuildingView>();
             buildingView.Init(this);
                 
-            InitStateMachine();
-            
             // 添加到塔的列表
             buildingManager.AddBuilding(this);
             enemiesInRange = new List<EnemyMono>();
+            
+            // 状态机的条件判断需要其他变量
+            InitStateMachine();
             
             // 事件订阅
             buildingLogic.OnDie += Recycle;

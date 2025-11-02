@@ -46,17 +46,24 @@ namespace Buildings
             }
         }
 
+        /// <summary>
+        /// 升级
+        /// </summary>
         protected void UpgradeBuilding()
         {
             m_BuildingMono.UpGrade();
         }
         
+        /// <summary>
+        /// 拆除建筑物
+        /// </summary>
         protected void RecycleBuilding()
         {
             m_BuildingMono.buildingLogic.SetDie();
         }
-        
-        public void UpdateRangeIndicator(float newValue = 0f)
+
+        #region 范围指示相关
+        protected void UpdateRangeIndicator(float newValue = 0f)
         {
             if (rangeIndicator == null || m_BuildingMono == null) return;
         
@@ -72,6 +79,12 @@ namespace Buildings
             // 应用缩放
             rangeIndicator.transform.localScale = new Vector3(scale, scale, 1f);
         }
+
+        public void SetRangeIndicatorVisible(bool visible)
+        {
+            rangeIndicator.gameObject.SetActive(visible);
+        }
+        #endregion
 
         /// <summary>
         /// 这是脚本的回收逻辑

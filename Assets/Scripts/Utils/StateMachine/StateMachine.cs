@@ -29,6 +29,7 @@ namespace Utils.StateMachine
                 // 设置状态机的引用
                 state.SetStateMachine(this);
                 m_States[stateType] = state;
+                state.Init();
             }
         }
     

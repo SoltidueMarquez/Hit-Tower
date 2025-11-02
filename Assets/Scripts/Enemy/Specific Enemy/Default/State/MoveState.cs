@@ -18,7 +18,6 @@ namespace Enemy.State
 
         public void OnEnter()
         {
-            m_Agent = stateMachine.gameObject.GetComponent<NavMeshAgent>();
             MoveTo(GameManager.Instance.playerManager.playerPos);
         }
 
@@ -50,6 +49,11 @@ namespace Enemy.State
         public void OnExit()
         {
             m_Agent.isStopped = true;
+        }
+
+        public void Init()
+        {
+            m_Agent = stateMachine.gameObject.GetComponent<NavMeshAgent>();
         }
     }
 }

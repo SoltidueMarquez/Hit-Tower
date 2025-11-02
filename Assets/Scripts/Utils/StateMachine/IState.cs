@@ -13,5 +13,7 @@
     
         // 退出状态时调用
         void OnExit();
+
+        void Init();
     }
 }
