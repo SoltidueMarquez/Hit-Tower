@@ -60,7 +60,7 @@ namespace Buildings
             if (!initialized) return;
             buildingLogic.Tick();
             stateMachine.Tick();
-            buildingView.Tick();
+            // buildingView.Tick();
         }
         
         protected void Recycle()

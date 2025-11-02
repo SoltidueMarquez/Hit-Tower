@@ -20,10 +20,10 @@ namespace Buildings
             m_BuildingMono.buildingLogic.buildingInfo.attackRange.OnValueChanged += UpdateRangeIndicator;
         }
 
-        public void Tick()
-        {
-            
-        }
+        // public void Tick()
+        // {
+        //     
+        // }
 
         public void OnPointerClick(PointerEventData eventData)
         {
