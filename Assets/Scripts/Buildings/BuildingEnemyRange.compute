@@ -1,0 +1,47 @@
+#pragma kernel CalculateEnemyInRange
+
+// 输入数据
+StructuredBuffer<float2> BuildingPositions;    // 建筑物位置 (xz坐标)
+StructuredBuffer<float> BuildingRanges;        // 建筑物攻击范围
+StructuredBuffer<float2> EnemyPositions;      // 敌人位置 (xz坐标)
+
+// 输出数据：布尔矩阵，BuildingCount x EnemyCount
+// 值为1表示该敌人在该建筑物的攻击范围内，0表示不在范围内
+RWStructuredBuffer<int> EnemyInRangeMatrix;
+
+// 参数
+int BuildingCount;
+int EnemyCount;
+
+[numthreads(64,1,1)]
+void CalculateEnemyInRange(uint3 id : SV_DispatchThreadID)
+{
+    uint index = id.x;
+    
+    // 计算建筑物索引和敌人索引
+    uint buildingIndex = index / EnemyCount;
+    uint enemyIndex = index % EnemyCount;
+    
+    // 检查是否超出范围
+    if (buildingIndex >= BuildingCount || enemyIndex >= EnemyCount)
+        return;
+    
+    // 获取建筑物位置和攻击范围
+    float2 buildingPos = BuildingPositions[buildingIndex];
+    float attackRange = BuildingRanges[buildingIndex];
+    
+    // 获取敌人位置
+    float2 enemyPos = EnemyPositions[enemyIndex];
+    
+    // 计算距离（xz平面）
+    float2 delta = enemyPos - buildingPos;
+    float distance = length(delta);
+    
+    // 判断是否在攻击范围内（使用平方距离避免开方运算，提高性能）
+    float rangeSq = attackRange * attackRange;
+    float distanceSq = dot(delta, delta);
+    
+    // 将结果写入矩阵
+    EnemyInRangeMatrix[index] = (distanceSq <= rangeSq) ? 1 : 0;
+}
+

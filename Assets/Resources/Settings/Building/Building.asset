@@ -18,7 +18,7 @@ MonoBehaviour:
     - cost: 10
       giveBack: 10
       attack: 5
-      attackRange: 30
+      attackRange: 200
       attackInterval: 0.5
       ifSingle: 1
       addBuffs: []
@@ -27,7 +27,7 @@ MonoBehaviour:
     - cost: 10
       giveBack: 20
       attack: 10
-      attackRange: 30
+      attackRange: 200
       attackInterval: 0.3
       ifSingle: 1
       addBuffs: []
@@ -36,7 +36,7 @@ MonoBehaviour:
     - cost: 10
       giveBack: 30
       attack: 20
-      attackRange: 40
+      attackRange: 200
       attackInterval: 0.2
       ifSingle: 1
       addBuffs: []

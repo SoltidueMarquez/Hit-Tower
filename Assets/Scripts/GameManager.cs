@@ -27,6 +27,7 @@ public class GameManager : Utils.Singleton<GameManager>
         if (enemyManager != null) enemyManager.Init();
         enemyManager.OnEnemyClear += CheckGameWin;
 
+        // build范围敌人检测依赖enemy的位置信息
         buildingManager = GetComponentInChildren<BuildingManager>();
         if (buildingManager != null) buildingManager.Init();
         

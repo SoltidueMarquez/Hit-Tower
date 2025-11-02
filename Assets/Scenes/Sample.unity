@@ -2226,6 +2226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeBuildings: []
   builder: {fileID: 539798813}
+  buildingEnemyRangeShader: {fileID: 7200000, guid: 5c386cb1f11bafe4ba285628bc70b735, type: 3}
   buildingName: "\u5355\u4F53\u5854"
 --- !u!114 &539798813
 MonoBehaviour:

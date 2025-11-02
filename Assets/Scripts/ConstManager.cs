@@ -22,4 +22,9 @@ public static class ConstManager
     /// 游戏界面场景名
     /// </summary>
     public const string GameSceneName = "Sample";
+    
+    /// <summary>
+    /// 建筑物范围计算周期
+    /// </summary>
+    public const float UPDATE_INTERVAL = 0.2f;
 }
