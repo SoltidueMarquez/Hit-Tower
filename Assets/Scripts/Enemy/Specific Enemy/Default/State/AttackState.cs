@@ -18,7 +18,7 @@ namespace Enemy.State
             if (mono != null)
             {
                 GameManager.Instance.
-                    PlayerManager.playerLogic.ModifyCurrentHealth(-mono.EnemyLogicMono.EnemyInfo.attack.value);
+                    PlayerManager.playerLogic.ModifyCurrentHealth(-mono.EnemyLogicMono.EnemyInfo.attack.Value);
                 mono.EnemyLogicMono.SetDie();
             }
         }

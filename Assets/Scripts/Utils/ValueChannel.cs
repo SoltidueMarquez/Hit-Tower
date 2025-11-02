@@ -12,7 +12,7 @@ namespace Utils
         // 乘法修饰符
         private float m_MultiplicativeModifier;
 
-        public float value => CalculateValue();
+        public float Value => CalculateValue();
         public event Action<float> OnValueChanged;
         
         /// <summary>
@@ -29,13 +29,19 @@ namespace Utils
         public void ModifyAdditive(float delta)
         {
             m_AdditiveModifier += delta;
-            OnValueChanged?.Invoke(value);
+            OnValueChanged?.Invoke(Value);
         }
         
         public void ModifyMultiplier(float delta)
         {
             m_MultiplicativeModifier += delta;
-            OnValueChanged?.Invoke(value);
+            OnValueChanged?.Invoke(Value);
+        }
+
+        public void SetBaseValue(float newValue)
+        {
+            m_BaseValue = newValue;
+            OnValueChanged?.Invoke(Value);
         }
         
         /// <summary>
@@ -54,7 +60,7 @@ namespace Utils
         {
             return $"Base: {m_BaseValue}, Additives: {m_AdditiveModifier} " +
                    $"Multipliers: {m_MultiplicativeModifier}, " +
-                   $"Final Value: {value}";
+                   $"Final Value: {Value}";
         }
     }
 }

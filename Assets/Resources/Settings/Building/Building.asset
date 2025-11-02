@@ -13,17 +13,23 @@ MonoBehaviour:
   m_Name: Building
   m_EditorClassIdentifier: 
   buildingDataList:
-  - buildingName: 
+  - buildingName: "\u5355\u4F53\u5854"
     levelData:
     - attack: 5
       attackRange: 30
-      attackInterval: 0
-      ifMulti: 0
-      attackNum: 0
-      maxHealth: 0
+      attackInterval: 0.5
+      ifSingle: 1
+      attackNum: 1
+      maxHealth: 100
     - attack: 10
       attackRange: 30
-      attackInterval: 0
-      ifMulti: 0
-      attackNum: 0
-      maxHealth: 0
+      attackInterval: 0.3
+      ifSingle: 1
+      attackNum: 2
+      maxHealth: 100
+    - attack: 20
+      attackRange: 40
+      attackInterval: 0.2
+      ifSingle: 1
+      attackNum: 5
+      maxHealth: 100

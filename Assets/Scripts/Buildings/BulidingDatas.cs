@@ -25,8 +25,8 @@ namespace Buildings
         [LabelText("攻击力")] public float attack;
         [LabelText("攻击范围")] public float attackRange;
         [LabelText("攻击间隔")] public float attackInterval;
-        [LabelText("单体/群体攻击")] public float ifMulti;
-        [EnableIf("ifMulti"),LabelText("同时攻击的敌人个数")] public int attackNum;
+        [LabelText("单体攻击")] public bool ifSingle;
+        [EnableIf("ifSingle"),LabelText("同时攻击的敌人个数")] public int attackNum;
         [Header("暂时用不上")] public float maxHealth;
     }
 }

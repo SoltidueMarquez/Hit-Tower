@@ -48,7 +48,7 @@ namespace Enemy
             var original = EnemyInfo.curHealth;
             EnemyInfo.curHealth += delta;
             // 控制血量不越界
-            EnemyInfo.curHealth = Mathf.Clamp(EnemyInfo.curHealth, 0, EnemyInfo.maxHealth.value);
+            EnemyInfo.curHealth = Mathf.Clamp(EnemyInfo.curHealth, 0, EnemyInfo.maxHealth.Value);
 
             if (delta < 0)
             {
@@ -64,7 +64,7 @@ namespace Enemy
 
         private void ReCalculateHealth(float maxHealthDelta)
         {
-            EnemyInfo.curHealth = Mathf.Clamp(EnemyInfo.curHealth, 0, EnemyInfo.maxHealth.value);
+            EnemyInfo.curHealth = Mathf.Clamp(EnemyInfo.curHealth, 0, EnemyInfo.maxHealth.Value);
             
             if (Mathf.Approximately(EnemyInfo.curHealth, 0f))
             {
@@ -75,7 +75,7 @@ namespace Enemy
         private void Die(bool isKilled = true)
         {
             // 加钱
-            if(isKilled) GameManager.Instance.PlayerManager.playerLogic.ModifyMoney(EnemyInfo.value.value);
+            if(isKilled) GameManager.Instance.PlayerManager.playerLogic.ModifyMoney(EnemyInfo.value.Value);
             OnDie?.Invoke();
         }
 

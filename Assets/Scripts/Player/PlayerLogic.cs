@@ -30,7 +30,7 @@ namespace Player
             var original = curHealth;
             curHealth += delta;
             // 控制血量不越界
-            curHealth = Mathf.Clamp(curHealth, 0, maxHealth.value);
+            curHealth = Mathf.Clamp(curHealth, 0, maxHealth.Value);
             OnHealthChanged?.Invoke(original, curHealth);
             
             if (delta < 0)
@@ -49,7 +49,7 @@ namespace Player
 
         private void ReCalculateHealth(float maxHealthDelta)
         {
-            curHealth = Mathf.Clamp(curHealth, 0, maxHealth.value);
+            curHealth = Mathf.Clamp(curHealth, 0, maxHealth.Value);
             
             if (Mathf.Approximately(curHealth, 0f))
             {

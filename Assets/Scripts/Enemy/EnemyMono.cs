@@ -26,7 +26,7 @@ namespace Enemy
             
             m_Agent = GetComponent<NavMeshAgent>();
             m_Agent.enabled = true;
-            SetSpeed(EnemyLogicMono.EnemyInfo.speed.value);
+            SetSpeed(EnemyLogicMono.EnemyInfo.speed.Value);
 
             InitStateMachine();
             

@@ -31,7 +31,7 @@ namespace UI_Framework.UI
 
         private void SetHealthText(float old, float currentHealth)
         {
-            healthText.text = $"Health: {currentHealth} / {m_PlayerManager.playerLogic.maxHealth.value}";
+            healthText.text = $"Health: {currentHealth} / {m_PlayerManager.playerLogic.maxHealth.Value}";
         }
 
         private void SetMoneyText(float old, float currentMoney)
