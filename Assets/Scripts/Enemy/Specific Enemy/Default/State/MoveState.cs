@@ -19,7 +19,7 @@ namespace Enemy.State
         public void OnEnter()
         {
             m_Agent = stateMachine.gameObject.GetComponent<NavMeshAgent>();
-            MoveTo(GameManager.Instance.PlayerManager.playerPos);
+            MoveTo(GameManager.Instance.playerManager.playerPos);
         }
 
         public void OnTick()

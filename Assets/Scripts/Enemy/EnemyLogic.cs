@@ -17,14 +17,14 @@ namespace Enemy
         public event Action OnBeAttacked;
         #endregion
         
-        public EnemyLogic(EnemyData enemyData)
+        public EnemyLogic(EnemyData enemyData, GameObject mono)
         {
             EnemyInfo = new EnemyInfo(enemyData);
             BuffHandler = new BuffHandler();
 
             foreach (var buffData in enemyData.initBuffs)
             {
-                BuffHandler.AddBuff(new BuffInfo(buffData, null, null));
+                BuffHandler.AddBuff(new BuffInfo(buffData, mono, mono));
             }
 
             EnemyInfo.maxHealth.OnValueChanged += ReCalculateHealth;
@@ -75,7 +75,7 @@ namespace Enemy
         private void Die(bool isKilled = true)
         {
             // 加钱
-            if(isKilled) GameManager.Instance.PlayerManager.playerLogic.ModifyMoney(EnemyInfo.value.Value);
+            if(isKilled) GameManager.Instance.playerManager.playerLogic.ModifyMoney(EnemyInfo.value.Value);
             OnDie?.Invoke();
         }
 

@@ -15,21 +15,31 @@ MonoBehaviour:
   buildingDataList:
   - buildingName: "\u5355\u4F53\u5854"
     levelData:
-    - attack: 5
+    - cost: 10
+      giveBack: 10
+      attack: 5
       attackRange: 30
       attackInterval: 0.5
       ifSingle: 1
+      addBuffs: []
       attackNum: 1
       maxHealth: 100
-    - attack: 10
+    - cost: 10
+      giveBack: 20
+      attack: 10
       attackRange: 30
       attackInterval: 0.3
       ifSingle: 1
+      addBuffs: []
       attackNum: 2
       maxHealth: 100
-    - attack: 20
+    - cost: 10
+      giveBack: 30
+      attack: 20
       attackRange: 40
       attackInterval: 0.2
       ifSingle: 1
+      addBuffs: []
       attackNum: 5
       maxHealth: 100
+    prefab: {fileID: 4431042111936490714, guid: cd75a783ee8829c42bdbbda206e2a98f, type: 3}

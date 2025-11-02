@@ -1,4 +1,5 @@
-﻿using Enemy;
+﻿using Buildings;
+using Enemy;
 using Player;
 using UI_Framework.Scripts;
 using UI_Framework.Scripts.Tools;
@@ -10,21 +11,25 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Utils.Singleton<GameManager>
 {
-    public EnemyManager EnemyManager { get; private set; }
-    public PlayerManager PlayerManager { get; private set; }
+    public EnemyManager enemyManager { get; private set; }
+    public PlayerManager playerManager { get; private set; }
+    public BuildingManager buildingManager { get; private set; }
     public void Start()
     {
         InitTimeScale();
         
-        PlayerManager = GetComponentInChildren<PlayerManager>();
-        if (PlayerManager != null) PlayerManager.Init();
-        PlayerManager.playerLogic.OnDie += GameOverLose;
+        playerManager = GetComponentInChildren<PlayerManager>();
+        if (playerManager != null) playerManager.Init();
+        playerManager.playerLogic.OnDie += GameOverLose;
         
         // enemy的移动状态依赖于player的building位置信息
-        EnemyManager = GetComponentInChildren<EnemyManager>();
-        if (EnemyManager != null) EnemyManager.Init();
-        EnemyManager.OnEnemyClear += CheckGameWin;
+        enemyManager = GetComponentInChildren<EnemyManager>();
+        if (enemyManager != null) enemyManager.Init();
+        enemyManager.OnEnemyClear += CheckGameWin;
 
+        buildingManager = GetComponentInChildren<BuildingManager>();
+        if (buildingManager != null) buildingManager.Init();
+        
         #region UI最后再创建
         UIMgr.Instance.CreateUI<PlayerInfoUI>();
         
@@ -43,7 +48,7 @@ public class GameManager : Utils.Singleton<GameManager>
 
     private void CheckGameWin()
     {
-        if (EnemyManager.enemySpawner.IsSpawnOver()) GameOverWine();
+        if (enemyManager.enemySpawner.IsSpawnOver()) GameOverWine();
     }
     private void GameOverWine()
     {

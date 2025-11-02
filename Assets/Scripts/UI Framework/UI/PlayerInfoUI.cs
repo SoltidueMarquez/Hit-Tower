@@ -13,7 +13,7 @@ namespace UI_Framework.UI
 
         protected override void OnInit()
         {
-            m_PlayerManager = GameManager.Instance.PlayerManager;
+            m_PlayerManager = GameManager.Instance.playerManager;
             m_PlayerManager.playerLogic.OnHealthChanged += SetHealthText;
             m_PlayerManager.playerLogic.OnMoneyChanged += SetMoneyText;
 

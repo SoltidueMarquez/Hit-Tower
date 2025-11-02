@@ -58,7 +58,7 @@ namespace Enemy
                 enemy.EnemyLogicMono.SetDie();
             }
 
-            activeEnemies.Clear();
+            // activeEnemies.Clear();
             OnEnemyClear?.Invoke();
         }
         #endregion

@@ -10,7 +10,7 @@ namespace UI_Framework.UI.GameInfoUI
         {
             Open();
 
-            waveProgressBar.Init(GameManager.Instance.EnemyManager.enemySpawner);
+            waveProgressBar.Init(GameManager.Instance.enemyManager.enemySpawner);
         }
     }
 }

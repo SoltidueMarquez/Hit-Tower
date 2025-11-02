@@ -21,7 +21,7 @@ namespace Enemy
 
         public virtual void Init(EnemyData enemyData, EnemyManager manager)
         {
-            EnemyLogicMono = new EnemyLogic(enemyData);
+            EnemyLogicMono = new EnemyLogic(enemyData, gameObject);
             m_EnemyManager = manager;
             
             m_Agent = GetComponent<NavMeshAgent>();
@@ -45,7 +45,7 @@ namespace Enemy
         {
             // 添加状态机组
             m_StateMachine = GetComponent<StateMachine>();
-        
+            m_StateMachine.ClearStates();
             // 注册状态，如果已经注册过了就什么都不会做
             m_StateMachine.RegisterState(new IdleState());
             m_StateMachine.RegisterState(new MoveState());

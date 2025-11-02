@@ -14,6 +14,11 @@ namespace Utils.StateMachine
         private IState m_LastState;
         
         public Type CurrentStateType { get; private set; }
+
+        public void ClearStates()
+        {
+            m_States.Clear();
+        }
         
         // 注册状态到状态机中（修改）
         public void RegisterState<T>(T state) where T : IState
