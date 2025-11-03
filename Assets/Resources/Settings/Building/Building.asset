@@ -24,22 +24,24 @@ MonoBehaviour:
       addBuffs: []
       attackNum: 1
       maxHealth: 100
-    - cost: 10
+    - cost: 20
       giveBack: 20
       attack: 10
       attackRange: 300
       attackInterval: 0.3
       ifSingle: 1
-      addBuffs: []
+      addBuffs:
+      - {fileID: 11400000, guid: 5f7e83c772bc4f343bf2abef32100c25, type: 2}
       attackNum: 2
       maxHealth: 100
-    - cost: 10
+    - cost: 30
       giveBack: 30
       attack: 20
       attackRange: 400
       attackInterval: 0.2
       ifSingle: 1
-      addBuffs: []
+      addBuffs:
+      - {fileID: 11400000, guid: 5f7e83c772bc4f343bf2abef32100c25, type: 2}
       attackNum: 5
       maxHealth: 100
     prefab: {fileID: 4431042111936490714, guid: cd75a783ee8829c42bdbbda206e2a98f, type: 3}

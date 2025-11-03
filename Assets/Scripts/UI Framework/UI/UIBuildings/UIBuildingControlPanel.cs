@@ -12,6 +12,8 @@ namespace UI_Framework.UI.UIBuildings
 
         public TextMeshProUGUI upgradeBtnText;
         public TextMeshProUGUI recycleBtnText;
+
+        public UIBuildingBuffList buffList;
         
         private BuildingMono m_BuildingMono;
         
@@ -21,6 +23,8 @@ namespace UI_Framework.UI.UIBuildings
             
             recycleBtn.onClick.AddListener(m_BuildingMono.buildingLogic.Recycle);
             upgradeBtn.onClick.AddListener(m_BuildingMono.UpGrade);
+            
+            buffList.Init(buildingMono.buildingLogic.BuffHandler);
 
             BindInfoUpdate();
             m_BuildingMono.buildingLogic.buildingInfo.OnLevelUp += UpdateCostText;
@@ -55,8 +59,7 @@ namespace UI_Framework.UI.UIBuildings
             var attackIntervalString = $"Attack Interval:{buildingInfo.attackInterval.Value}";
             var attackNumString = $"Attack Num:{buildingInfo.attackTargetNum}";
             
-            // TODO:DPS该怎么算？
-            var dpsString = "DPS:???";
+            var dpsString = $"Single Base DPS:{buildingInfo.EstimateDPS():F2}";
 
             if (!buildingInfo.CheckIfMaxLv())
             {
@@ -66,7 +69,7 @@ namespace UI_Framework.UI.UIBuildings
                 attackRangeString += $"—>{buildingInfo.levelData[newLv].attackRange}";
                 attackIntervalString += $"—>{buildingInfo.levelData[newLv].attackInterval}";
                 attackNumString += $"—>{buildingInfo.levelData[newLv].attackTargetNum}";
-                dpsString += "—>???";
+                dpsString += $"—>{buildingInfo.levelData[newLv].baseSingleDps:F2}";
             }
             
             lvText.text = lvString;
@@ -139,15 +142,17 @@ namespace UI_Framework.UI.UIBuildings
         private void Open()
         {
             gameObject.SetActive(true);
-
+        
             UpdateInfoUIs();
             UpdateCostText();
             UpdateUpgradeText(0f);
             UpdateUpgradeBtn(0, GameManager.Instance.playerManager.playerLogic.money);
+            buffList.Open();
         }
 
         private void Close()
         {
+            buffList.Close();
             gameObject.SetActive(false);
         }
 

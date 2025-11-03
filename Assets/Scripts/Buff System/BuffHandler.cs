@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -6,11 +7,13 @@ namespace Buff_System
 {
     public class BuffHandler
     {
-        private LinkedList<BuffInfo> m_BuffList;
+        public LinkedList<BuffInfo> buffList { get; private set; }
+        
+        public event Action OnBuffChanged;
 
         public BuffHandler()
         {
-            m_BuffList = new LinkedList<BuffInfo>();
+            buffList = new LinkedList<BuffInfo>();
         }
         
         public void Tick()
@@ -22,7 +25,7 @@ namespace Buff_System
         {
             var deleteBuffList = new List<BuffInfo>();
             
-            foreach (var buffInfo in m_BuffList)
+            foreach (var buffInfo in buffList)
             {
                 // 先判断buff的触发
                 if (buffInfo.buffData.OnTick != null)// 判断有没有Tick方法
@@ -93,10 +96,11 @@ namespace Buff_System
                 {
                     buffModule.Apply(buffInfo);//触发创建Buff的回调点
                 }
-                m_BuffList.AddLast(buffInfo);//加入链表
+                buffList.AddLast(buffInfo);//加入链表
                 //对Buff链表进行排序
-                InsertionSortLinkedList(m_BuffList);
+                InsertionSortLinkedList(buffList);
             }
+            OnBuffChanged?.Invoke();
         }
 
         /// <summary>
@@ -112,7 +116,7 @@ namespace Buff_System
                     {
                         buffModule.Apply(buffInfo);//触发移除buff的回调点
                     }
-                    m_BuffList.Remove(buffInfo);
+                    buffList.Remove(buffInfo);
                     break;
                 case BuffRemoveStackUpdateEnum.Reduce:
                     buffInfo.curStack--;
@@ -122,7 +126,7 @@ namespace Buff_System
                     }
                     if (buffInfo.curStack == 0)//如果删掉了最后一层
                     {
-                        m_BuffList.Remove(buffInfo);
+                        buffList.Remove(buffInfo);
                     }
                     else
                     {
@@ -130,11 +134,12 @@ namespace Buff_System
                     }
                     break;
             }
+            OnBuffChanged?.Invoke();
         }
 
         private BuffInfo FindBuff(int buffDataID)
         {
-            return m_BuffList.FirstOrDefault(buffInfo => buffInfo.buffData.id == buffDataID);
+            return buffList.FirstOrDefault(buffInfo => buffInfo.buffData.id == buffDataID);
         }
         
         // 插入排序算法

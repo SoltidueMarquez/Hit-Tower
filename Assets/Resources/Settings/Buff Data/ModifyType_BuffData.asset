@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: ModifyType_BuffData
   m_EditorClassIdentifier: 
   id: 0
-  buffName: "\u653B\u51FB\u529B\u52A0\u6210"
+  buffName: Atk Up
   description: "\u6301\u7EED30\u79D2\u768410\u70B9\u653B\u51FB\u529B"
   icon: {fileID: 0}
   priority: 0
-  maxStack: 1
-  isForever: 0
+  maxStack: 10
+  isForever: 1
   duration: 30
-  tickTime: 0
+  tickTime: 100
   buffUpdateTime: 0
-  buffRemoveStackUpdate: 0
+  buffRemoveStackUpdate: 1
   OnCreate: []
   OnRemove: []
   OnTick: []

@@ -24,6 +24,26 @@ namespace Buildings
         [LabelText("预制体")] public GameObject prefab;
         public int maxLv => levelData.Count - 1;
         public float buildCost => levelData[0].cost;
+        
+        public string GetDPSAnalysis()
+        {
+            var analysis = new System.Text.StringBuilder();
+            analysis.AppendLine($"DPS分析 - {buildingName} (Lv{0})");
+            analysis.AppendLine($"攻击力: {levelData[0].attack}");
+            analysis.AppendLine($"攻击间隔: {levelData[0].attackInterval}s");
+            analysis.AppendLine($"攻击类型: {(levelData[0].ifSingle ? "单体" : "范围")}");
+    
+            if (levelData[0].ifSingle)
+            {
+                analysis.AppendLine($"同时攻击目标: {levelData[0].attackNum}");
+            }
+    
+            analysis.AppendLine($"基础DPS: {levelData[0].EstimateDPS(1):F2}");
+            analysis.AppendLine($"对3目标DPS: {levelData[0].EstimateDPS(3):F2}");
+            analysis.AppendLine($"对5目标DPS: {levelData[0].EstimateDPS(5):F2}");
+    
+            return analysis.ToString();
+        }
     }
 
     [Serializable]
@@ -40,7 +60,23 @@ namespace Buildings
         
         [EnableIf("ifSingle"),LabelText("同时攻击的敌人个数")] public int attackNum;
         [HideInInspector] public string attackTargetNum=> ifSingle ? $"{attackNum}" : "All";
+        public float baseSingleDps => (attackInterval <= 0) ? 0 : attack / attackInterval;
         
         [Header("暂时用不上")] public float maxHealth;
+        
+        public float EstimateDPS(int targetCount = 1)
+        {
+            // 根据攻击类型调整DPS
+            if (ifSingle)
+            {
+                // 单体攻击：考虑同时攻击的目标数量
+                return baseSingleDps * Mathf.Min(attackNum, targetCount);
+            }
+            else
+            {
+                // 范围攻击：攻击所有目标
+                return baseSingleDps * targetCount;
+            }
+        }
     }
 }

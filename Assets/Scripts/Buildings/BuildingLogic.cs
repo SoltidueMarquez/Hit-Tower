@@ -165,6 +165,60 @@ namespace Buildings
             curHealth = maxHealth.Value;
         }
 
+        #region DPS估计
+
+        /// <summary>
+        /// 估算建筑的DPS（每秒伤害）
+        /// </summary>
+        /// <param name="targetCount">目标数量（对于范围攻击有效）</param>
+        /// <returns>估算的DPS值</returns>
+        public float EstimateDPS(int targetCount = 1)
+        {
+            // 基础检查：攻击间隔为0时无法计算DPS
+            if (attackInterval.Value <= 0)
+                return 0f;
+    
+            // 计算基础DPS：攻击力 ÷ 攻击间隔
+            float baseDPS = attack.Value / attackInterval.Value;
+    
+            // 根据攻击类型调整DPS
+            if (ifSingle)
+            {
+                // 单体攻击：考虑同时攻击的目标数量
+                return baseDPS * Mathf.Min(attackNum.Value, targetCount);
+            }
+            else
+            {
+                // 范围攻击：攻击所有目标
+                return baseDPS * targetCount;
+            }
+        }
+
+        /// <summary>
+        /// 获取详细的DPS分析信息
+        /// </summary>
+        public string GetDPSAnalysis()
+        {
+            var analysis = new System.Text.StringBuilder();
+            analysis.AppendLine($"DPS分析 - {buildingName} (Lv{curLv})");
+            analysis.AppendLine($"攻击力: {attack.Value}");
+            analysis.AppendLine($"攻击间隔: {attackInterval.Value}s");
+            analysis.AppendLine($"攻击类型: {(ifSingle ? "单体" : "范围")}");
+    
+            if (ifSingle)
+            {
+                analysis.AppendLine($"同时攻击目标: {attackNum.Value}");
+            }
+    
+            analysis.AppendLine($"基础DPS: {EstimateDPS(1):F2}");
+            analysis.AppendLine($"对3目标DPS: {EstimateDPS(3):F2}");
+            analysis.AppendLine($"对5目标DPS: {EstimateDPS(5):F2}");
+    
+            return analysis.ToString();
+        }
+
+        #endregion
+        
         /// <summary>
         /// 获取升级的花费
         /// </summary>
