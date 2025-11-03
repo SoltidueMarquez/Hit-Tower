@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UI_Framework.UI.UIGameSettings
 {
-    public class GameSettingsUI : UIFormBase
+    public class UIGameSettings : UIFormBase
     {
         public TextMeshProUGUI timeScaleText;
         public TextMeshProUGUI pauseText;

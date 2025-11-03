@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UI_Framework.UI.UIBuildings;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Buildings
@@ -6,20 +7,37 @@ namespace Buildings
     public class PlacementCell : MonoBehaviour, IPointerClickHandler
     {
         private BuildingMono m_Building;
+        private UIBuildingPanel m_Panel;
         
         public void OnPointerClick(PointerEventData eventData)
         {
             if (m_Building == null)
             {
-                GameManager.Instance.buildingManager.TestBuild(transform, out var mono);
-                m_Building = mono;
-                if(mono!=null) mono.buildingLogic.OnDie += ClearBuilding;
-                Debug.Log($"ClickPos:{transform.position}");
+                if (!m_Panel.isActiveAndEnabled)
+                {
+                    m_Panel.Open();
+                }
+                else
+                {
+                    m_Panel.Close();
+                }
             }
             else
             {
                 Debug.LogWarning("已有建筑物");
             }
+        }
+
+        public void SetBuildPanel(UIBuildingPanel panel)
+        {
+            m_Panel = panel;
+        }
+
+        public void Build(string buildingName)
+        {
+            GameManager.Instance.buildingManager.TryBuild(buildingName, transform, out var mono);
+            m_Building = mono;
+            if (mono != null) mono.buildingLogic.OnDie += ClearBuilding;
         }
 
         public void ClearBuilding()

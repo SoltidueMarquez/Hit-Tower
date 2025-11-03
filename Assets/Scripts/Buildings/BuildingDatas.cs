@@ -23,6 +23,7 @@ namespace Buildings
         [LabelText("等级数值信息")] public List<BuildingLevelData> levelData;
         [LabelText("预制体")] public GameObject prefab;
         public int maxLv => levelData.Count - 1;
+        public float buildCost => levelData[0].cost;
     }
 
     [Serializable]

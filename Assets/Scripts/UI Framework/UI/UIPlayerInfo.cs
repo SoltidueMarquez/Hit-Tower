@@ -4,7 +4,7 @@ using UI_Framework.Scripts;
 
 namespace UI_Framework.UI
 {
-    public class PlayerInfoUI : UIFormBase
+    public class UIPlayerInfo : UIFormBase
     {
         public TextMeshProUGUI healthText;
         public TextMeshProUGUI moneyText;

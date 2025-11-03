@@ -7,6 +7,7 @@ namespace Buildings
     public class BuildingBuilder : MonoBehaviour
     {
         [SerializeField, LabelText("建筑物信息")] private BuildingDatas buildingDataList;
+        public BuildingDatas buildingDatas => buildingDataList;
         private BuildingManager m_BuildingManager;
 
         public void Init(BuildingManager manager)
@@ -16,7 +17,6 @@ namespace Buildings
 
         
         #region 建造建筑物
-
         public BuildingMono CreateBuilding(string buildingName, Transform placementCell)
         {
             var data = buildingDataList.GetData(buildingName);

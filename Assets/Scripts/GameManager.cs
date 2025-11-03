@@ -5,12 +5,15 @@ using UI_Framework.Scripts;
 using UI_Framework.Scripts.Tools;
 using UI_Framework.UI;
 using UI_Framework.UI.GameInfoUI;
+using UI_Framework.UI.UIBuildings;
 using UI_Framework.UI.UIGameSettings;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Utils.Singleton<GameManager>
 {
+    public Camera gameCamera;
+    public Camera uiCamera;
     public EnemyManager enemyManager { get; private set; }
     public PlayerManager playerManager { get; private set; }
     public BuildingManager buildingManager { get; private set; }
@@ -32,12 +35,14 @@ public class GameManager : Utils.Singleton<GameManager>
         if (buildingManager != null) buildingManager.Init();
         
         #region UI最后再创建
-        UIMgr.Instance.CreateUI<PlayerInfoUI>();
+        UIMgr.Instance.CreateUI<UIPlayerInfo>();
         
-        UIMgr.Instance.CreateUI<GameInfoUI>();
+        UIMgr.Instance.CreateUI<UIBuildings>();
+        
+        UIMgr.Instance.CreateUI<UIGameInfo>();
         
         // 最上层的是设置UI
-        UIMgr.Instance.CreateUI<GameSettingsUI>();
+        UIMgr.Instance.CreateUI<UIGameSettings>();
         #endregion
     }
 

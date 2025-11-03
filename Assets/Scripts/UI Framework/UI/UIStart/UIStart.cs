@@ -3,7 +3,7 @@ using UI_Framework.Scripts;
 
 namespace UI_Framework.UI.UIStart
 {
-    public class StartUI : UIFormBase
+    public class UIStart : UIFormBase
     {
         protected override void OnInit()
         {

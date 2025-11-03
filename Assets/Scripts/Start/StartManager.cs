@@ -11,7 +11,7 @@ namespace Start
         private void Start()
         {
             Time.timeScale = 1;
-            UIMgr.Instance.CreateUI<StartUI>();
+            UIMgr.Instance.CreateUI<UIStart>();
         }
 
         public void StartGame()

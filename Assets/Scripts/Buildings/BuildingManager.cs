@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Enemy;
-using Plugins.EditorTools;
 using UnityEngine;
 
 namespace Buildings
@@ -10,6 +9,7 @@ namespace Buildings
     public class BuildingManager : MonoBehaviour
     {
         public List<BuildingMono> activeBuildings;
+        public List<PlacementCell> placementCells;
         public BuildingBuilder builder;
         public BuildingViewModelHelper buildingViewModelHelper;
         
@@ -21,6 +21,9 @@ namespace Buildings
         {
             activeBuildings = new List<BuildingMono>();
             
+            // 查找场景中所有的PlacementCell组件（包括挂载在失活物体上的）
+            placementCells = FindObjectsByType<PlacementCell>(FindObjectsInactive.Include, FindObjectsSortMode.None).ToList();
+
             if (builder != null)
             {
                 builder.Init(this);
@@ -410,15 +413,6 @@ namespace Buildings
             m_EnemyInRangeMatrixBuffer = null;
         }
         
-        #endregion
-        
-        #region 测试部分
-        [StringToEnum("Buildings")] public string buildingName;
-
-        public void TestBuild(Transform placementCell, out BuildingMono buildingMono)
-        {
-            TryBuild(buildingName, placementCell, out buildingMono);
-        }
         #endregion
     }
 }

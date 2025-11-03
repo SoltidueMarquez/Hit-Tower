@@ -2,7 +2,7 @@ using UI_Framework.Scripts;
 
 namespace UI_Framework.UI.GameInfoUI
 {
-    public class GameInfoUI : UIFormBase
+    public class UIGameInfo : UIFormBase
     {
         // 波次时间轴
         public WaveProgressBar waveProgressBar;
