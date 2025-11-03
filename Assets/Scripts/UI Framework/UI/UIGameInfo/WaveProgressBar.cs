@@ -4,7 +4,7 @@ using Enemy;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI_Framework.UI.GameInfoUI
+namespace UI_Framework.UI.UIGameInfo
 {
     public class WaveProgressBar : MonoBehaviour
     {

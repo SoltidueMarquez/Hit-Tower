@@ -16,7 +16,7 @@ namespace Start
 
         public void StartGame()
         {
-            SceneChangeHelper.Instance.LoadScene(ConstManager.GameSceneName);
+            SceneChangeHelper.Instance.LoadScene(ConstManager.k_GameSceneName);
         }
 
         public void QuitGame()

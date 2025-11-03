@@ -4,8 +4,9 @@ using Player;
 using UI_Framework.Scripts;
 using UI_Framework.Scripts.Tools;
 using UI_Framework.UI;
-using UI_Framework.UI.GameInfoUI;
 using UI_Framework.UI.UIBuildings;
+using UI_Framework.UI.UIDebug;
+using UI_Framework.UI.UIGameInfo;
 using UI_Framework.UI.UIGameSettings;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -43,6 +44,7 @@ public class GameManager : Utils.Singleton<GameManager>
         
         // 最上层的是设置UI
         UIMgr.Instance.CreateUI<UIGameSettings>();
+        UIMgr.Instance.CreateUI<UIDebug>();
         #endregion
     }
 
@@ -74,10 +76,10 @@ public class GameManager : Utils.Singleton<GameManager>
     public void SwitchGameSpeed()
     {
         // 循环递增索引，到达末尾则回到0
-        m_CurrentSpeedIndex = (m_CurrentSpeedIndex + 1) % ConstManager.TimeSettings.Length;
+        m_CurrentSpeedIndex = (m_CurrentSpeedIndex + 1) % ConstManager.timeSettings.Length;
     
         // 设置新的时间缩放
-        Time.timeScale = ConstManager.TimeSettings[m_CurrentSpeedIndex];
+        Time.timeScale = ConstManager.timeSettings[m_CurrentSpeedIndex];
     
         // 保持物理模拟的一致性
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
@@ -95,13 +97,18 @@ public class GameManager : Utils.Singleton<GameManager>
     public void Continue()
     {
         // 设置时间缩放
-        Time.timeScale = ConstManager.TimeSettings[m_CurrentSpeedIndex];
+        Time.timeScale = ConstManager.timeSettings[m_CurrentSpeedIndex];
     
         // 保持物理模拟的一致性
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
     #endregion
 
+    public int GetActiveBuffNum()
+    {
+        return playerManager.GetActiveBuffNum() + enemyManager.GetActiveBuffNum() + buildingManager.GetActiveBuffNum();
+    }
+    
     public void Restart()
     {
         SceneChangeHelper.Instance.LoadScene(SceneManager.GetActiveScene().name);
@@ -109,6 +116,6 @@ public class GameManager : Utils.Singleton<GameManager>
 
     public void Exit()
     {
-        SceneChangeHelper.Instance.LoadScene(ConstManager.StartSceneName);
+        SceneChangeHelper.Instance.LoadScene(ConstManager.k_StartSceneName);
     }
 }

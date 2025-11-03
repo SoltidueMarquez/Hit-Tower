@@ -1,6 +1,6 @@
 using UI_Framework.Scripts;
 
-namespace UI_Framework.UI.GameInfoUI
+namespace UI_Framework.UI.UIGameInfo
 {
     public class UIGameInfo : UIFormBase
     {

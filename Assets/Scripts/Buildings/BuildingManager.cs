@@ -45,7 +45,7 @@ namespace Buildings
             
             // 定时更新建筑物敌人列表
             m_UpdateTimer += Time.deltaTime;
-            if (m_UpdateTimer >= ConstManager.UPDATE_INTERVAL)
+            if (m_UpdateTimer >= ConstManager.k_UpdateInterval)
             {
                 m_UpdateTimer = 0f;
                 UpdateBuildingsEnemyList();
@@ -81,6 +81,11 @@ namespace Buildings
             }
         }
         #endregion
+        
+        public int GetActiveBuffNum()
+        {
+            return activeBuildings.Sum(x => x.buildingLogic.BuffHandler.buffList.Count);
+        }
 
         #region 建造封装
         public bool TryBuild(string buildingName, Transform placementCell, out BuildingMono buildingMono)

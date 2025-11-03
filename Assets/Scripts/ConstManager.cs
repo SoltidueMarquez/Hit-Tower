@@ -11,20 +11,25 @@ public static class ConstManager
     /// <summary>
     /// 倍速设置
     /// </summary>
-    public static readonly int[] TimeSettings = new[] { 1, 2, 3 };
+    public static readonly int[] timeSettings = new[] { 1, 2, 3 };
     
     /// <summary>
     /// 开始界面场景名
     /// </summary>
-    public const string StartSceneName = "Start";
+    public const string k_StartSceneName = "Start";
     
     /// <summary>
     /// 游戏界面场景名
     /// </summary>
-    public const string GameSceneName = "Sample";
+    public const string k_GameSceneName = "Sample";
     
     /// <summary>
     /// 建筑物范围计算周期
     /// </summary>
-    public const float UPDATE_INTERVAL = 0.2f;
+    public const float k_UpdateInterval = 0.2f;
+
+    /// <summary>
+    /// 帧数debug更新间隔
+    /// </summary>
+    public const float k_FPSUpdateInterval = 0.2f;
 }

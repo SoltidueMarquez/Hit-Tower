@@ -1,4 +1,5 @@
 using System;
+using Buff_System;
 using UnityEngine;
 using Utils;
 
@@ -9,6 +10,8 @@ namespace Player
         public float money { get; private set; }
         public float curHealth { get; private set; }
         public ValueChannel maxHealth;
+        
+        public BuffHandler BuffHandler { get; private set; }
         
         public event Action OnBeAttacked;
         public event Action<float, float> OnHealthChanged;
@@ -22,6 +25,13 @@ namespace Player
             maxHealth = new ValueChannel(data.maxHealth);
 
             maxHealth.OnValueChanged += ReCalculateHealth;
+
+            BuffHandler = new BuffHandler();
+        }
+
+        public void Tick()
+        {
+            BuffHandler.Tick();
         }
 
         #region 生命值修改

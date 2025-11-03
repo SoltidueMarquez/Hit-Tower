@@ -60,5 +60,10 @@ namespace Enemy
             OnEnemyClear?.Invoke();
         }
         #endregion
+
+        public int GetActiveBuffNum()
+        {
+            return activeEnemies.Sum(x => x.EnemyLogicMono.BuffHandler.buffList.Count);
+        }
     }
 }

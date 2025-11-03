@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace UI_Framework.UI.GameInfoUI
+namespace UI_Framework.UI.UIGameInfo
 {
     public class TimelineMarker : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
