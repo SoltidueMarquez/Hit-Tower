@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Buff_System;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -113,6 +114,9 @@ namespace Buildings
         #endregion
     }
 
+    /// <summary>
+    /// 这里默认建造和升级的花费不会改变，一开始写得太快了忘考虑了orz
+    /// </summary>
     public class BuildingInfo
     {
         public string buildingName;
@@ -124,12 +128,22 @@ namespace Buildings
         [LabelText("攻击间隔")] public ValueChannel attackInterval;
         [LabelText("单体攻击")] public bool ifSingle;
         [LabelText("同时攻击的敌人个数")] public ValueChannel attackNum;
+        [HideInInspector] public string attackTargetNum=> ifSingle ? $"{attackNum.Value}" : "All";
         [LabelText("拆除返还的金币")] public ValueChannel giveBack;
         
         [Header("暂时用不上")] 
         public ValueChannel maxHealth;
         public float curHealth;
 
+        public event Action OnLevelUp;
+        public event Action OnifSingleChanged;
+
+        public void ModifyIfSingle(bool single)
+        {
+            if (ifSingle == single) return;
+            ifSingle = single;
+            OnifSingleChanged?.Invoke();
+        }
 
         public List<BuildingLevelData> levelData { get; private set; }
 
@@ -179,6 +193,7 @@ namespace Buildings
             giveBack.SetBaseValue(levelData[curLv].giveBack);
             curHealth = maxHealth.Value;
 
+            OnLevelUp?.Invoke();
             return true;
         }
 
@@ -190,5 +205,11 @@ namespace Buildings
         {
             return curLv == maxLv;
         }
+
+        public string NewBuffString() =>
+            CheckIfMaxLv() ? "" : 
+                levelData[curLv + 1].addBuffs
+                    .Aggregate("", (current, buff) => current + $"{buff.buffName}|");
+        
     }
 }

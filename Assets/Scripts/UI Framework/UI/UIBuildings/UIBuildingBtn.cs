@@ -16,7 +16,7 @@ namespace UI_Framework.UI.UIBuildings
         public void Init(BuildingData buildingData, Action action)
         {
             cost = buildingData.buildCost;
-            text.text = $"{buildingData.buildingName}:{cost}";
+            text.text = $"{buildingData.buildingName}:-{cost}";
             btn.onClick.AddListener(action.Invoke);
         }
 

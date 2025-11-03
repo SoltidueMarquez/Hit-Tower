@@ -39,6 +39,8 @@ namespace Buildings
         [LabelText("增加的被动Buff")] public List<BuffData> addBuffs;
         
         [EnableIf("ifSingle"),LabelText("同时攻击的敌人个数")] public int attackNum;
+        [HideInInspector] public string attackTargetNum=> ifSingle ? $"{attackNum}" : "All";
+        
         [Header("暂时用不上")] public float maxHealth;
     }
 }
