@@ -13,37 +13,47 @@ namespace Buildings
         public void Init(BuildingMono mono)
         {
             m_BuildingMono = mono;
-            m_Initialized = true;
 
             UpdateRangeIndicator();
+            
             // 订阅范围更新事件
             m_BuildingMono.buildingLogic.buildingInfo.attackRange.OnValueChanged += UpdateRangeIndicator;
+            
+            // 订阅viewmodel数据更新
+            GameManager.Instance.buildingManager.buildingViewModelHelper.OnSelectDataChanged += OnSelectDataChanged;
+            
+            m_Initialized = true;
         }
-
-        // public void Tick()
-        // {
-        //     
-        // }
 
         public void OnPointerClick(PointerEventData eventData)
         {
             if (m_Initialized)
             {
-                OnPointerClick();
+                GameManager.Instance.buildingManager.buildingViewModelHelper.OnBuildingClicked(this);
             }
         }
         
-        protected virtual void OnPointerClick()
+        protected void OnSelectDataChanged(BuildingViewModelData selectData)
         {
-            // TODO:测试部分，默认升级，升到满就拆除建筑
-            if (m_BuildingMono.buildingLogic.buildingInfo.CheckIfMaxLv())
-            {
-                RecycleBuilding();
-            }
-            else
-            {
-                UpgradeBuilding();
-            }
+            
+            // if (selectData.currentSelectedBuildingView == this)
+            // {
+            //     
+            // }
+            // else
+            // {
+            //     
+            // }
+
+            // // TODO:测试部分，默认升级，升到满就拆除建筑
+            // if (m_BuildingMono.buildingLogic.buildingInfo.CheckIfMaxLv())
+            // {
+            //     RecycleBuilding();
+            // }
+            // else
+            // {
+            //     UpgradeBuilding();
+            // }
         }
 
         /// <summary>
@@ -94,6 +104,7 @@ namespace Buildings
             m_Initialized = false;
             
             m_BuildingMono.buildingLogic.buildingInfo.attackRange.OnValueChanged -= UpdateRangeIndicator;
+            GameManager.Instance.buildingManager.buildingViewModelHelper.OnSelectDataChanged -= OnSelectDataChanged;
         }
         
     }

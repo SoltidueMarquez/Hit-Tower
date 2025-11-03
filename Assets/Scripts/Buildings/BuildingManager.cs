@@ -9,8 +9,9 @@ namespace Buildings
 {
     public class BuildingManager : MonoBehaviour
     {
-        public List<BuildingMono> activeBuildings = new List<BuildingMono>();
+        public List<BuildingMono> activeBuildings;
         public BuildingBuilder builder;
+        public BuildingViewModelHelper buildingViewModelHelper;
         
         // 定时更新相关变量
         private float m_UpdateTimer = 0f;
@@ -18,6 +19,8 @@ namespace Buildings
         
         public void Init()
         {
+            activeBuildings = new List<BuildingMono>();
+            
             if (builder != null)
             {
                 builder.Init(this);
@@ -26,6 +29,8 @@ namespace Buildings
             {
                 Debug.LogError("BuildingBuilder 未分配！");
             }
+
+            buildingViewModelHelper = new BuildingViewModelHelper();
         }
         
         #region Tick
