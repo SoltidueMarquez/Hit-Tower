@@ -11,6 +11,7 @@ namespace Start
         private void Start()
         {
             Time.timeScale = 1;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
             UIMgr.Instance.CreateUI<UIStart>();
         }
 

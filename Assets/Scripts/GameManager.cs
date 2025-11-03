@@ -70,6 +70,7 @@ public class GameManager : Utils.Singleton<GameManager>
     private void InitTimeScale()
     {
         Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
         m_CurrentSpeedIndex = 0;
     }
     
