@@ -1,4 +1,6 @@
 ﻿using Sirenix.OdinInspector;
+using UI_Framework.Scripts;
+using UI_Framework.UI.UIBuildings;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,6 +10,7 @@ namespace Buildings
     {
         [LabelText("攻击范围指示器"), SerializeField] protected SpriteRenderer rangeIndicator;
         protected BuildingMono m_BuildingMono;
+        protected UIBuildingControlPanel m_ControlPanel;
 
         private bool m_Initialized = false;
         public void Init(BuildingMono mono)
@@ -19,9 +22,9 @@ namespace Buildings
             // 订阅范围更新事件
             m_BuildingMono.buildingLogic.buildingInfo.attackRange.OnValueChanged += UpdateRangeIndicator;
             
-            // 订阅viewmodel数据更新
-            GameManager.Instance.buildingManager.buildingViewModelHelper.OnBuildingViewSelectDataChanged += OnBuildingViewSelectDataChanged;
-            
+            // 创建对应的m_ControlPanel
+            m_ControlPanel = UIMgr.Instance.GetFirstUI<UIBuildings>().CreateBuildingControlPanel(m_BuildingMono);
+
             m_Initialized = true;
         }
 
@@ -31,45 +34,6 @@ namespace Buildings
             {
                 GameManager.Instance.buildingManager.buildingViewModelHelper.OnBuildingClicked(this);
             }
-        }
-        
-        protected void OnBuildingViewSelectDataChanged(BuildingViewModelData selectData)
-        {
-            
-            // if (selectData.currentSelectedBuildingView == this)
-            // {
-            //     
-            // }
-            // else
-            // {
-            //     
-            // }
-
-            // // TODO:测试部分，默认升级，升到满就拆除建筑
-            // if (m_BuildingMono.buildingLogic.buildingInfo.CheckIfMaxLv())
-            // {
-            //     RecycleBuilding();
-            // }
-            // else
-            // {
-            //     UpgradeBuilding();
-            // }
-        }
-
-        /// <summary>
-        /// 升级
-        /// </summary>
-        protected void UpgradeBuilding()
-        {
-            m_BuildingMono.UpGrade();
-        }
-        
-        /// <summary>
-        /// 拆除建筑物
-        /// </summary>
-        protected void RecycleBuilding()
-        {
-            m_BuildingMono.buildingLogic.SetDie();
         }
 
         #region 范围指示相关
@@ -104,7 +68,9 @@ namespace Buildings
             m_Initialized = false;
             
             m_BuildingMono.buildingLogic.buildingInfo.attackRange.OnValueChanged -= UpdateRangeIndicator;
-            GameManager.Instance.buildingManager.buildingViewModelHelper.OnBuildingViewSelectDataChanged -= OnBuildingViewSelectDataChanged;
+
+            // 直接销毁UI吧，对象池要考虑得太多了，不会消耗多少性能的
+            if (m_ControlPanel != null) Destroy(m_ControlPanel.gameObject);
         }
         
     }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Building
   m_EditorClassIdentifier: 
   buildingDataList:
-  - buildingName: "\u5355\u4F53\u5854"
+  - buildingName: Single Tower
     levelData:
     - cost: 10
       giveBack: 10

@@ -1,5 +1,6 @@
 using DG.Tweening;
 using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -19,6 +20,7 @@ namespace Battle.UI
 
         [LabelText("需要替换的按钮图片")] public Image btnImage;
         [LabelText("需要更换颜色的的Text")] public Text btnText;
+        [LabelText("需要更换颜色的的Text")] public TextMeshProUGUI btnTextPro;
 
         [Header("Pointer Enter")]
         public bool enterNeedScale;
@@ -48,6 +50,8 @@ namespace Battle.UI
 
             if (btnImage != null && exitSprite != null) btnImage.sprite = exitSprite;
             if (btnText != null) btnText.color = exitTextColor;
+            if (btnTextPro != null) btnTextPro.color = exitTextColor;
+            
         }
 
         private void OnDestroy()
@@ -76,8 +80,8 @@ namespace Battle.UI
                 btnImage.sprite = enterSprite;
 
             // 改文字颜色
-            if (btnText != null)
-                btnText.color = enterTextColor;
+            if (btnText != null) btnText.color = enterTextColor;
+            if (btnTextPro != null) btnTextPro.color = enterTextColor;
 
             if (enterNeedScale)
             {
@@ -95,8 +99,8 @@ namespace Battle.UI
                 btnImage.sprite = exitSprite;
 
             // 改文字颜色
-            if (btnText != null)
-                btnText.color = exitTextColor;
+            if (btnText != null) btnText.color = exitTextColor;
+            if (btnTextPro != null) btnTextPro.color = exitTextColor;
 
             if (exitNeedScale)
             {

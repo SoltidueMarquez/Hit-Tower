@@ -1,5 +1,4 @@
-﻿using UI_Framework.UI.UIBuildings;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Buildings
@@ -7,8 +6,7 @@ namespace Buildings
     public class PlacementCell : MonoBehaviour, IPointerClickHandler
     {
         private BuildingMono m_Building;
-        private UIBuildingPanel m_Panel;
-        
+
         public void OnPointerClick(PointerEventData eventData)
         {
             if (m_Building == null)
@@ -19,11 +17,6 @@ namespace Buildings
             {
                 Debug.LogWarning("已有建筑物");
             }
-        }
-
-        public void SetBuildPanel(UIBuildingPanel panel)
-        {
-            m_Panel = panel;
         }
 
         public void Build(string buildingName)

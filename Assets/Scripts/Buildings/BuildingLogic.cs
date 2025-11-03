@@ -105,6 +105,11 @@ namespace Buildings
         {
             Die(isKilledByPlayer);
         }
+
+        public void Recycle()
+        {
+            SetDie(true);
+        }
         #endregion
     }
 

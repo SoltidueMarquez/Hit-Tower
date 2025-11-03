@@ -189,6 +189,7 @@ MonoBehaviour:
       m_Calls: []
   btnImage: {fileID: 0}
   btnText: {fileID: 0}
+  btnTextPro: {fileID: 0}
   enterNeedScale: 1
   enterTextColor: {r: 0, g: 0, b: 0, a: 0}
   enterSprite: {fileID: 0}
@@ -454,7 +455,7 @@ GameObject:
   - component: {fileID: 3497915978610133639}
   - component: {fileID: 368965033306001726}
   m_Layer: 5
-  m_Name: Building Panel
+  m_Name: Builder Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

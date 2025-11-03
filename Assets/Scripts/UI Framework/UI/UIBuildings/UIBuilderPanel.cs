@@ -1,5 +1,4 @@
-﻿using System;
-using Buildings;
+﻿using Buildings;
 using UI_Framework.Scripts.Tools;
 using UnityEngine;
 
@@ -43,13 +42,14 @@ namespace UI_Framework.UI.UIBuildings
             }
         }
 
-        public void Open()
+        private void Open()
         {
             gameObject.SetActive(true);
+            // 关闭的时候函数不会触发
             UpdateBuildBtnsInteractable(0, GameManager.Instance.playerManager.playerLogic.money);
         }
 
-        public void Close()
+        private void Close()
         {
             gameObject.SetActive(false);
         }

@@ -104,7 +104,7 @@ namespace Buildings
             {
                 if (GameManager.Instance.playerManager.playerLogic.ModifyMoney(-cost))
                 {
-                    buildingMono = builder.CreateBuilding("单体塔", placementCell);
+                    buildingMono = builder.CreateBuilding(buildingName, placementCell);
                     return true;
                 }
                 else
