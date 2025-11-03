@@ -13,14 +13,7 @@ namespace Buildings
         {
             if (m_Building == null)
             {
-                if (!m_Panel.isActiveAndEnabled)
-                {
-                    m_Panel.Open();
-                }
-                else
-                {
-                    m_Panel.Close();
-                }
+                GameManager.Instance.buildingManager.buildingViewModelHelper.OnCellClicked(this);
             }
             else
             {

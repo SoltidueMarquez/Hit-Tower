@@ -26,8 +26,21 @@ namespace UI_Framework.UI.UIBuildings
             }
 
             GameManager.Instance.playerManager.playerLogic.OnMoneyChanged += UpdateBuildBtnsInteractable;
+            GameManager.Instance.buildingManager.buildingViewModelHelper.OnPlacementCellSelectDataChanged += UpdateSelf;
             
             Close();
+        }
+
+        private void UpdateSelf(PlacementCellModelData data)
+        {
+            if (data.currentSelectedPlacementCell != m_Cell && gameObject.activeSelf)
+            {
+                Close();
+            }
+            if (data.currentSelectedPlacementCell == m_Cell && !gameObject.activeSelf)
+            {
+                Open();
+            }
         }
 
         public void Open()
@@ -53,6 +66,7 @@ namespace UI_Framework.UI.UIBuildings
         private void OnDestroy()
         {
             GameManager.Instance.playerManager.playerLogic.OnMoneyChanged -= UpdateBuildBtnsInteractable;
+            GameManager.Instance.buildingManager.buildingViewModelHelper.OnPlacementCellSelectDataChanged -= UpdateSelf;
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Buildings
             m_BuildingMono.buildingLogic.buildingInfo.attackRange.OnValueChanged += UpdateRangeIndicator;
             
             // 订阅viewmodel数据更新
-            GameManager.Instance.buildingManager.buildingViewModelHelper.OnSelectDataChanged += OnSelectDataChanged;
+            GameManager.Instance.buildingManager.buildingViewModelHelper.OnBuildingViewSelectDataChanged += OnBuildingViewSelectDataChanged;
             
             m_Initialized = true;
         }
@@ -33,7 +33,7 @@ namespace Buildings
             }
         }
         
-        protected void OnSelectDataChanged(BuildingViewModelData selectData)
+        protected void OnBuildingViewSelectDataChanged(BuildingViewModelData selectData)
         {
             
             // if (selectData.currentSelectedBuildingView == this)
@@ -104,7 +104,7 @@ namespace Buildings
             m_Initialized = false;
             
             m_BuildingMono.buildingLogic.buildingInfo.attackRange.OnValueChanged -= UpdateRangeIndicator;
-            GameManager.Instance.buildingManager.buildingViewModelHelper.OnSelectDataChanged -= OnSelectDataChanged;
+            GameManager.Instance.buildingManager.buildingViewModelHelper.OnBuildingViewSelectDataChanged -= OnBuildingViewSelectDataChanged;
         }
         
     }

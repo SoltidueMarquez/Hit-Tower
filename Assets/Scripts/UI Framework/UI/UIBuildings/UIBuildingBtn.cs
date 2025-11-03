@@ -11,6 +11,7 @@ namespace UI_Framework.UI.UIBuildings
         public Button btn;
         public TextMeshProUGUI text;
         public float cost;
+        // TODO:鼠标挪上去还得有DPS预览
 
         public void Init(BuildingData buildingData, Action action)
         {
