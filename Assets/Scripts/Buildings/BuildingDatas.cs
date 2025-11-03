@@ -25,22 +25,22 @@ namespace Buildings
         public int maxLv => levelData.Count - 1;
         public float buildCost => levelData[0].cost;
         
-        public string GetDPSAnalysis()
+        public string GetDpsAnalysis()
         {
             var analysis = new System.Text.StringBuilder();
-            analysis.AppendLine($"DPS分析 - {buildingName} (Lv{0})");
-            analysis.AppendLine($"攻击力: {levelData[0].attack}");
-            analysis.AppendLine($"攻击间隔: {levelData[0].attackInterval}s");
-            analysis.AppendLine($"攻击类型: {(levelData[0].ifSingle ? "单体" : "范围")}");
+            analysis.AppendLine($"DPS Analysis - {buildingName} (Lv{0})");
+            analysis.AppendLine($"Atk: {levelData[0].attack}");
+            analysis.AppendLine($"Atk Interval: {levelData[0].attackInterval}s");
+            analysis.AppendLine($"Atk Type: {(levelData[0].ifSingle ? "Single" : "Range")}");
     
             if (levelData[0].ifSingle)
             {
-                analysis.AppendLine($"同时攻击目标: {levelData[0].attackNum}");
+                analysis.AppendLine($"Atk Target Num: {levelData[0].attackNum}");
             }
     
-            analysis.AppendLine($"基础DPS: {levelData[0].EstimateDPS(1):F2}");
-            analysis.AppendLine($"对3目标DPS: {levelData[0].EstimateDPS(3):F2}");
-            analysis.AppendLine($"对5目标DPS: {levelData[0].EstimateDPS(5):F2}");
+            analysis.AppendLine($"Single Base DPS: {levelData[0].EstimateDPS(1):F2}");
+            analysis.AppendLine($"3 Target DPS: {levelData[0].EstimateDPS(3):F2}");
+            analysis.AppendLine($"5 Target DPS: {levelData[0].EstimateDPS(5):F2}");
     
             return analysis.ToString();
         }
