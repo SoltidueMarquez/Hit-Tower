@@ -139,6 +139,14 @@ namespace Buildings
         private void UpdateBuildingsEnemyList()
         {
             if (activeBuildings.Count == 0 || activeBuildings == null) return;
+            if (GameManager.Instance.enemyManager.activeEnemies.Count == 0)// 如果没有敌人
+            {
+                foreach (var buildingMono in activeBuildings)
+                {
+                    buildingMono.enemiesInRange.Clear();
+                }
+                return;
+            }
             try
             {
                 if (buildingEnemyRangeShader == null)
