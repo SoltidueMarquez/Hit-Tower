@@ -29,8 +29,8 @@ namespace Buff_System.BuffModules
                 info.attack.ModifyAdditive(enemyProperty.attack.x);
                 info.attack.ModifyMultiplier(enemyProperty.attack.y);
                 
-                info.shield.ModifyAdditive(enemyProperty.shield.x);
-                info.shield.ModifyMultiplier(enemyProperty.shield.y);
+                info.atkAbsorbPercent.ModifyAdditive(enemyProperty.shield.x);
+                info.atkAbsorbPercent.ModifyMultiplier(enemyProperty.shield.y);
                 
                 info.value.ModifyAdditive(enemyProperty.value.x);
                 info.value.ModifyMultiplier(enemyProperty.value.y);

@@ -41,25 +41,43 @@ namespace Enemy
         /// <summary>
         /// 修改当前血量的接口
         /// </summary>
-        /// <param name="delta"></param>
-        /// <returns>返回new-old的delta</returns>
+        /// <param name="delta">血量变化量，正数为治疗，负数为伤害</param>
+        /// <returns>返回实际的血量变化量（新值-旧值）</returns>
         public float ModifyCurrentHealth(float delta)
         {
             var original = EnemyInfo.curHealth;
-            EnemyInfo.curHealth += delta;
-            // 控制血量不越界
-            EnemyInfo.curHealth = Mathf.Clamp(EnemyInfo.curHealth, 0, EnemyInfo.maxHealth.Value);
-
+            var newDelta = delta;
+    
+            // 伤害抵抗计算（只在受到伤害时生效）
             if (delta < 0)
             {
-                OnBeAttacked?.Invoke(delta);
+                newDelta = delta * EnemyInfo.atkAbsorbPercent.Value;
+                // Debug.Log($"伤害{damageAmount}，吸收{EnemyInfo.atkAbsorbPercent}，实际伤害{newDelta}点");
             }
-            
-            if (Mathf.Approximately(EnemyInfo.curHealth, 0f))
+    
+            // 如果没有实际的血量变化，直接返回
+            if (Mathf.Approximately(newDelta, 0f)) return 0f;
+    
+            // 应用血量变化
+            EnemyInfo.curHealth += newDelta;
+    
+            // 控制血量不越界
+            EnemyInfo.curHealth = Mathf.Clamp(EnemyInfo.curHealth, 0, EnemyInfo.maxHealth.Value);
+    
+            // 触发受击事件（只在受到伤害时）
+            if (newDelta < 0)
+            {
+                OnBeAttacked?.Invoke(newDelta);
+            }
+    
+            // 死亡判断
+            if (EnemyInfo.curHealth <= 0f)
             {
                 Die();
             }
-            return original - EnemyInfo.curHealth;
+    
+            // 返回实际的血量变化量（新值-旧值）
+            return EnemyInfo.curHealth - original;
         }
 
         private void ReCalculateHealth(float maxHealthDelta)
@@ -95,7 +113,7 @@ namespace Enemy
         [LabelText("当前血量")] public float curHealth;
         [LabelText("速度")] public ValueChannel speed;
         [LabelText("攻击力")] public ValueChannel attack;
-        [LabelText("护甲")] public ValueChannel shield;
+        [LabelText("伤害吸收倍率")] public ValueChannel atkAbsorbPercent;
         [LabelText("击杀后奖励")] public ValueChannel value;
 
         public EnemyInfo(EnemyData enemyData)
@@ -105,7 +123,7 @@ namespace Enemy
             curHealth = enemyData.maxHealth;
             speed = new ValueChannel(enemyData.speed);
             attack = new ValueChannel(enemyData.attack);
-            shield = new ValueChannel(enemyData.shield);
+            atkAbsorbPercent = new ValueChannel(enemyData.atkAbsorbPercent);
             value = new ValueChannel(enemyData.value);
         }
     }
