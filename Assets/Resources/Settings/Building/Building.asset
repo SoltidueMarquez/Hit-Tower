@@ -51,7 +51,7 @@ MonoBehaviour:
       giveBack: 10
       attack: 1
       attackRange: 300
-      attackInterval: 2
+      attackInterval: 1
       ifSingle: 0
       addBuffs: []
       attackNum: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
       giveBack: 20
       attack: 1
       attackRange: 300
-      attackInterval: 1.9
+      attackInterval: 0.9
       ifSingle: 0
       addBuffs: []
       attackNum: 0

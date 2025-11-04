@@ -46,7 +46,7 @@ namespace Buildings.Specific_Building.AOETower.State
 
         private void DoAttack()
         {
-            Debug.Log("111");
+            m_Building.buildingView.AtkAnim();
             var targetList = m_Building.enemiesInRange.Where(target => target.isActiveAndEnabled);
             if (!m_Building.buildingLogic.buildingInfo.ifSingle)
             {

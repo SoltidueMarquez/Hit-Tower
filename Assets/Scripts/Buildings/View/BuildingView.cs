@@ -14,7 +14,7 @@ namespace Buildings
         protected UIBuildingControlPanel m_ControlPanel;
 
         private bool m_Initialized = false;
-        public void Init(BuildingMono mono)
+        public virtual void Init(BuildingMono mono)
         {
             m_BuildingMono = mono;
 
@@ -67,6 +67,8 @@ namespace Buildings
                 needReset ? rangeIndicatorColor : new Color(color.r, color.g, color.b, rangeIndicatorColor.a);
         }
         #endregion
+
+        public virtual void AtkAnim() { }
 
         /// <summary>
         /// 这是脚本的回收逻辑
