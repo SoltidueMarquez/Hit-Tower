@@ -24,7 +24,7 @@ namespace Buildings
         [LabelText("预制体")] public GameObject prefab;
         public int maxLv => levelData.Count - 1;
         public float buildCost => levelData[0].cost;
-        
+        public List<GameObject> prefabs;
         public string GetDpsAnalysis()
         {
             var analysis = new System.Text.StringBuilder();

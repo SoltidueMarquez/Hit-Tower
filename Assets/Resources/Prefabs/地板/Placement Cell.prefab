@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8887382383157178681}
   - component: {fileID: 8346613554009323755}
   - component: {fileID: 6172648991835109432}
-  - component: {fileID: 795063003782428924}
   - component: {fileID: 5079935023062927896}
   - component: {fileID: 7206800624672738042}
+  - component: {fileID: 6515690501174677480}
   m_Layer: 8
   m_Name: Placement Cell
   m_TagString: Untagged
@@ -86,7 +86,39 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &795063003782428924
+--- !u!114 &5079935023062927896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2598459335915598796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636f5fa6be8d4cd398caa8a9e452188e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showGrid: 1
+  gridColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.3}
+  gridSize: 3
+  enableAntiOverlap: 1
+  overlapCheckLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  objectSize: {x: 1, y: 1, z: 1}
+--- !u!114 &7206800624672738042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2598459335915598796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1aced7e77854c2f950e7a8c8a8ac345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &6515690501174677480
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,36 +140,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &5079935023062927896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2598459335915598796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 636f5fa6be8d4cd398caa8a9e452188e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  previewYOffset: 0.06
-  showGrid: 1
-  gridColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.3}
-  gridSize: 3
-  enableAntiOverlap: 1
-  overlapCheckLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  objectSize: {x: 1, y: 1, z: 1}
---- !u!114 &7206800624672738042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2598459335915598796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1aced7e77854c2f950e7a8c8a8ac345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

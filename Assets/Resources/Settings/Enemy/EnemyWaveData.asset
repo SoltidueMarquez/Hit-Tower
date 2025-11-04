@@ -18,5 +18,5 @@ MonoBehaviour:
     - enemyName: circle
       num: 1
       singleInterval: 0
-      spawnerID: 2
+      spawnerID: 1
     interval: 0

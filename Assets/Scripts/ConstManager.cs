@@ -32,4 +32,9 @@ public static class ConstManager
     /// 帧数debug更新间隔
     /// </summary>
     public const float k_FPSUpdateInterval = 0.2f;
+    
+    /// <summary>
+    /// 网格地块的Y坐标高度
+    /// </summary>
+    public const float k_PreviewYOffset = 0.06f;
 }

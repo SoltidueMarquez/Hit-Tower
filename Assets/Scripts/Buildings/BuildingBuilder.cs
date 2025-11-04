@@ -1,4 +1,5 @@
-﻿using ObjectPool;
+﻿using System.Collections.Generic;
+using ObjectPool;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -15,6 +16,11 @@ namespace Buildings
             m_BuildingManager = manager;
         }
 
+        public List<GameObject> GetBuildingPrefabs(string buildingName)
+        {
+            var data = buildingDataList.GetData(buildingName);
+            return data?.prefabs;
+        }
         
         #region 建造建筑物
         public BuildingMono CreateBuilding(string buildingName, Transform placementCell)

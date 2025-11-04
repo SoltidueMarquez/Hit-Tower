@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5202599400772478115}
   - component: {fileID: 487714847722805481}
   - component: {fileID: 4077607970089805909}
-  - component: {fileID: 2150017654735520297}
   - component: {fileID: 7446734734336217847}
   m_Layer: 7
   m_Name: Path Cell
@@ -85,28 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2150017654735520297
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5741490855595973909}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &7446734734336217847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,7 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636f5fa6be8d4cd398caa8a9e452188e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previewYOffset: 0.06
   showGrid: 1
   gridColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.3}
   gridSize: 3

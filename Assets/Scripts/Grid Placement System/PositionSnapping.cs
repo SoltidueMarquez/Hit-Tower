@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 #if UNITY_EDITOR
@@ -12,8 +13,8 @@ namespace Grid_Placement_System
     {
         [Tooltip("每个轴向上的对齐步长")] 
         private readonly Vector2 m_SnapStep = new Vector2(ConstManager.k_GridSize, ConstManager.k_GridSize);
-        [SerializeField, Tooltip("高度偏差值")] private float previewYOffset = 0.06f;
-        
+        [LabelText("高度偏差值")] private const float k_PreviewYOffset = ConstManager.k_PreviewYOffset;
+
         private Vector3 m_LastPosition;
         
         [Header("网格可视化设置")]
@@ -145,7 +146,7 @@ namespace Grid_Placement_System
             var currentPosition = transform.position;
             var snappedPosition = new Vector3(
                 Mathf.Round(currentPosition.x / m_SnapStep.x) * m_SnapStep.x,
-                previewYOffset,
+                k_PreviewYOffset,
                 Mathf.Round(currentPosition.z / m_SnapStep.y) * m_SnapStep.y
             );
 
