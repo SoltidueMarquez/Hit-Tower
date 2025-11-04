@@ -1,8 +1,8 @@
 ﻿using Utils.StateMachine;
 
-namespace Buildings.Specific_Building.AOETower.State
+namespace Buildings.Specific_Building.DOTTower.State
 {
-    public class AoeTowerIdleState : IState
+    public class DotTowerIdleState : IState
     {
         private StateMachine stateMachine { get; set; }
         private BuildingMono m_Building;
@@ -20,7 +20,7 @@ namespace Buildings.Specific_Building.AOETower.State
         {
             if (m_Building.enemiesInRange.Count > 0)
             {
-                stateMachine.SwitchTo<AoeTowerAttackState>();
+                stateMachine.SwitchTo<DotTowerAttackState>();
             }
         }
 

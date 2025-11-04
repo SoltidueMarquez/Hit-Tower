@@ -41,3 +41,6 @@ MonoBehaviour:
     - name: "\u5BD2\u51B7"
       path: 
       so: {fileID: 11400000, guid: 916af30f13b96c649adc7b5f2b4eb08c, type: 2}
+    - name: "\u707C\u70E7"
+      path: 
+      so: {fileID: 11400000, guid: 61b2c0c656e0bd445b636d2cfe176d0a, type: 2}

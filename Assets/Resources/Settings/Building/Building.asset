@@ -75,3 +75,15 @@ MonoBehaviour:
       attackNum: 0
       maxHealth: 100
     prefab: {fileID: 4431042111936490714, guid: 3ecb9d615932e404cbf69b1cb1feef3c, type: 3}
+  - buildingName: Dot Tower
+    levelData:
+    - cost: 10
+      giveBack: 10
+      attack: 0
+      attackRange: 300
+      attackInterval: 1
+      ifSingle: 0
+      addBuffs: []
+      attackNum: 0
+      maxHealth: 0
+    prefab: {fileID: 4431042111936490714, guid: e57c47ad0b2c80b4e9c5f9d8f1371402, type: 3}
