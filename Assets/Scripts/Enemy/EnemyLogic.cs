@@ -14,7 +14,7 @@ namespace Enemy
 
         #region 回调
         public event Action OnDie;
-        public event Action OnBeAttacked;
+        public event Action<float> OnBeAttacked;
         #endregion
         
         public EnemyLogic(EnemyData enemyData, GameObject mono)
@@ -52,7 +52,7 @@ namespace Enemy
 
             if (delta < 0)
             {
-                OnBeAttacked?.Invoke();
+                OnBeAttacked?.Invoke(delta);
             }
             
             if (Mathf.Approximately(EnemyInfo.curHealth, 0f))

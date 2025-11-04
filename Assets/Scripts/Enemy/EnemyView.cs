@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using DG.Tweening;
+using UI_Framework.Scripts;
+using UI_Framework.UI.UIDamageText;
 
 namespace Enemy
 {
@@ -39,10 +41,16 @@ namespace Enemy
             initialized = true;
         }
 
-        protected virtual void HurtAnim()
+        protected void CreateDamageUI(float damage)
+        {
+            UIMgr.Instance.GetFirstUI<UIDamageInfo>().CreateDamageText(enemyMono, damage);
+        }
+
+        protected virtual void HurtAnim(float delta)
         {
             if (!initialized) return;
-            
+
+            CreateDamageUI(delta);
             m_HurtSequence.Restart();
         }
 

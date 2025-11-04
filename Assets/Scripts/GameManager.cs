@@ -6,6 +6,7 @@ using UI_Framework.Scripts;
 using UI_Framework.Scripts.Tools;
 using UI_Framework.UI;
 using UI_Framework.UI.UIBuildings;
+using UI_Framework.UI.UIDamageText;
 using UI_Framework.UI.UIDebug;
 using UI_Framework.UI.UIGameInfo;
 using UI_Framework.UI.UIGameOver;
@@ -41,6 +42,8 @@ public class GameManager : Utils.Singleton<GameManager>
         
         #region UI最后再创建
         UIMgr.Instance.CreateUI<UIPlayerInfo>();
+        
+        UIMgr.Instance.CreateUI<UIDamageInfo>();
         
         UIMgr.Instance.CreateUI<UIBuildings>();
         
