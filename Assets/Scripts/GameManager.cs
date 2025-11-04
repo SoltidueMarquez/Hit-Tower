@@ -7,6 +7,7 @@ using UI_Framework.UI;
 using UI_Framework.UI.UIBuildings;
 using UI_Framework.UI.UIDebug;
 using UI_Framework.UI.UIGameInfo;
+using UI_Framework.UI.UIGameOver;
 using UI_Framework.UI.UIGameSettings;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -44,6 +45,7 @@ public class GameManager : Utils.Singleton<GameManager>
         
         // 最上层的是设置UI
         UIMgr.Instance.CreateUI<UIGameSettings>();
+        UIMgr.Instance.CreateUI<UIGameOver>();
         UIMgr.Instance.CreateUI<UIDebug>();
         #endregion
     }
@@ -51,7 +53,7 @@ public class GameManager : Utils.Singleton<GameManager>
     #region 胜负判定
     private void GameOverLose()
     {
-        Debug.Log("游戏结束，玩家死亡");
+        UIMgr.Instance.GetFirstUI<UIGameOver>().InitLose();
     }
 
     private void CheckGameWin()
@@ -60,7 +62,7 @@ public class GameManager : Utils.Singleton<GameManager>
     }
     private void GameOverWine()
     {
-        Debug.Log("游戏胜利");
+        UIMgr.Instance.GetFirstUI<UIGameOver>().InitWin();
     }
     #endregion
 
