@@ -45,3 +45,24 @@ MonoBehaviour:
       attackNum: 5
       maxHealth: 100
     prefab: {fileID: 4431042111936490714, guid: cd75a783ee8829c42bdbbda206e2a98f, type: 3}
+  - buildingName: Aoe Tower
+    levelData:
+    - cost: 10
+      giveBack: 10
+      attack: 1
+      attackRange: 300
+      attackInterval: 2
+      ifSingle: 0
+      addBuffs: []
+      attackNum: 0
+      maxHealth: 100
+    - cost: 20
+      giveBack: 20
+      attack: 1
+      attackRange: 300
+      attackInterval: 1.9
+      ifSingle: 0
+      addBuffs: []
+      attackNum: 0
+      maxHealth: 100
+    prefab: {fileID: 4431042111936490714, guid: 3ecb9d615932e404cbf69b1cb1feef3c, type: 3}

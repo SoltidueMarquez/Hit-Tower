@@ -9,6 +9,7 @@ namespace Buildings
     public class BuildingView : MonoBehaviour, IPointerClickHandler
     {
         [LabelText("攻击范围指示器"), SerializeField] protected SpriteRenderer rangeIndicator;
+        protected Color rangeIndicatorColor;
         protected BuildingMono m_BuildingMono;
         protected UIBuildingControlPanel m_ControlPanel;
 
@@ -17,6 +18,7 @@ namespace Buildings
         {
             m_BuildingMono = mono;
 
+            rangeIndicatorColor = rangeIndicator.color;
             UpdateRangeIndicator();
             
             // 订阅范围更新事件
@@ -57,6 +59,12 @@ namespace Buildings
         public void SetRangeIndicatorVisible(bool visible)
         {
             rangeIndicator.gameObject.SetActive(visible);
+        }
+
+        public void SetRangeIndicatorColor(Color color,bool needReset = false)
+        {
+            rangeIndicator.color =
+                needReset ? rangeIndicatorColor : new Color(color.r, color.g, color.b, rangeIndicatorColor.a);
         }
         #endregion
 

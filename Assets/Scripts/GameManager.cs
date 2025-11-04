@@ -1,4 +1,5 @@
-﻿using Buildings;
+﻿using Buff_System;
+using Buildings;
 using Enemy;
 using Player;
 using UI_Framework.Scripts;
@@ -19,9 +20,11 @@ public class GameManager : Utils.Singleton<GameManager>
     public EnemyManager enemyManager { get; private set; }
     public PlayerManager playerManager { get; private set; }
     public BuildingManager buildingManager { get; private set; }
+    public BuffManager buffManager { get; private set; }
     public void Start()
     {
         InitTimeScale();
+        buffManager = GetComponentInChildren<BuffManager>();
         
         playerManager = GetComponentInChildren<PlayerManager>();
         if (playerManager != null) playerManager.Init();
@@ -45,7 +48,9 @@ public class GameManager : Utils.Singleton<GameManager>
         
         // 最上层的是设置UI
         UIMgr.Instance.CreateUI<UIGameSettings>();
+        
         UIMgr.Instance.CreateUI<UIGameOver>();
+        
         UIMgr.Instance.CreateUI<UIDebug>();
         #endregion
     }

@@ -38,6 +38,6 @@ MonoBehaviour:
       so: {fileID: 11400000, guid: ca1c5c76df7abdf4ea91b8eaf3c73256, type: 2}
   - key: "Buff\u914D\u7F6E"
     value:
-    - name: "\u6D4B\u8BD5"
+    - name: "\u5BD2\u51B7"
       path: 
-      so: {fileID: 11400000, guid: 5f7e83c772bc4f343bf2abef32100c25, type: 2}
+      so: {fileID: 11400000, guid: 916af30f13b96c649adc7b5f2b4eb08c, type: 2}

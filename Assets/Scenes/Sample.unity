@@ -2012,6 +2012,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5202599400772478115, guid: 264ecd12bfc16a24fb5b06e34c8b3628, type: 3}
   m_PrefabInstance: {fileID: 467617119}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &499808361
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 499808362}
+  - component: {fileID: 499808363}
+  m_Layer: 0
+  m_Name: Buff Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &499808362
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499808361}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1626341087}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &499808363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499808361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883653f491c647b3bbeadf196178b531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buffDatas:
+  - {fileID: 11400000, guid: 916af30f13b96c649adc7b5f2b4eb08c, type: 2}
 --- !u!1001 &519494939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5909,6 +5955,7 @@ Transform:
   - {fileID: 539798811}
   - {fileID: 344839975}
   - {fileID: 98085034}
+  - {fileID: 499808362}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1626341088

@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Utils
 {
@@ -28,14 +29,16 @@ namespace Utils
         
         public void ModifyAdditive(float delta)
         {
+            var original = m_AdditiveModifier;
             m_AdditiveModifier += delta;
-            OnValueChanged?.Invoke(Value);
+            if (Mathf.Approximately(original, m_AdditiveModifier)) OnValueChanged?.Invoke(Value);
         }
         
         public void ModifyMultiplier(float delta)
         {
+            var original = m_MultiplicativeModifier;
             m_MultiplicativeModifier += delta;
-            OnValueChanged?.Invoke(Value);
+            if (Mathf.Approximately(original, m_MultiplicativeModifier)) OnValueChanged?.Invoke(Value);
         }
 
         public void SetBaseValue(float newValue)

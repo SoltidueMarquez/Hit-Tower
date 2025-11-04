@@ -22,7 +22,7 @@ MonoBehaviour:
     initBuffs: []
     prefab: {fileID: 1181108531587047650, guid: 2eaa2cb5903799e44a93ef2dd383af10, type: 3}
   - enemyName: square
-    maxHealth: 0
+    maxHealth: 10
     speed: 150
     attack: 2
     shield: 0

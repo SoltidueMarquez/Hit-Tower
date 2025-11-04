@@ -40,12 +40,4 @@ namespace Buff_System
             curStack = 1;
         }
     }
-
-    [Serializable]
-    public class Property
-    {
-        public float hp;
-        public float speed;
-        public float atk;
-    }
 }
