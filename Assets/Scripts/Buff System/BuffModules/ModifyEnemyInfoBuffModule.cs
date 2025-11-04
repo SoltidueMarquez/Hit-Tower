@@ -16,16 +16,16 @@ namespace Buff_System.BuffModules
             var character = buffInfo.target.GetComponent<EnemyMono>(); //找到目标身上的角色脚本
             if (character)
             {
-                if (enemyProperty.curHealth != 0) character.EnemyLogicMono.ModifyCurrentHealth(enemyProperty.curHealth);
+                if (enemyProperty.curHealth != 0) character.enemyLogic.ModifyCurrentHealth(enemyProperty.curHealth);
                 
-                var info = character.EnemyLogicMono.EnemyInfo;
+                var info = character.enemyLogic.EnemyInfo;
                 
                 info.maxHealth.ModifyAdditive(enemyProperty.maxHealth.x);
                 info.maxHealth.ModifyMultiplier(enemyProperty.maxHealth.y);
                 
                 info.speed.ModifyAdditive(enemyProperty.speed.x);
                 info.speed.ModifyMultiplier(enemyProperty.speed.y);
-                
+
                 info.attack.ModifyAdditive(enemyProperty.attack.x);
                 info.attack.ModifyMultiplier(enemyProperty.attack.y);
                 

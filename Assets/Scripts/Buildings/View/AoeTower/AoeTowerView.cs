@@ -52,7 +52,7 @@ namespace Buildings.AoeTower
             if (atkIndicator == null || atkIndicator.sprite == null) return 0f;
         
             // 获取攻击范围
-            float attackRange = m_BuildingMono.buildingLogic.buildingInfo.attackRange.Value;
+            float attackRange = buildingMono.buildingLogic.buildingInfo.attackRange.Value;
         
             // 获取精灵的原始大小（世界单位）
             float spriteSize = atkIndicator.sprite.bounds.size.x;

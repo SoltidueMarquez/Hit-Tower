@@ -10,22 +10,22 @@ namespace Buildings
     {
         [LabelText("攻击范围指示器"), SerializeField] protected SpriteRenderer rangeIndicator;
         protected Color rangeIndicatorColor;
-        protected BuildingMono m_BuildingMono;
-        protected UIBuildingControlPanel m_ControlPanel;
+        protected BuildingMono buildingMono;
+        protected UIBuildingControlPanel controlPanel;
 
         private bool m_Initialized = false;
         public virtual void Init(BuildingMono mono)
         {
-            m_BuildingMono = mono;
+            buildingMono = mono;
 
             rangeIndicatorColor = rangeIndicator.color;
             UpdateRangeIndicator();
             
             // 订阅范围更新事件
-            m_BuildingMono.buildingLogic.buildingInfo.attackRange.OnValueChanged += UpdateRangeIndicator;
+            buildingMono.buildingLogic.buildingInfo.attackRange.OnValueChanged += UpdateRangeIndicator;
             
             // 创建对应的m_ControlPanel
-            m_ControlPanel = UIMgr.Instance.GetFirstUI<UIBuildings>().CreateBuildingControlPanel(m_BuildingMono);
+            controlPanel = UIMgr.Instance.GetFirstUI<UIBuildings>().CreateBuildingControlPanel(buildingMono);
 
             m_Initialized = true;
         }
@@ -41,10 +41,10 @@ namespace Buildings
         #region 范围指示相关
         protected void UpdateRangeIndicator(float newValue = 0f)
         {
-            if (rangeIndicator == null || m_BuildingMono == null) return;
+            if (rangeIndicator == null || buildingMono == null) return;
         
             // 获取攻击范围
-            float attackRange = m_BuildingMono.buildingLogic.buildingInfo.attackRange.Value;
+            float attackRange = buildingMono.buildingLogic.buildingInfo.attackRange.Value;
         
             // 获取精灵的原始大小（世界单位）
             float spriteSize = rangeIndicator.sprite.bounds.size.x;
@@ -77,10 +77,10 @@ namespace Buildings
         {
             m_Initialized = false;
             
-            m_BuildingMono.buildingLogic.buildingInfo.attackRange.OnValueChanged -= UpdateRangeIndicator;
+            buildingMono.buildingLogic.buildingInfo.attackRange.OnValueChanged -= UpdateRangeIndicator;
 
             // 直接销毁UI吧，对象池要考虑得太多了，不会消耗多少性能的
-            if (m_ControlPanel != null) Destroy(m_ControlPanel.gameObject);
+            if (controlPanel != null) Destroy(controlPanel.gameObject);
         }
         
     }

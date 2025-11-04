@@ -19,7 +19,7 @@ MonoBehaviour:
   priority: 0
   maxStack: 1
   isForever: 0
-  duration: 0.25
+  duration: 1
   tickTime: 100
   buffUpdateTime: 1
   buffRemoveStackUpdate: 0

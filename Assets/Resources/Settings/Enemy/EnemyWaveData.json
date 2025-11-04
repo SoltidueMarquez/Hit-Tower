@@ -41,12 +41,18 @@
             "singleWaveList": [
                 {
                     "enemyName": "circle",
-                    "num": 100,
-                    "singleInterval": 0.05000000074505806,
+                    "num": 50,
+                    "singleInterval": 0.10000000149011612,
                     "spawnerID": "2"
+                },
+                {
+                    "enemyName": "square",
+                    "num": 50,
+                    "singleInterval": 0.10000000149011612,
+                    "spawnerID": "1"
                 }
             ],
-            "interval": 0.0
+            "interval": 0.10000000149011612
         }
     ]
 }

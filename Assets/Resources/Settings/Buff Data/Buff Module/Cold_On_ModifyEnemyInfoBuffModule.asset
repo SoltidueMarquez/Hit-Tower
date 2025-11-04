@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyProperty:
     maxHealth: {x: 0, y: 0}
     curHealth: 0
-    speed: {x: 0, y: -0.5}
+    speed: {x: 0, y: -0.9}
     attack: {x: 0, y: 0}
     shield: {x: 0, y: 0}
     value: {x: 0, y: 0}

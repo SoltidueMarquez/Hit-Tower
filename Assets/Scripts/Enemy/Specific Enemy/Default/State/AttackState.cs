@@ -16,8 +16,8 @@ namespace Enemy.State
         { 
             // 不用空检测，有requireComponent约束
             GameManager.Instance.
-                    playerManager.playerLogic.ModifyCurrentHealth(-m_Mono.EnemyLogicMono.EnemyInfo.attack.Value);
-            m_Mono.EnemyLogicMono.SetDie();
+                    playerManager.playerLogic.ModifyCurrentHealth(-m_Mono.enemyLogic.EnemyInfo.attack.Value);
+            m_Mono.enemyLogic.SetDie();
         }
 
         public void OnTick()

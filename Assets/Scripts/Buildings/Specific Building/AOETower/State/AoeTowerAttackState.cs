@@ -69,9 +69,9 @@ namespace Buildings.Specific_Building.AOETower.State
         private void DoSingleAtk(EnemyMono mono)
         {
             // 攻击
-            mono.EnemyLogicMono.ModifyCurrentHealth(-m_Building.buildingLogic.buildingInfo.attack.Value);
+            mono.enemyLogic.ModifyCurrentHealth(-m_Building.buildingLogic.buildingInfo.attack.Value);
             // 加减速buff
-            mono.EnemyLogicMono.BuffHandler.AddBuff(new BuffInfo(GameManager.Instance.buffManager.GetBuffData(1),m_Building.gameObject,mono.gameObject));
+            mono.enemyLogic.BuffHandler.AddBuff(new BuffInfo(GameManager.Instance.buffManager.GetBuffData(1),m_Building.gameObject,mono.gameObject));
         }
 
         public void OnExit()

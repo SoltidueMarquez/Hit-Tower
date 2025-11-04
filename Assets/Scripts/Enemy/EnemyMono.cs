@@ -7,86 +7,96 @@ using Utils.StateMachine;
 
 namespace Enemy
 {
-    [RequireComponent(typeof(StateMachine), typeof(NavMeshAgent))]
+    [RequireComponent(typeof(StateMachine), typeof(NavMeshAgent),typeof(EnemyView))]
     public class EnemyMono : MonoBehaviour
     {
-        [field: LabelText("逻辑类")] public EnemyLogic EnemyLogicMono { get; private set; }
+        [LabelText("逻辑类")] public EnemyLogic enemyLogic { get; private set; }
+        
+        [LabelText("表现层")] public EnemyView enemyView { get; private set; }
+        
+        [LabelText("管理器")] protected EnemyManager enemyManager;
+        [LabelText("Nav组件")] protected NavMeshAgent agent;
 
-        [LabelText("管理器")] protected EnemyManager m_EnemyManager;
-        [LabelText("Nav组件")] protected NavMeshAgent m_Agent;
+        [LabelText("状态机")] protected StateMachine stateMachine;
 
-        [LabelText("状态机")] protected StateMachine m_StateMachine;
-
-        [LabelText("初始化标志")] protected bool m_Initialized = false;
+        [LabelText("初始化标志")] protected bool initialized = false;
 
         public virtual void Init(EnemyData enemyData, EnemyManager manager)
         {
-            EnemyLogicMono = new EnemyLogic(enemyData, gameObject);
-            m_EnemyManager = manager;
+            enemyLogic = new EnemyLogic(enemyData, gameObject);
+            enemyManager = manager;
             
-            m_Agent = GetComponent<NavMeshAgent>();
-            m_Agent.enabled = true;
-            SetSpeed(EnemyLogicMono.EnemyInfo.speed.Value);
+            enemyView = GetComponent<EnemyView>();
+            enemyView.Init(this);
+            
+            agent = GetComponent<NavMeshAgent>();
+            agent.enabled = true;
+            SetSpeed(enemyLogic.EnemyInfo.speed.Value);
 
             InitStateMachine();
             
             // 添加到活跃敌人列表
-            m_EnemyManager.AddEnemy(this);
+            enemyManager.AddEnemy(this);
             
             // 事件订阅
-            EnemyLogicMono.OnDie += Recycle;
-            m_EnemyManager.OnTick += Tick;
-            EnemyLogicMono.EnemyInfo.speed.OnValueChanged += SetSpeed;
+            enemyLogic.OnDie += Recycle;
+            enemyManager.OnTick += Tick;
+            enemyLogic.EnemyInfo.speed.OnValueChanged += SetSpeed;
             
-            m_Initialized = true;
+            initialized = true;
         }
 
         protected virtual void InitStateMachine()
         {
             // 添加状态机组
-            m_StateMachine = GetComponent<StateMachine>();
-            m_StateMachine.ClearStates();
+            stateMachine = GetComponent<StateMachine>();
+            stateMachine.ClearStates();
             // 注册状态，如果已经注册过了就什么都不会做
-            m_StateMachine.RegisterState(new IdleState());
-            m_StateMachine.RegisterState(new MoveState());
-            m_StateMachine.RegisterState(new AttackState());
+            stateMachine.RegisterState(new IdleState());
+            stateMachine.RegisterState(new MoveState());
+            stateMachine.RegisterState(new AttackState());
         
             // 设置初始状态
-            m_StateMachine.SwitchTo<IdleState>();
+            stateMachine.SwitchTo<IdleState>();
         }
 
-        protected void SetSpeed(float speed)
+        protected void SetSpeed(float delta)
         {
-            m_Agent.speed = speed;
+            agent.speed = enemyLogic.EnemyInfo.speed.Value;
         }
         
         protected void Tick()
         {
-            if (!m_Initialized) return;
-            EnemyLogicMono.Tick();
-            m_StateMachine.Tick();
+            if (!initialized) return;
+            enemyLogic.Tick();
+            stateMachine.Tick();
         }
 
         protected void Recycle()
         {
-            m_Initialized = false;
-            m_Agent.enabled = false;
+            initialized = false;
+            agent.enabled = false;
             
             // 从管理器列表中移除
-            if (m_EnemyManager != null)
+            if (enemyManager != null)
             {
-                m_EnemyManager.RemoveEnemy(this);
+                enemyManager.RemoveEnemy(this);
             }
             
             // 取消事件订阅避免重复订阅与泄漏
-            if (EnemyLogicMono != null)
+            if (enemyLogic != null)
             {
-                EnemyLogicMono.OnDie -= Recycle;
-                EnemyLogicMono.EnemyInfo.speed.OnValueChanged -= SetSpeed;
+                enemyLogic.OnDie -= Recycle;
+                enemyLogic.EnemyInfo.speed.OnValueChanged -= SetSpeed;
             }
-            if (m_EnemyManager != null)
+            if (enemyManager != null)
             {
-                m_EnemyManager.OnTick -= Tick;
+                enemyManager.OnTick -= Tick;
+            }
+            
+            if (enemyView != null)
+            {
+                enemyView.Recycle();
             }
             
             // 回收到对象池

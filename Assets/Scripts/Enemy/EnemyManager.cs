@@ -53,7 +53,7 @@ namespace Enemy
         {
             foreach (var enemy in activeEnemies.Where(enemy => enemy != null))
             {
-                enemy.EnemyLogicMono.SetDie();
+                enemy.enemyLogic.SetDie();
             }
 
             // activeEnemies.Clear();
@@ -63,7 +63,7 @@ namespace Enemy
 
         public int GetActiveBuffNum()
         {
-            return activeEnemies.Sum(x => x.EnemyLogicMono.BuffHandler.buffList.Count);
+            return activeEnemies.Sum(x => x.enemyLogic.BuffHandler.buffList.Count);
         }
     }
 }

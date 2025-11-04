@@ -49,9 +49,9 @@ MonoBehaviour:
     levelData:
     - cost: 10
       giveBack: 10
-      attack: 1
+      attack: 0
       attackRange: 300
-      attackInterval: 1
+      attackInterval: 2
       ifSingle: 0
       addBuffs: []
       attackNum: 0
@@ -60,7 +60,16 @@ MonoBehaviour:
       giveBack: 20
       attack: 1
       attackRange: 300
-      attackInterval: 0.9
+      attackInterval: 1.7
+      ifSingle: 0
+      addBuffs: []
+      attackNum: 0
+      maxHealth: 100
+    - cost: 30
+      giveBack: 30
+      attack: 1
+      attackRange: 400
+      attackInterval: 1.5
       ifSingle: 0
       addBuffs: []
       attackNum: 0
