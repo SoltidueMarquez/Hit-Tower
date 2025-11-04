@@ -10,11 +10,6 @@ namespace UI_Framework.UI.UIDamageText
     {
         public TextMeshProUGUI damageText;
         private Sequence m_AnimationSequence;
-        
-        private void Start()
-        {
-            
-        }
 
         public void Init(float damage)
         {

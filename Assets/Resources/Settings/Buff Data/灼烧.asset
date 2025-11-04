@@ -14,15 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   buffName: Burning
-  description: 
+  description: "\u6700\u5927\u751F\u547D\u503C\u767E\u5206\u6BD4\u7684\u707C\u70E7\u4F24\u5BB3\n"
   icon: {fileID: 0}
   priority: 0
-  maxStack: 2
+  maxStack: 10
   isForever: 0
-  duration: 5
-  tickTime: 0.2
-  buffUpdateTime: 0
+  duration: 1.5
+  tickTime: 0.3
+  buffUpdateTime: 1
   buffRemoveStackUpdate: 1
   OnCreate: []
   OnRemove: []
-  OnTick: []
+  OnTick:
+  - {fileID: 11400000, guid: 6b2fa62564c19da44b58282e4a899039, type: 2}

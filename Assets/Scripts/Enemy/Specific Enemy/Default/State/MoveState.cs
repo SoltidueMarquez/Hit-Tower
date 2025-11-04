@@ -27,8 +27,6 @@ namespace Enemy.State
             if (m_Agent.pathStatus == NavMeshPathStatus.PathInvalid)
             {
                 // 处理移动失败，例如寻找备用目标或切换到闲置状态
-                Debug.LogWarning("无法到达目标位置！");
-                stateMachine.SwitchTo<AttackState>();
                 return;
             }
             
@@ -48,7 +46,7 @@ namespace Enemy.State
 
         public void OnExit()
         {
-            m_Agent.isStopped = true;
+            if (m_Agent.gameObject.activeSelf) m_Agent.isStopped = true;
         }
 
         public void Init()
