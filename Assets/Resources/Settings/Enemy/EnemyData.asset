@@ -18,6 +18,7 @@ MonoBehaviour:
     speed: 100
     attack: 1
     atkAbsorbPercent: 1
+    shield: 1
     value: 1
     initBuffs: []
     prefab: {fileID: 1181108531587047650, guid: 2eaa2cb5903799e44a93ef2dd383af10, type: 3}
@@ -26,6 +27,7 @@ MonoBehaviour:
     speed: 150
     attack: 2
     atkAbsorbPercent: 1
+    shield: 0
     value: 2
     initBuffs: []
     prefab: {fileID: 1181108531587047650, guid: 73e54fac2966bd148b1c8d433e160a7f, type: 3}

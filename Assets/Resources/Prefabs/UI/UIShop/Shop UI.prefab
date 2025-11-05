@@ -198,8 +198,9 @@ GameObject:
   - component: {fileID: 8334614431954951944}
   - component: {fileID: 1814469472168793362}
   - component: {fileID: 4079749552780401182}
-  - component: {fileID: 4116042336097279302}
   - component: {fileID: 2463192276644655650}
+  - component: {fileID: 7662804220962728470}
+  - component: {fileID: 1428926036956570573}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -265,7 +266,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4116042336097279302
+--- !u!114 &2463192276644655650
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -274,7 +275,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 7486762916559440434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 43cd27fe4f5c4a81beb4e4dbd6846a52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 1428926036956570573}
+  text: {fileID: 6527820205518214340}
+--- !u!114 &7662804220962728470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7486762916559440434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b89e61feb83c4061a59e13b9c8bad946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterClickAnim:
+    m_PersistentCalls:
+      m_Calls: []
+  btnImage: {fileID: 0}
+  btnText: {fileID: 0}
+  btnTextPro: {fileID: 0}
+  enterNeedScale: 1
+  enterTextColor: {r: 0, g: 0, b: 0, a: 0}
+  enterSprite: {fileID: 0}
+  exitNeedScale: 1
+  exitTextColor: {r: 0, g: 0, b: 0, a: 0}
+  exitSprite: {fileID: 0}
+--- !u!114 &1428926036956570573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7486762916559440434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ecb0c105fd046edada9fe4358996a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -308,21 +347,62 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4079749552780401182}
   m_OnClick:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7662804220962728470}
+        m_TargetAssemblyTypeName: Battle.UI.UIButtonMoveEffects, Assembly-CSharp
+        m_MethodName: PointerClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPointerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7662804220962728470}
+        m_TargetAssemblyTypeName: Battle.UI.UIButtonMoveEffects, Assembly-CSharp
+        m_MethodName: PointerEnter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPointerExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7662804220962728470}
+        m_TargetAssemblyTypeName: Battle.UI.UIButtonMoveEffects, Assembly-CSharp
+        m_MethodName: PointerExit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onRightClick:
+    m_PersistentCalls:
       m_Calls: []
---- !u!114 &2463192276644655650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7486762916559440434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43cd27fe4f5c4a81beb4e4dbd6846a52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btn: {fileID: 4116042336097279302}
-  text: {fileID: 6527820205518214340}
+  onDeselect:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelect:
+    m_PersistentCalls:
+      m_Calls: []
+  autoUp: 0
+  clickSound: 
+  highLightSound: 
+  cantClick: 0
 --- !u!1 &8631307852992333136
 GameObject:
   m_ObjectHideFlags: 0

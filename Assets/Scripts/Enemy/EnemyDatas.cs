@@ -25,6 +25,7 @@ namespace Enemy
         [LabelText("速度")] public float speed;
         [LabelText("攻击力")] public float attack;
         [LabelText("伤害吸收倍率"), Range(0.1f, 2f)] public float atkAbsorbPercent = 1;
+        [LabelText("护甲")] public float shield;
         [LabelText("击杀后奖励")] public float value;
         [LabelText("初始挂载的buff")] public List<BuffData> initBuffs;
         [LabelText("预制体")] public GameObject prefab;

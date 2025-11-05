@@ -52,6 +52,7 @@ namespace Enemy
             if (delta < 0)
             {
                 newDelta = delta * EnemyInfo.atkAbsorbPercent.Value;
+                newDelta = Mathf.Min(0, EnemyInfo.shield.Value + newDelta);// 计算护盾
                 // Debug.Log($"伤害{damageAmount}，吸收{EnemyInfo.atkAbsorbPercent}，实际伤害{newDelta}点");
             }
     
@@ -114,6 +115,7 @@ namespace Enemy
         [LabelText("速度")] public ValueChannel speed;
         [LabelText("攻击力")] public ValueChannel attack;
         [LabelText("伤害吸收倍率")] public ValueChannel atkAbsorbPercent;
+        [LabelText("护甲")] public ValueChannel shield;
         [LabelText("击杀后奖励")] public ValueChannel value;
 
         public EnemyInfo(EnemyData enemyData)
@@ -124,6 +126,7 @@ namespace Enemy
             speed = new ValueChannel(enemyData.speed);
             attack = new ValueChannel(enemyData.attack);
             atkAbsorbPercent = new ValueChannel(enemyData.atkAbsorbPercent);
+            shield = new ValueChannel(enemyData.shield);
             value = new ValueChannel(enemyData.value);
         }
     }
