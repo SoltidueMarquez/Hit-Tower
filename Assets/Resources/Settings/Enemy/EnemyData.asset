@@ -16,11 +16,12 @@ MonoBehaviour:
   - enemyName: circle
     maxHealth: 10
     speed: 100
-    attack: 1
+    attack: 0
     atkAbsorbPercent: 1
-    shield: 1
+    shield: 0
     value: 1
-    initBuffs: []
+    initBuffs:
+    - {fileID: 11400000, guid: 75bbfb784d3d6f24eb79b07a9d4a1d6f, type: 2}
     prefab: {fileID: 1181108531587047650, guid: 2eaa2cb5903799e44a93ef2dd383af10, type: 3}
   - enemyName: square
     maxHealth: 10
@@ -30,4 +31,14 @@ MonoBehaviour:
     shield: 0
     value: 2
     initBuffs: []
+    prefab: {fileID: 1181108531587047650, guid: 220fb34cf3cf6204a9104b25b2861bbb, type: 3}
+  - enemyName: square_Plus
+    maxHealth: 50
+    speed: 50
+    attack: 10
+    atkAbsorbPercent: 0.8
+    shield: 0
+    value: 100
+    initBuffs:
+    - {fileID: 11400000, guid: 01cdf3f315f36b6468ef324c321eb368, type: 2}
     prefab: {fileID: 1181108531587047650, guid: 73e54fac2966bd148b1c8d433e160a7f, type: 3}

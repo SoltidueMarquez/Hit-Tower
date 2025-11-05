@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Buff_System;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -11,23 +13,35 @@ namespace Enemy
         public EnemyInfo EnemyInfo { get; private set; }
 
         public BuffHandler BuffHandler { get; private set; }
+        
+        private readonly GameObject m_MonoGameObject;
 
         #region 回调
         public event Action OnDie;
         public event Action<float> OnBeAttacked;
+        public event Action OnFirstDropDownHalf;
+        private bool firstDropDownHalfHealth;
         #endregion
         
         public EnemyLogic(EnemyData enemyData, GameObject mono)
         {
+            firstDropDownHalfHealth = false;
             EnemyInfo = new EnemyInfo(enemyData);
             BuffHandler = new BuffHandler();
+            m_MonoGameObject = mono;
 
-            foreach (var buffData in enemyData.initBuffs)
-            {
-                BuffHandler.AddBuff(new BuffInfo(buffData, mono, mono));
-            }
+            var currentCoroutineId = CoroutineHelper.StartWithId(LateHandleBuff());
 
             EnemyInfo.maxHealth.OnValueChanged += ReCalculateHealth;
+        }
+        
+        public IEnumerator LateHandleBuff()
+        {
+            yield return null;
+            foreach (var buffData in EnemyInfo.initBuffs)
+            {
+                BuffHandler.AddBuff(new BuffInfo(buffData, m_MonoGameObject, m_MonoGameObject));
+            }
         }
 
         /// <summary>
@@ -57,14 +71,25 @@ namespace Enemy
             }
     
             // 如果没有实际的血量变化，直接返回
-            if (Mathf.Approximately(newDelta, 0f)) return 0f;
+            if (Mathf.Approximately(newDelta, 0f))
+            {
+                OnBeAttacked?.Invoke(newDelta);
+                return 0f;
+            }
     
             // 应用血量变化
             EnemyInfo.curHealth += newDelta;
     
             // 控制血量不越界
             EnemyInfo.curHealth = Mathf.Clamp(EnemyInfo.curHealth, 0, EnemyInfo.maxHealth.Value);
-    
+
+            // 狂暴的回调
+            if (EnemyInfo.curHealth < EnemyInfo.maxHealth.Value / 2 && !firstDropDownHalfHealth)
+            {
+                firstDropDownHalfHealth = true;
+                OnFirstDropDownHalf?.Invoke();
+            }
+            
             // 触发受击事件（只在受到伤害时）
             if (newDelta < 0)
             {
@@ -117,6 +142,7 @@ namespace Enemy
         [LabelText("伤害吸收倍率")] public ValueChannel atkAbsorbPercent;
         [LabelText("护甲")] public ValueChannel shield;
         [LabelText("击杀后奖励")] public ValueChannel value;
+        [LabelText("初始挂载的buff")] public List<BuffData> initBuffs;
 
         public EnemyInfo(EnemyData enemyData)
         {
@@ -128,6 +154,7 @@ namespace Enemy
             atkAbsorbPercent = new ValueChannel(enemyData.atkAbsorbPercent);
             shield = new ValueChannel(enemyData.shield);
             value = new ValueChannel(enemyData.value);
+            initBuffs = enemyData.initBuffs;
         }
     }
 }

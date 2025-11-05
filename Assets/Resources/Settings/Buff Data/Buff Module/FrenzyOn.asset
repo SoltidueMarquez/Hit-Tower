@@ -9,14 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b78cee54856e40a7bf668f52d113421a, type: 3}
-  m_Name: EnemyWaveData
+  m_Script: {fileID: 11500000, guid: fb849d9703c44cb18818aca8d0ac9634, type: 3}
+  m_Name: FrenzyOn
   m_EditorClassIdentifier: 
-  waveDataList:
-  - waitTime: 0
-    singleWaveList:
-    - enemyName: square_Plus
-      num: 1
-      singleInterval: 1
-      spawnerID: 1
-    interval: 0
+  deltaSpeed: {x: 500, y: 0}

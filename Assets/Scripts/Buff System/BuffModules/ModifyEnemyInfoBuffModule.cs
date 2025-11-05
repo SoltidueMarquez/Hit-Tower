@@ -20,20 +20,41 @@ namespace Buff_System.BuffModules
                 
                 var info = character.enemyLogic.EnemyInfo;
                 
-                info.maxHealth.ModifyAdditive(enemyProperty.maxHealth.x);
-                info.maxHealth.ModifyMultiplier(enemyProperty.maxHealth.y);
+                if(enemyProperty.maxHealth!=Vector2.zero)
+                {
+                    info.maxHealth.ModifyAdditive(enemyProperty.maxHealth.x);
+                    info.maxHealth.ModifyMultiplier(enemyProperty.maxHealth.y);
+                }
                 
-                info.speed.ModifyAdditive(enemyProperty.speed.x);
-                info.speed.ModifyMultiplier(enemyProperty.speed.y);
+                if(enemyProperty.speed!=Vector2.zero)
+                {
+                    info.speed.ModifyAdditive(enemyProperty.speed.x);
+                    info.speed.ModifyMultiplier(enemyProperty.speed.y);
+                }
 
-                info.attack.ModifyAdditive(enemyProperty.attack.x);
-                info.attack.ModifyMultiplier(enemyProperty.attack.y);
+                if(enemyProperty.attack!=Vector2.zero)
+                {
+                    info.attack.ModifyAdditive(enemyProperty.attack.x);
+                    info.attack.ModifyMultiplier(enemyProperty.attack.y);
+                }
+
+                if(enemyProperty.atkAbsorbPercent!=Vector2.zero)
+                {
+                    info.atkAbsorbPercent.ModifyAdditive(enemyProperty.atkAbsorbPercent.x);
+                    info.atkAbsorbPercent.ModifyMultiplier(enemyProperty.atkAbsorbPercent.y);
+                }
                 
-                info.atkAbsorbPercent.ModifyAdditive(enemyProperty.shield.x);
-                info.atkAbsorbPercent.ModifyMultiplier(enemyProperty.shield.y);
+                if(enemyProperty.shield!=Vector2.zero)
+                {
+                    info.shield.ModifyAdditive(enemyProperty.shield.x);
+                    info.shield.ModifyMultiplier(enemyProperty.shield.y);
+                }
                 
-                info.value.ModifyAdditive(enemyProperty.value.x);
-                info.value.ModifyMultiplier(enemyProperty.value.y);
+                if(enemyProperty.value!=Vector2.zero)
+                {
+                    info.value.ModifyAdditive(enemyProperty.value.x);
+                    info.value.ModifyMultiplier(enemyProperty.value.y);
+                }
             }
         }
     }
@@ -46,6 +67,7 @@ namespace Buff_System.BuffModules
         [LabelText("当前血量，只能加减")] public float curHealth;
         [LabelText("速度")] public Vector2 speed;
         [LabelText("攻击力")] public Vector2 attack;
+        [LabelText("伤害吸收率")] public Vector2 atkAbsorbPercent;
         [LabelText("护甲")] public Vector2 shield;
         [LabelText("击杀后奖励")] public Vector2 value;
     }

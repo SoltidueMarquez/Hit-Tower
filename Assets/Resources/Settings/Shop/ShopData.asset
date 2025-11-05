@@ -19,3 +19,6 @@ MonoBehaviour:
   - type: 0
     buffData: {fileID: 11400000, guid: 8e8418bdcf38b484ab10313dcf43ca60, type: 2}
     cost: 10
+  - type: 1
+    buffData: {fileID: 11400000, guid: 43b29b59307aaac40be13e9d8e1f356b, type: 2}
+    cost: 10

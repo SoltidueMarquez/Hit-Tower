@@ -46,7 +46,10 @@ MonoBehaviour:
       Data: 2|System.Collections.Generic.HashSet`1[[System.String, mscorlib]], System.Core
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
+    - Name: 
+      Entry: 1
+      Data: square_Plus
     - Name: 
       Entry: 1
       Data: circle
