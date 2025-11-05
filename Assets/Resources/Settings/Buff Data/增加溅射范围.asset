@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15074249d5784254996ce7b7d32c8f5b, type: 3}
+  m_Name: "\u589E\u52A0\u6E85\u5C04\u8303\u56F4"
+  m_EditorClassIdentifier: 
+  id: 4
+  buffName: Sputter Up
+  description: "\u589E\u52A0\u5EFA\u8BBE\u8303\u56F4\uFF0C\u53EA\u9488\u5BF9\u5355\u4F53\u5854\u3002"
+  icon: {fileID: 0}
+  priority: 0
+  maxStack: 1
+  isForever: 1
+  duration: 100
+  tickTime: 100
+  buffUpdateTime: 1
+  buffRemoveStackUpdate: 1
+  OnCreate:
+  - {fileID: 11400000, guid: 30e42ba40321ca34c89a65c8a3f067bb, type: 2}
+  OnRemove:
+  - {fileID: 11400000, guid: 212b37ec48cc33f4888b3586b482efef, type: 2}
+  OnTick: []

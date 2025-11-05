@@ -159,7 +159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc2fe0e703f414cbe75d84ad0d7d51b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAliveTime: 10
+  maxAliveTime: 5
   speed: 300
   stateMachine: {fileID: 5162691842757817960}
-  hasHit: 0

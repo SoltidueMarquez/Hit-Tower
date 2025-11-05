@@ -32,12 +32,6 @@ namespace Buildings.Specific_Building.SingleTower.Bullet
             
             // 移动
             m_Bullet.MoveToward();
-
-            // 达到某个目标了
-            if (m_Bullet.hasHit)
-            {
-                stateMachine.SwitchTo<BulletAttackState>();
-            }
         }
 
         public void OnExit()

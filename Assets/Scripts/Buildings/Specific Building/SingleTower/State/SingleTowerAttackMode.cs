@@ -74,6 +74,7 @@ namespace Buildings.Specific_Building.SingleTower.State
                         GameManager.Instance.buildingManager.builder.GetBuildingPrefabs(
                             m_SingleTower.buildingLogic.buildingInfo.buildingName)[0], m_SingleTower.transform)
                     .GetComponent<SingleBullet>();
+            bullet.transform.position = m_SingleTower.transform.position;
             bullet.Init(mono, m_SingleTower);
         }
 

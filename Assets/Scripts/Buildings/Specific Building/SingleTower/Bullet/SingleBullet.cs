@@ -15,8 +15,6 @@ namespace Buildings.Specific_Building.SingleTower.Bullet
         [SerializeField, LabelText("速度")] public float speed;
         [SerializeField] private StateMachine stateMachine;
 
-        [HideInInspector] public bool hasHit;
-        
         [LabelText("最大碰撞次数")] private int m_MaxHitNum;
         [LabelText("当前碰撞次数")] private int m_CurHitNum;
 
@@ -46,8 +44,6 @@ namespace Buildings.Specific_Building.SingleTower.Bullet
             // 穿透次数，可穿透就>0
             m_MaxHitNum = (int)from.penetrateNum.Value + 1;
             m_CurHitNum = 0;
-            
-            hasHit = false;
 
             InitStateMachine();
 
@@ -60,11 +56,9 @@ namespace Buildings.Specific_Building.SingleTower.Bullet
             // 注册状态，如果已经注册过了就什么都不会做
             stateMachine.RegisterState(new BulletFlyState());
             stateMachine.RegisterState(new BulletAttackState());
-            // stateMachine.RegisterState(new BulletTrackState());
 
             // 设置初始状态
             stateMachine.SwitchTo<BulletFlyState>();
-            // stateMachine.SwitchTo<BulletTrackState>();
         }
 
         #endregion
@@ -84,11 +78,9 @@ namespace Buildings.Specific_Building.SingleTower.Bullet
                 if(target!=null)
                 {
                     m_Targets.Add(target);
-                    hasHit = true;
+                    stateMachine.SwitchTo<BulletAttackState>();
                 }
             }
-
-            Debug.Log(hasHit);
         }
 
         public void MoveToward()
@@ -108,9 +100,23 @@ namespace Buildings.Specific_Building.SingleTower.Bullet
 
         public void DoSputterCheckAndUpdateTargets()
         {
-            // TODO：溅射的处理
-            // 溅射范围，可溅射就>0
-            // var sputterRadius = m_FromTower.sputterRadius.Value;
+            var sputterRadius = m_FromTower.sputterRadius.Value;
+            if (sputterRadius <= 0) return;
+            
+            // 溅射检测：在xz平面上检测半径为sputterRadius范围内的敌人
+            var hitColliders = Physics.OverlapSphere(transform.position, sputterRadius);
+    
+            foreach (var collider in hitColliders)
+            {
+                if (collider.CompareTag("Enemy"))
+                {
+                    var enemy = collider.GetComponentInParent<EnemyMono>();
+                    if (enemy != null && enemy.isActiveAndEnabled)
+                    {
+                        m_Targets.Add(enemy);
+                    }
+                }
+            }
         }
 
         private void SetYPos()
@@ -143,5 +149,17 @@ namespace Buildings.Specific_Building.SingleTower.Bullet
             m_Initialized = false;
             GameObjectPool.Instance.Release(gameObject);
         }
+        
+        // 添加调试绘制
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            if (!m_Initialized || m_FromTower == null) return;
+            
+            // 始终显示溅射范围（淡黄色）
+            Gizmos.color = new Color(1f, 1f, 0f, 0.3f);
+            Gizmos.DrawWireSphere(transform.position, m_FromTower.sputterRadius.Value);
+        }
+#endif
     }
 }

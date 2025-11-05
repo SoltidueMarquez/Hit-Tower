@@ -19,10 +19,30 @@ MonoBehaviour:
       giveBack: 10
       attack: 10
       attackRange: 400
-      attackInterval: 10
+      attackInterval: 2
       ifSingle: 1
       addBuffs: []
       attackNum: 1
+      maxHealth: 100
+    - cost: 20
+      giveBack: 20
+      attack: 20
+      attackRange: 400
+      attackInterval: 1.5
+      ifSingle: 1
+      addBuffs:
+      - {fileID: 11400000, guid: e2bc3279b62c7834ea8b668469ba0566, type: 2}
+      attackNum: 2
+      maxHealth: 100
+    - cost: 30
+      giveBack: 30
+      attack: 20
+      attackRange: 400
+      attackInterval: 1.5
+      ifSingle: 1
+      addBuffs:
+      - {fileID: 11400000, guid: a162c260aa09429499c9d40a1ad9b0f1, type: 2}
+      attackNum: 2
       maxHealth: 100
     prefab: {fileID: 4431042111936490714, guid: cd75a783ee8829c42bdbbda206e2a98f, type: 3}
     prefabs:

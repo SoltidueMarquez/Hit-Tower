@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15074249d5784254996ce7b7d32c8f5b, type: 3}
+  m_Name: "\u589E\u52A0\u7A7F\u900F\u6B21\u6570"
+  m_EditorClassIdentifier: 
+  id: 3
+  buffName: Penetrate Up
+  description: "\u589E\u52A0\u7A7F\u900F\u6B21\u6570\uFF0C\u53EA\u9488\u5BF9\u5355\u4F53\u5854\u3002"
+  icon: {fileID: 0}
+  priority: 0
+  maxStack: 2
+  isForever: 1
+  duration: 100
+  tickTime: 100
+  buffUpdateTime: 1
+  buffRemoveStackUpdate: 1
+  OnCreate:
+  - {fileID: 11400000, guid: 9880af3c30a4ba247aa29d64d44f4770, type: 2}
+  OnRemove:
+  - {fileID: 11400000, guid: ab5aff9ba3954d846a1d5b31a9f06d7f, type: 2}
+  OnTick: []

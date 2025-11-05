@@ -44,3 +44,9 @@ MonoBehaviour:
     - name: "\u707C\u70E7"
       path: 
       so: {fileID: 11400000, guid: 61b2c0c656e0bd445b636d2cfe176d0a, type: 2}
+    - name: "\u5355\u4F53\u5854\u52A0\u7A7F\u900F"
+      path: 
+      so: {fileID: 11400000, guid: e2bc3279b62c7834ea8b668469ba0566, type: 2}
+    - name: "\u5355\u4F53\u5854\u52A0\u6E85\u5C04"
+      path: 
+      so: {fileID: 11400000, guid: a162c260aa09429499c9d40a1ad9b0f1, type: 2}

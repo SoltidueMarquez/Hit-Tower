@@ -6,15 +6,8 @@ namespace Buildings.Specific_Building.SingleTower
 {
     public class SingleTower : BuildingMono
     {
-        public ValueChannel penetrateNum { get; private set; }
-        public ValueChannel sputterRadius { get; private set; }
-
-        public override void Init(BuildingData buildingData, BuildingManager manager)
-        {
-            base.Init(buildingData, manager);
-            penetrateNum = new ValueChannel();
-            sputterRadius = new ValueChannel();
-        }
+        public ValueChannel penetrateNum = new ValueChannel();
+        public ValueChannel sputterRadius = new ValueChannel();
 
         protected override void InitStateMachine()
         {

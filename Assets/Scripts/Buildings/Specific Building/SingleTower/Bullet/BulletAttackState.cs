@@ -28,7 +28,6 @@ namespace Buildings.Specific_Building.SingleTower.Bullet
 
         public void OnExit()
         {
-            m_Bullet.hasHit = false;
         }
 
         public void Init()
