@@ -1,4 +1,5 @@
-﻿using Buff_System;
+﻿using Archive;
+using Buff_System;
 using Buildings;
 using Enemy;
 using Player;
@@ -69,6 +70,7 @@ public class GameManager : Utils.Singleton<GameManager>
     private void GameOverLose()
     {
         UIMgr.Instance.GetFirstUI<UIGameOver>().InitLose();
+        GameOverCommon();
     }
 
     private void CheckGameWin()
@@ -78,9 +80,22 @@ public class GameManager : Utils.Singleton<GameManager>
     private void GameOverWine()
     {
         UIMgr.Instance.GetFirstUI<UIGameOver>().InitWin();
+        GameOverCommon();
+    }
+
+    private void GameOverCommon()
+    {
+        UpdateArchive();
     }
     #endregion
 
+    private void UpdateArchive()
+    {
+        // 更新存档
+        if (ArchiveManager.Instance != null)
+            ArchiveManager.Instance.UpdateCurPlayerMaxWave(enemyManager.enemySpawner.GetCurrentWaveIndex() + 1);
+    }
+    
     #region 倍速设置
     private int m_CurrentSpeedIndex; // 记录当前速度在TimeSettings中的索引
 
@@ -129,11 +144,13 @@ public class GameManager : Utils.Singleton<GameManager>
     
     public void Restart()
     {
+        UpdateArchive();
         SceneChangeHelper.Instance.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Exit()
     {
+        UpdateArchive();
         SceneChangeHelper.Instance.LoadScene(ConstManager.k_StartSceneName);
     }
 }
