@@ -14,7 +14,7 @@ namespace UI_Framework.UI.UIBuildings
             m_Cell = cell;
             
             buildBtnList.ClearItems();
-            foreach (var buildingData in GameManager.Instance.buildingManager.builder.buildingDatas.buildingDataList)
+            foreach (var buildingData in GameManager.Instance.buildingManager.builder.buildingDatas.GetUnLockedBuildingDataList())
             {
                 buildBtnList.CloneItem<UIBuildingBtn>().Init(buildingData,
                     () =>

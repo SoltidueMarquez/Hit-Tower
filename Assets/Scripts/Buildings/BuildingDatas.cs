@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Archive;
 using Buff_System;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -14,6 +15,20 @@ namespace Buildings
 
         public BuildingData GetData(string buildingName) =>
             buildingDataList.FirstOrDefault(data => data.buildingName == buildingName);
+
+        public List<BuildingData> GetUnLockedBuildingDataList()
+        {
+            if (ArchiveManager.Instance == null) 
+            {
+                // 如果存档管理器不存在，返回所有建筑数据
+                return buildingDataList;
+            }
+            else
+            {
+                var wave = ArchiveManager.Instance.data.GetCurPlayer().maxWave;
+                return buildingDataList.Where(x => x.unlockWaveNum <= wave).ToList();
+            }
+        }
     }
 
     [Serializable]
@@ -24,7 +39,8 @@ namespace Buildings
         [LabelText("预制体")] public GameObject prefab;
         public int maxLv => levelData.Count - 1;
         public float buildCost => levelData[0].cost;
-        public List<GameObject> prefabs;
+        [LabelText("其他会用到的预制体")] public List<GameObject> prefabs;
+        [LabelText("对应解锁的存档波次条件")] public int unlockWaveNum;
         public string GetDpsAnalysis()
         {
             var analysis = new System.Text.StringBuilder();
