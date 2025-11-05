@@ -53,7 +53,7 @@ MonoBehaviour:
       giveBack: 10
       attack: 0
       attackRange: 300
-      attackInterval: 2
+      attackInterval: 0.9
       ifSingle: 0
       addBuffs: []
       attackNum: 0

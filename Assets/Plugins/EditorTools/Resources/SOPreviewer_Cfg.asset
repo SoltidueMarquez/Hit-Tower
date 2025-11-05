@@ -42,6 +42,11 @@ MonoBehaviour:
     - name: 
       path: 
       so: {fileID: 0}
+  - key: "\u5546\u5E97"
+    value:
+    - name: "\u5546\u54C1\u914D\u7F6E"
+      path: 
+      so: {fileID: 11400000, guid: 6465d3cdf745fa64e9b26a2b65249ef7, type: 2}
   - key: "Buff\u914D\u7F6E"
     value:
     - name: "\u5BD2\u51B7"

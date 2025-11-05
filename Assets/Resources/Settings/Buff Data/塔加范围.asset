@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15074249d5784254996ce7b7d32c8f5b, type: 3}
-  m_Name: "\u5BD2\u51B7(\u51CF\u901F)"
+  m_Name: "\u5854\u52A0\u8303\u56F4"
   m_EditorClassIdentifier: 
-  id: 1
-  buffName: Cold (Speed Down)
-  description: 
+  id: 5
+  buffName: Atk Spd Up
+  description: "\u5854\u653B\u901F\u589E\u52A0"
   icon: {fileID: 0}
   priority: 0
   maxStack: 1
   isForever: 0
-  duration: 1
-  tickTime: 100
-  buffUpdateTime: 0
+  duration: 30
+  tickTime: 0
+  buffUpdateTime: 1
   buffRemoveStackUpdate: 0
   OnCreate:
-  - {fileID: 11400000, guid: cb85ef1913ab8ee44a8520b404d64bfb, type: 2}
+  - {fileID: 11400000, guid: ad9fe2bec06e9aa48a971000b0e4c666, type: 2}
   OnRemove:
-  - {fileID: 11400000, guid: 6b013c4c896d71e4ba81f1e7ce0e22e5, type: 2}
+  - {fileID: 11400000, guid: 270cb84f290c01745aa97af46106e5ae, type: 2}
   OnTick: []

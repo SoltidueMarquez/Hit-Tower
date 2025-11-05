@@ -87,6 +87,18 @@ namespace Buff_System
                         buffModule.Apply(findBuffInfo);//触发创建Buff的回调点
                     }
                 }
+                else
+                {
+                    switch (findBuffInfo.buffData.buffUpdateTime)// 依据不同的更新方法更新计时器
+                    {
+                        case BuffUpdateTimeEnum.Add:
+                            findBuffInfo.durationTimer += findBuffInfo.buffData.duration;
+                            break;
+                        case BuffUpdateTimeEnum.Replace:
+                            findBuffInfo.durationTimer = findBuffInfo.buffData.duration;
+                            break;
+                    }
+                }
             }
             else    //如果不存在
             {

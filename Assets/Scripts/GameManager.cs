@@ -2,6 +2,7 @@
 using Buildings;
 using Enemy;
 using Player;
+using Shop;
 using UI_Framework.Scripts;
 using UI_Framework.Scripts.Tools;
 using UI_Framework.UI;
@@ -11,6 +12,7 @@ using UI_Framework.UI.UIDebug;
 using UI_Framework.UI.UIGameInfo;
 using UI_Framework.UI.UIGameOver;
 using UI_Framework.UI.UIGameSettings;
+using UI_Framework.UI.UIShop;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,10 +24,13 @@ public class GameManager : Utils.Singleton<GameManager>
     public PlayerManager playerManager { get; private set; }
     public BuildingManager buildingManager { get; private set; }
     public BuffManager buffManager { get; private set; }
+    public ShopManager shopManager { get; private set; }
     public void Start()
     {
         InitTimeScale();
         buffManager = GetComponentInChildren<BuffManager>();
+        
+        shopManager = GetComponentInChildren<ShopManager>();
         
         playerManager = GetComponentInChildren<PlayerManager>();
         if (playerManager != null) playerManager.Init();
@@ -48,6 +53,8 @@ public class GameManager : Utils.Singleton<GameManager>
         UIMgr.Instance.CreateUI<UIBuildings>();
         
         UIMgr.Instance.CreateUI<UIGameInfo>();
+        
+        UIMgr.Instance.CreateUI<UIShop>();
         
         // 最上层的是设置UI
         UIMgr.Instance.CreateUI<UIGameSettings>();

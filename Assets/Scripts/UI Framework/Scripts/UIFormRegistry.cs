@@ -7,6 +7,7 @@ using UI_Framework.UI.UIDebug;
 using UI_Framework.UI.UIGameInfo;
 using UI_Framework.UI.UIGameOver;
 using UI_Framework.UI.UIGameSettings;
+using UI_Framework.UI.UIShop;
 using UI_Framework.UI.UIStart;
 
 namespace UI_Framework.Scripts
@@ -23,6 +24,7 @@ namespace UI_Framework.Scripts
             { typeof(UIDebug), "Prefabs/UI/UIDebug/Debug UI" },
             { typeof(UIGameOver), "Prefabs/UI/UIGameOver/GamOver UI" },
             { typeof(UIDamageInfo), "Prefabs/UI/UIDamageInfo/Damage Info UI" },
+            { typeof(UIShop), "Prefabs/UI/UIShop/Shop UI" },
         };
 
         public static string GetPath<T>() where T : UIFormBase

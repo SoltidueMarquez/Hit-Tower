@@ -2145,8 +2145,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 61b2c0c656e0bd445b636d2cfe176d0a, type: 2}
   - {fileID: 11400000, guid: a162c260aa09429499c9d40a1ad9b0f1, type: 2}
   - {fileID: 11400000, guid: e2bc3279b62c7834ea8b668469ba0566, type: 2}
-  shopBuffDatas:
-  - {fileID: 11400000, guid: 1ca62fb97e27b914db90f8bdb9929d4f, type: 2}
 --- !u!1001 &519494939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6091,6 +6089,7 @@ Transform:
   - {fileID: 98085034}
   - {fileID: 499808362}
   - {fileID: 802047403}
+  - {fileID: 1894820814}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1626341088
@@ -7042,6 +7041,51 @@ Transform:
   - {fileID: 2131611827}
   m_Father: {fileID: 547337033}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1894820813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1894820814}
+  - component: {fileID: 1894820815}
+  m_Layer: 0
+  m_Name: Shop Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1894820814
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894820813}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1626341087}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1894820815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894820813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f0b6f518b749a5b616449c64b4d5b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopData: {fileID: 11400000, guid: 6465d3cdf745fa64e9b26a2b65249ef7, type: 2}
 --- !u!1001 &1921158574
 PrefabInstance:
   m_ObjectHideFlags: 0

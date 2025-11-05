@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15074249d5784254996ce7b7d32c8f5b, type: 3}
   m_Name: "\u5854\u52A0\u653B\u901F"
   m_EditorClassIdentifier: 
-  id: 5
-  buffName: Atk Spd Up
-  description: "\u5854\u653B\u901F\u589E\u52A0"
+  id: 6
+  buffName: Atk Range Up
+  description: "\u5854\u8303\u56F4\u589E\u52A0"
   icon: {fileID: 0}
   priority: 0
-  maxStack: 10
+  maxStack: 1
   isForever: 0
   duration: 30
   tickTime: 0
   buffUpdateTime: 1
   buffRemoveStackUpdate: 0
   OnCreate:
-  - {fileID: 11400000, guid: ad9fe2bec06e9aa48a971000b0e4c666, type: 2}
+  - {fileID: 11400000, guid: 5669ae9b95e279647998afa82d132726, type: 2}
   OnRemove:
-  - {fileID: 11400000, guid: 270cb84f290c01745aa97af46106e5ae, type: 2}
+  - {fileID: 11400000, guid: 8ef6454dd7e774146b6004f0112e4ad2, type: 2}
   OnTick: []
