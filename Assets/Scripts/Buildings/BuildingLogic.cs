@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Buff_System;
@@ -26,14 +27,21 @@ namespace Buildings
             buildingInfo = new BuildingInfo(data);
             // 挂载配置的buff
             BuffHandler = new BuffHandler();
-            foreach (var buffData in data.levelData[0].addBuffs)
-            {
-                BuffHandler.AddBuff(new BuffInfo(buffData, mono, mono));
-            }
 
             m_MonoGameObject = mono;
+            
+            var currentCoroutineId = CoroutineHelper.StartWithId(LateHandleBuff());
 
             buildingInfo.maxHealth.OnValueChanged += ReCalculateHealth;
+        }
+
+        public IEnumerator LateHandleBuff()
+        {
+            yield return null;
+            foreach (var buffData in buildingInfo.levelData[0].addBuffs)
+            {
+                BuffHandler.AddBuff(new BuffInfo(buffData, m_MonoGameObject, m_MonoGameObject));
+            }
         }
 
         /// <summary>

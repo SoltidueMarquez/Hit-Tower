@@ -9,6 +9,7 @@ namespace Buff_System
     public class BuffManager : MonoBehaviour
     {
         [LabelText("游戏中会出现的,需要外部添加的buff")] public List<BuffData> buffDatas;
+        [LabelText("商店售卖的buff")] public List<BuffData> shopBuffDatas;
 
         public List<AdditionalBuff> additionalBuffs { get; private set; }
 

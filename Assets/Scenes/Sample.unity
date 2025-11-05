@@ -2143,6 +2143,10 @@ MonoBehaviour:
   buffDatas:
   - {fileID: 11400000, guid: 916af30f13b96c649adc7b5f2b4eb08c, type: 2}
   - {fileID: 11400000, guid: 61b2c0c656e0bd445b636d2cfe176d0a, type: 2}
+  - {fileID: 11400000, guid: a162c260aa09429499c9d40a1ad9b0f1, type: 2}
+  - {fileID: 11400000, guid: e2bc3279b62c7834ea8b668469ba0566, type: 2}
+  shopBuffDatas:
+  - {fileID: 11400000, guid: 1ca62fb97e27b914db90f8bdb9929d4f, type: 2}
 --- !u!1001 &519494939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3386,6 +3390,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5202599400772478115, guid: 264ecd12bfc16a24fb5b06e34c8b3628, type: 3}
   m_PrefabInstance: {fileID: 799443931}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &802047402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 802047403}
+  - component: {fileID: 802047404}
+  m_Layer: 0
+  m_Name: CoroutineHelper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &802047403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802047402}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1626341087}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &802047404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802047402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62f9d2ab065a4891a4235d43f4014c0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &805081887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6042,6 +6090,7 @@ Transform:
   - {fileID: 344839975}
   - {fileID: 98085034}
   - {fileID: 499808362}
+  - {fileID: 802047403}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1626341088

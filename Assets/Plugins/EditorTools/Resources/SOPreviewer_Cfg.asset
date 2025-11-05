@@ -36,6 +36,12 @@ MonoBehaviour:
     - name: "\u73A9\u5BB6\u521D\u59CB\u8BBE\u7F6E"
       path: 
       so: {fileID: 11400000, guid: ca1c5c76df7abdf4ea91b8eaf3c73256, type: 2}
+    - name: 
+      path: 
+      so: {fileID: 0}
+    - name: 
+      path: 
+      so: {fileID: 0}
   - key: "Buff\u914D\u7F6E"
     value:
     - name: "\u5BD2\u51B7"
@@ -50,3 +56,6 @@ MonoBehaviour:
     - name: "\u5355\u4F53\u5854\u52A0\u6E85\u5C04"
       path: 
       so: {fileID: 11400000, guid: a162c260aa09429499c9d40a1ad9b0f1, type: 2}
+    - name: "\u5854\u52A0\u653B\u901F"
+      path: 
+      so: {fileID: 11400000, guid: 1ca62fb97e27b914db90f8bdb9929d4f, type: 2}
