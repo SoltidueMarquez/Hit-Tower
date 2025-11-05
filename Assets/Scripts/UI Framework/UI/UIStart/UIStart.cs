@@ -10,6 +10,11 @@ namespace UI_Framework.UI.UIStart
             Open();
         }
 
+        public void OpenArchiveUI()
+        {
+            UIMgr.Instance.GetFirstUI<UIArchive.UIArchive>().Open();
+        }
+
         public void StartGame() => StartManager.Instance.StartGame();
         public void QuitGame() => StartManager.Instance.QuitGame();
     }

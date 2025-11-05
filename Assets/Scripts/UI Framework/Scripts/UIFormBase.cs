@@ -80,8 +80,11 @@ namespace UI_Framework.Scripts
         {
             isOpen = true;
             OpenAnim();
+            DoWhenOpen();
             OnOpen?.Invoke();
         }
+
+        protected virtual void DoWhenOpen() { }
 
         public void Close()
         {

@@ -73,3 +73,8 @@ MonoBehaviour:
     - name: "\u72C2\u66B4"
       path: 
       so: {fileID: 11400000, guid: 01cdf3f315f36b6468ef324c321eb368, type: 2}
+  - key: "\u5B58\u6863"
+    value:
+    - name: "\u5B58\u6863"
+      path: 
+      so: {fileID: 11400000, guid: a2bf931a7b5f82341be469a384469afa, type: 2}

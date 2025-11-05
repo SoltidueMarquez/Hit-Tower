@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UI_Framework.UI;
+using UI_Framework.UI.UIArchive;
 using UI_Framework.UI.UIBuildings;
 using UI_Framework.UI.UIDamageText;
 using UI_Framework.UI.UIDebug;
@@ -25,6 +26,7 @@ namespace UI_Framework.Scripts
             { typeof(UIGameOver), "Prefabs/UI/UIGameOver/GamOver UI" },
             { typeof(UIDamageInfo), "Prefabs/UI/UIDamageInfo/Damage Info UI" },
             { typeof(UIShop), "Prefabs/UI/UIShop/Shop UI" },
+            { typeof(UIArchive), "Prefabs/UI/UIArchive/Archieve UI" },
         };
 
         public static string GetPath<T>() where T : UIFormBase
