@@ -63,7 +63,14 @@ namespace Enemy
             enemy.transform.position = spawner.spawnTransform.position;
 
             // 初始化操作
-            enemy.GetComponent<EnemyMono>().Init(data, m_EnemyManager);
+            var mono = enemy.GetComponent<EnemyMono>();
+            mono.Init(data, m_EnemyManager);
+
+            // 给enemy挂载持续中的商店buff
+            foreach (var addBuff in GameManager.Instance.buffManager.enemyAdditionalBuffs)
+            {
+                mono.enemyLogic.BuffHandler.AddBuff(addBuff.GetBuffInfo(mono.gameObject), true);
+            }
         }
         #endregion
 

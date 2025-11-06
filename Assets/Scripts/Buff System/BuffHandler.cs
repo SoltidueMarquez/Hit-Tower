@@ -64,7 +64,8 @@ namespace Buff_System
         /// 添加Buff
         /// </summary>
         /// <param name="buffInfo"></param>
-        public void AddBuff(BuffInfo buffInfo)
+        /// <param name="needRecoverDuration">BuffInfo的持续时间覆盖data的</param>
+        public void AddBuff(BuffInfo buffInfo,bool needRecoverDuration = false)
         {
             var findBuffInfo = FindBuff(buffInfo.buffData.id); // 首先查找是否已经加过了
             if (findBuffInfo != null)   //如果存在
@@ -102,7 +103,7 @@ namespace Buff_System
             }
             else    //如果不存在
             {
-                buffInfo.durationTimer = buffInfo.buffData.duration;//将buff的时间设置为默认的最大时间
+                if (!needRecoverDuration) buffInfo.durationTimer = buffInfo.buffData.duration;//将buff的时间设置为默认的最大时间
                 // buffInfo.tickTimer = buffInfo.buffData.tickTime;//添加一这一行的话，加Buff的瞬间是不会触发OnTick的回调的
                 foreach (var buffModule in buffInfo.buffData.OnCreate)
                 {

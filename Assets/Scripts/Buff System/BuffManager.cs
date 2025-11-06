@@ -10,12 +10,38 @@ namespace Buff_System
     {
         [LabelText("游戏中会出现的,需要外部添加的buff")] public List<BuffData> buffDatas;
 
-        public List<AdditionalBuff> additionalBuffs { get; private set; }
+        // 为了实现在商店buff购买后再出生的敌人同样会获得效果
+        public List<AdditionalBuff> enemyAdditionalBuffs { get; private set; }
 
-        // public void Update()
-        // {
-        //     // TODO:这里是additionalBuffs的计时器更新逻辑
-        // }
+        private bool m_Initialized = false;
+        public void Init()
+        {
+            enemyAdditionalBuffs = new List<AdditionalBuff>();
+            m_Initialized = true;
+        }
+
+        public void Update()
+        {
+            if (!m_Initialized || enemyAdditionalBuffs.Count == 0) return;
+    
+            // 倒序遍历，避免删除元素时索引错乱
+            for (int i = enemyAdditionalBuffs.Count - 1; i >= 0; i--)
+            {
+                enemyAdditionalBuffs[i].Update();
+            }
+        }
+
+        public void AddAdditionalEnemyBuff(BuffData buffData)
+        {
+            var add = new AdditionalBuff(buffData);
+            enemyAdditionalBuffs.Add(add);
+            add.OnTimeUp += RemoveAdditionalEnemyBuff;
+        }
+
+        private void RemoveAdditionalEnemyBuff(AdditionalBuff buff)
+        {
+            enemyAdditionalBuffs.Remove(buff);
+        }
 
         public BuffData GetBuffData(int id)
         {
@@ -30,6 +56,33 @@ namespace Buff_System
     [Serializable]
     public class AdditionalBuff
     {
-        
+        private float m_Timer;
+        private float m_MaxTime;
+        public BuffData buffData;
+
+        public event Action<AdditionalBuff> OnTimeUp;
+
+        public AdditionalBuff(BuffData buffData)
+        {
+            this.buffData = buffData;
+            m_Timer = 0;
+            m_MaxTime = buffData.duration;
+        }
+
+        public BuffInfo GetBuffInfo(GameObject target)
+        {
+            var info = new BuffInfo(buffData, GameManager.Instance.buffManager.gameObject, target);
+            info.durationTimer = m_Timer;
+            return info;
+        }
+
+        public void Update()
+        {
+            m_Timer += Time.deltaTime;
+            if (m_Timer >= m_MaxTime)
+            {
+                OnTimeUp?.Invoke(this);
+            }
+        }
     }
 }

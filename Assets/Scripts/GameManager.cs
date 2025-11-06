@@ -30,6 +30,7 @@ public class GameManager : Utils.Singleton<GameManager>
     {
         InitTimeScale();
         buffManager = GetComponentInChildren<BuffManager>();
+        buffManager.Init();
         
         shopManager = GetComponentInChildren<ShopManager>();
         
@@ -70,7 +71,7 @@ public class GameManager : Utils.Singleton<GameManager>
     private void GameOverLose()
     {
         UIMgr.Instance.GetFirstUI<UIGameOver>().InitLose();
-        GameOverCommon();
+        UpdateArchive(false);
     }
 
     private void CheckGameWin()
@@ -80,20 +81,18 @@ public class GameManager : Utils.Singleton<GameManager>
     private void GameOverWine()
     {
         UIMgr.Instance.GetFirstUI<UIGameOver>().InitWin();
-        GameOverCommon();
-    }
-
-    private void GameOverCommon()
-    {
         UpdateArchive();
     }
+    
     #endregion
 
-    private void UpdateArchive()
+    private void UpdateArchive(bool win = true)
     {
         // 更新存档
         if (ArchiveManager.Instance != null)
-            ArchiveManager.Instance.UpdateCurPlayerMaxWave(enemyManager.enemySpawner.GetCurrentWaveIndex() + 1);
+            ArchiveManager.Instance.UpdateCurPlayerMaxWave(win
+                ? enemyManager.enemySpawner.GetCurrentWaveIndex() + 1
+                : enemyManager.enemySpawner.GetCurrentWaveIndex());
     }
     
     #region 倍速设置

@@ -1,5 +1,4 @@
-﻿using System;
-using Buff_System;
+﻿using Buff_System;
 using Shop;
 using TMPro;
 using UnityEngine;
@@ -46,6 +45,7 @@ namespace UI_Framework.UI.UIShop
                     foreach (var enemyMono in GameManager.Instance.enemyManager.activeEnemies)
                     {
                         enemyMono.enemyLogic.BuffHandler.AddBuff(new BuffInfo(m_Buff.buffData,gameObject,enemyMono.gameObject));
+                        GameManager.Instance.buffManager.AddAdditionalEnemyBuff(m_Buff.buffData);
                     }
                     break;
                 default:

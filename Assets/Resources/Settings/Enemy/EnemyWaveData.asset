@@ -15,8 +15,8 @@ MonoBehaviour:
   waveDataList:
   - waitTime: 0
     singleWaveList:
-    - enemyName: square_Plus
-      num: 1
+    - enemyName: circle
+      num: 50
       singleInterval: 1
       spawnerID: 1
     interval: 0
