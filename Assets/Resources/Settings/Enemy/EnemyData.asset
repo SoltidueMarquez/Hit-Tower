@@ -16,7 +16,7 @@ MonoBehaviour:
   - enemyName: circle
     maxHealth: 10
     speed: 100
-    attack: 0
+    attack: 1
     atkAbsorbPercent: 1
     shield: 0
     value: 1
@@ -33,10 +33,10 @@ MonoBehaviour:
     initBuffs: []
     prefab: {fileID: 1181108531587047650, guid: 220fb34cf3cf6204a9104b25b2861bbb, type: 3}
   - enemyName: square_Plus
-    maxHealth: 50
+    maxHealth: 100
     speed: 50
     attack: 10
-    atkAbsorbPercent: 0.8
+    atkAbsorbPercent: 0.5
     shield: 0
     value: 100
     initBuffs:

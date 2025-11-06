@@ -13,10 +13,29 @@ MonoBehaviour:
   m_Name: EnemyWaveData
   m_EditorClassIdentifier: 
   waveDataList:
-  - waitTime: 0
+  - waitTime: 3
     singleWaveList:
-    - enemyName: circle
-      num: 50
+    - enemyName: square
+      num: 3
       singleInterval: 1
       spawnerID: 1
-    interval: 0
+    - enemyName: circle
+      num: 3
+      singleInterval: 1
+      spawnerID: 2
+    - enemyName: circle
+      num: 4
+      singleInterval: 1
+      spawnerID: 2
+    interval: 3
+  - waitTime: 4
+    singleWaveList:
+    - enemyName: square
+      num: 10
+      singleInterval: 0.2
+      spawnerID: 1
+    - enemyName: square_Plus
+      num: 1
+      singleInterval: 0.2
+      spawnerID: 1
+    interval: 1

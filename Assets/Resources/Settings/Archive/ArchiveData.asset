@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ArchiveData
   m_EditorClassIdentifier: 
   players:
-  - maxWave: 0
+  - maxWave: 10
   - maxWave: 0
   - maxWave: 0
   curPlayerDataIndex: 1
